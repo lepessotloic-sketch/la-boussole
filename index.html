@@ -1,0 +1,2861 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="d">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>La Boussole — Voyez où va chaque euro que vous encaissez</title>
+<meta name="theme-color" content="#070504">
+<meta name="description" content="Sur 1 000 € encaissés, voyez ce qui part en TVA, cotisations et charges, et ce qui vous reste vraiment. Outil gratuit pour artisans, sans inscription.">
+<link rel="canonical" href="https://boussole.impact-nva.fr/">
+<link rel="icon" href="images/icone.png" sizes="512x512">
+<link rel="apple-touch-icon" href="images/icone.png">
+
+<!-- le lien partagé sur Facebook, LinkedIn, WhatsApp, SMS -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="La Boussole">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://boussole.impact-nva.fr/">
+<meta property="og:title" content="Sur 1 000 € encaissés, combien sont vraiment à vous ?">
+<meta property="og:description" content="L'outil gratuit qui répartit ce que vous encaissez : l'État, votre activité, votre réserve, votre investissement — et vous. Sans inscription.">
+<meta property="og:image" content="https://boussole.impact-nva.fr/images/partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="La Boussole — sur 1 000 € encaissés, combien sont vraiment à vous ?">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sur 1 000 € encaissés, combien sont vraiment à vous ?">
+<meta name="twitter:description" content="L'outil gratuit qui répartit ce que vous encaissez : l'État, votre activité, votre réserve, votre investissement — et vous.">
+<meta name="twitter:image" content="https://boussole.impact-nva.fr/images/partage.png">
+
+<!-- ce que Google et les moteurs de réponse lisent -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "La Boussole",
+  "alternateName": "La Boussole des entrepreneurs",
+  "url": "https://boussole.impact-nva.fr/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Navigateur web",
+  "inLanguage": "fr-FR",
+  "isAccessibleForFree": true,
+  "description": "Outil gratuit qui répartit le chiffre d'affaires d'un artisan entre TVA, cotisations, charges, réserve, investissement et rémunération, avec des taux datés et sourcés.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "Impact-NVA",
+    "url": "https://impact-nva.fr/",
+    "logo": "https://boussole.impact-nva.fr/images/logo-impact-nva.png"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   LA BOUSSOLE — un outil réalisé par Impact-NVA
+   Identité propre, distincte de « Vos finances, votre puissance ».
+   Thème retenu le 2026-09-22 : « Cap sur l'Eldorado » (data-theme="d").
+   Toutes les couleurs passent par les jetons ci-dessous.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Les couleurs vivent dans le bloc « CAP SUR L'ELDORADO » plus bas (data-theme="d"). */
+:root{
+  --sans:'Plus Jakarta Sans','Segoe UI',system-ui,-apple-system,sans-serif;
+  --pad:clamp(16px,4.4vw,72px); --r:20px; --r-s:14px; --e:cubic-bezier(.22,.68,0,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--bg);scroll-behavior:smooth}
+body{color:var(--ink);font-family:var(--sans);font-size:clamp(15px,.55vw + 13px,17px);
+  line-height:1.62;letter-spacing:-.005em;overflow-x:hidden;-webkit-font-smoothing:antialiased;background:var(--bg-grad)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--a1);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:1.05}
+h1{font-size:clamp(2.2rem,4.6vw,4rem);letter-spacing:-.04em}
+h2{font-size:clamp(1.8rem,3.6vw,2.9rem)}
+h3{font-size:clamp(1.1rem,1.5vw,1.35rem);font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.grad{background:linear-gradient(100deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(1.02rem,1.15vw,1.2rem);color:rgba(var(--ink-rgb),.76);max-width:58ch}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;
+  background:rgba(var(--ink-rgb),.05);border:1px solid var(--line);font-size:.8rem;font-weight:600;color:rgba(var(--ink-rgb),.8)}
+.tag::before{content:'';width:7px;height:7px;border-radius:50%;background:linear-gradient(140deg,var(--a1),var(--a2))}
+.wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+
+/* ═══ BANDEAU ═══ */
+header{position:fixed;top:0;left:0;right:0;z-index:70;padding:14px var(--pad);display:flex;align-items:center;
+  justify-content:space-between;gap:16px;border-bottom:1px solid transparent;transition:background .4s var(--e),border-color .4s var(--e)}
+header.stuck{background:var(--head);backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.02rem;letter-spacing:-.025em}
+.brand img{width:32px;height:auto}
+.brand .nm{line-height:1.14;white-space:nowrap}
+.brand small{display:block;font-size:.7rem;font-weight:600;letter-spacing:0;color:rgba(var(--ink-rgb),.62);margin-top:2px}
+@media(max-width:560px){.brand small{display:none}}
+#burger{width:52px;height:44px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:0 13px;
+  border-radius:10px;background:rgba(var(--ink-rgb),.04);border:1px solid var(--line);transition:background .3s,border-color .3s}
+#burger:hover{background:rgba(var(--ink-rgb),.08)}
+#burger{position:relative;align-items:center;padding:0}
+#burger svg{position:absolute;inset:0;margin:auto;width:26px;height:26px;fill:none;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+  transition:opacity .35s var(--e),transform .45s var(--e)}
+#burger .ic-carte .pli{stroke:var(--bur1)}
+#burger .ic-carte .croix{stroke:var(--a2);stroke-width:2.6}
+#burger .ic-fermer{stroke:var(--bur1);opacity:0;transform:rotate(-40deg) scale(.6)}
+#burger:hover .ic-carte .croix{stroke:var(--a1)}
+body.menu #burger .ic-carte{opacity:0;transform:rotate(25deg) scale(.6)}
+body.menu #burger .ic-fermer{opacity:1;transform:none}
+#menu{position:fixed;top:76px;right:var(--pad);z-index:65;width:300px;max-width:calc(100vw - 2*var(--pad));
+  max-height:calc(100vh - 100px);overflow-y:auto;padding:12px;border-radius:14px;background:var(--menu-bg);
+  backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:2px;
+  opacity:0;transform:translateY(-14px) scale(.97);transform-origin:top right;pointer-events:none;transition:opacity .35s var(--e),transform .35s var(--e)}
+body.menu #menu{opacity:1;transform:none;pointer-events:auto}
+#menu .mlab{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.6);padding:8px 14px 10px}
+#menu a{display:flex;align-items:center;gap:12px;font-size:.95rem;font-weight:600;color:rgba(var(--ink-rgb),.88);
+  padding:11px 14px;border-radius:8px;transition:background .3s,padding-left .3s}
+#menu a em{font-style:normal;font-weight:700;font-size:.8rem;color:var(--num);width:20px;font-variant-numeric:tabular-nums}
+#menu a:not(.mcta):hover{background:rgba(var(--ink-rgb),.06);padding-left:20px}
+#menu .mcta{margin-top:8px;justify-content:center;font-weight:700;color:var(--btn-ink);background:linear-gradient(100deg,var(--btn1),var(--btn2))}
+
+/* ═══ HERO : l'outil d'abord ═══ */
+#hero{padding:clamp(110px,14vh,150px) 0 clamp(40px,6vh,70px)}
+.hero-g{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,4vw,64px);align-items:center}
+@media(max-width:900px){.hero-g{grid-template-columns:1fr}}
+.hero-g h1{margin:18px 0 18px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:100px;font-weight:700;
+  transition:transform .3s var(--e),box-shadow .3s var(--e),background .3s}
+.btn.p{color:var(--btn-ink);background:linear-gradient(100deg,var(--btn1),var(--btn2));box-shadow:var(--btn-shadow)}
+.btn.p:hover{transform:translateY(-2px)}
+.btn.s{border:1px solid var(--line);background:rgba(var(--ink-rgb),.04)}
+.btn.s:hover{background:rgba(var(--ink-rgb),.08)}
+.promesses{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:.86rem;color:rgba(var(--ink-rgb),.72)}
+.promesses span::before{content:'✓ ';color:var(--a3);font-weight:800}
+
+/* la carte résultat : ce que l'outil produit, montré dès l'arrivée */
+.res{position:relative;border-radius:var(--r);background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);
+  padding:clamp(20px,2.6vw,30px)}
+.res .rs-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.res .rs-top span{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(var(--ink-rgb),.62)}
+.res .rs-big{font-size:clamp(2.2rem,4vw,3.1rem);font-weight:800;letter-spacing:-.04em;line-height:1;margin:14px 0 4px}
+.res .rs-big small{font-size:.38em;font-weight:700;letter-spacing:-.01em;color:rgba(var(--ink-rgb),.7)}
+.barre{display:flex;height:18px;border-radius:100px;overflow:hidden;margin:18px 0 18px;gap:2px}
+.barre i{display:block;height:100%}
+.leg{list-style:none;display:grid;gap:9px}
+.leg li{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;font-size:.92rem}
+.leg li::before{content:'';width:12px;height:12px;border-radius:4px;background:var(--c)}
+.leg b{font-variant-numeric:tabular-nums;font-weight:800}
+.leg li.moi{padding-top:9px;border-top:1px solid var(--line-2)}
+.leg li.moi span,.leg li.moi b{font-weight:800}
+.res .rs-note{font-size:.78rem;color:rgba(var(--ink-rgb),.62);margin-top:14px}
+
+/* ═══ LA BANDE DES ÉTAPES ═══ */
+.etapes{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:clamp(36px,6vh,60px)}
+.etapes a{padding:14px 14px 16px;border-radius:var(--r-s);background:var(--panel);border:1px solid var(--line-2);transition:border-color .3s,transform .3s var(--e)}
+.etapes a:hover{border-color:var(--line);transform:translateY(-2px)}
+.etapes em{font-style:normal;font-size:.76rem;font-weight:700;color:var(--num)}
+.etapes b{display:block;font-size:.95rem;line-height:1.25;margin-top:2px}
+@media(max-width:900px){.etapes{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.etapes{grid-template-columns:repeat(2,1fr)}}
+
+/* ═══ SECTIONS ═══ */
+section.bloc{padding:clamp(56px,9vh,110px) 0;scroll-margin-top:70px}
+.head{display:grid;gap:12px;max-width:760px;margin-bottom:32px}
+.num{font-size:.85rem;font-weight:700;color:var(--num)}
+.panneau{border-radius:var(--r);background:var(--panel);border:1px solid var(--line-2);padding:clamp(20px,3vw,32px);box-shadow:var(--shadow)}
+.chantier{border-radius:var(--r);border:1.5px dashed var(--line);padding:clamp(20px,3vw,30px);background:var(--panel-2)}
+.chantier .et{display:inline-block;font-size:.76rem;font-weight:700;padding:4px 11px;border-radius:100px;
+  background:rgba(var(--ink-rgb),.07);color:var(--num);margin-bottom:12px}
+.chantier ul{list-style:none;display:grid;gap:8px;margin-top:6px}
+.chantier li{padding-left:22px;position:relative;color:rgba(var(--ink-rgb),.82)}
+.chantier li::before{content:'';position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:linear-gradient(140deg,var(--a1),var(--a2))}
+
+/* ═══ TAUX ET SOURCES ═══ */
+.taux{width:100%;border-collapse:collapse;font-size:.93rem}
+.taux th,.taux td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:top}
+.taux th{font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(var(--ink-rgb),.64)}
+.taux td.v{font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--val)}
+.taux td.s{font-size:.84rem;color:rgba(var(--ink-rgb),.72)}
+.taux td.s a{text-decoration:underline;text-underline-offset:3px}
+.taux tr.a-confirmer td.v::after{content:' *';color:var(--a1)}
+@media(max-width:640px){
+  .taux thead{display:none}
+  .taux tr{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--line-2)}
+  .taux td{border:0;padding:0}
+  .taux td.s{grid-column:1/-1}
+}
+.note{font-size:.86rem;color:rgba(var(--ink-rgb),.72);margin-top:14px}
+
+/* ═══ L'APPEL FINAL ═══ */
+.offre{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(20px,3vw,34px);align-items:start;border-radius:var(--r);
+  border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);padding:clamp(24px,4vw,48px)}
+.offre h2{margin:14px 0}
+.formules{list-style:none;display:grid;gap:10px}
+.formules li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-radius:var(--r-s);
+  border:1px solid var(--line-2);background:rgba(var(--ink-rgb),.03)}
+.formules b{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;color:var(--val);white-space:nowrap}
+.formules span{font-weight:600}
+.formules small{display:block;font-size:.8rem;font-weight:500;color:rgba(var(--ink-rgb),.66)}
+@media(max-width:860px){.offre{grid-template-columns:1fr}}
+
+.warn{border-radius:var(--r-s);padding:18px 20px;font-size:.9rem;color:rgba(var(--ink-rgb),.82);
+  background:rgba(var(--ink-rgb),.035);border:1px solid var(--line);border-left:4px solid var(--warn)}
+
+footer{padding:48px 0 60px;border-top:1px solid var(--line-2);font-size:.86rem;color:rgba(var(--ink-rgb),.66)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer a{text-decoration:underline;text-underline-offset:3px}
+
+
+</style>
+<style>
+/* ═══ LE MINI-CALCULATEUR DU HAUT ═══ */
+.hero-g>*{min-width:0}
+.champs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 12px;margin-top:16px}
+.saisie input{width:100%}
+/* une liste déroulante prend la largeur de sa plus longue option : sans ça elle déborde sur le champ voisin */
+.champ{min-width:0}
+.saisie{min-width:0}
+.saisie select{width:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+@media(max-width:420px){.champs{grid-template-columns:1fr}}
+.champ{display:grid;gap:5px;font-size:.8rem;font-weight:600;color:rgba(var(--ink-rgb),.74)}
+.saisie{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:rgba(var(--ink-rgb),.035);
+  transition:border-color .25s,box-shadow .25s}
+.saisie:focus-within{border-color:var(--a1);box-shadow:0 0 0 3px color-mix(in srgb,var(--a1) 22%,transparent)}
+.saisie input,.saisie select{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:1rem;font-weight:700;
+  color:var(--ink);padding:10px 12px;outline:none;font-variant-numeric:tabular-nums}
+.saisie select{cursor:pointer;appearance:none;-webkit-appearance:none}
+.saisie select{color-scheme:dark}
+.saisie option{color:#F0E3C8;background:#1C120C}
+.saisie option:disabled{color:#8A7A66}
+.saisie option:checked{background:#3A2616;color:#F7DFA8}
+.saisie em{font-style:normal;font-weight:700;color:rgba(var(--ink-rgb),.6);padding-right:12px}
+.rs-alerte{margin-top:12px;font-size:.84rem;font-weight:600;padding:10px 12px;border-radius:10px;
+  background:color-mix(in srgb,var(--a2) 14%,transparent);border:1px solid color-mix(in srgb,var(--a2) 40%,transparent)}
+.rs-big.neg{color:#D6334A}
+.leg li[hidden]{display:none}
+</style>
+<style>
+/* ═══ LA COUCHE SIGNATURE ═══
+   Ce qui fait la force de la Signature, repris tel quel : titres en
+   Cormorant Garamond sans italique, texte en Jost, étiquettes en
+   capitales très espacées, boutons rectangulaires gravés avec leur
+   équerre qui s'étend au survol, angles nets, filets fins, silence. */
+:root{--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',-apple-system,'Segoe UI',sans-serif}
+body{font-family:var(--sans);font-size:clamp(15.5px,.5vw + 13.5px,17.5px);line-height:1.72;letter-spacing:.005em}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.01em;line-height:1.06}
+/* Cormorant écrit ses chiffres « à l'ancienne » : 1 000 devenait « I ooo ». Chiffres droits partout. */
+body,h1,h2,h3,.brand .nm{font-variant-numeric:lining-nums}
+h1{font-size:clamp(2.7rem,5.4vw,4.8rem)}
+h2{font-size:clamp(2.1rem,4vw,3.3rem)}
+.lead{font-weight:300;color:rgba(var(--ink-rgb),.8)}
+.grad{font-weight:600}
+
+/* étiquettes : fini la pilule, place au filet + capitales */
+.tag{background:none;border:0;padding:0;gap:14px;font-size:.72rem;font-weight:500;letter-spacing:.38em;text-transform:uppercase;color:var(--a1)}
+.tag::before{width:34px;height:1px;border-radius:0;background:var(--a1)}
+.num,.etapes em,#menu .mlab,.res .rs-top span,.taux th{font-family:var(--sans);font-weight:500;letter-spacing:.3em;text-transform:uppercase;font-size:.72rem}
+.num{color:var(--num)}
+
+/* boutons gravés */
+.btn{position:relative;border-radius:0;font-family:var(--sans);font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:1.25em 2.4em;overflow:hidden}
+.btn::before{content:"";position:absolute;top:6px;left:6px;width:9px;height:9px;border-top:1px solid;border-left:1px solid;opacity:.55;
+  transition:width .5s var(--e),height .5s var(--e),opacity .5s var(--e)}
+.btn:hover::before{width:calc(100% - 12px);height:calc(100% - 12px);opacity:.9}
+.btn.p{background:linear-gradient(135deg,var(--btn1),var(--btn2) 70%);box-shadow:var(--btn-shadow)}
+.btn.p::before{border-color:color-mix(in srgb,var(--btn-ink) 55%,transparent)}
+.btn.s{background:transparent;border:0;box-shadow:inset 0 0 0 1px var(--line)}
+.btn.s::before{border-color:var(--a1)}
+.btn.s:hover{background:transparent;box-shadow:inset 0 0 0 1px var(--a1);color:var(--a1)}
+
+/* angles nets partout */
+.res,.panneau,.etapes a,.offre,.chantier,.formules li,.warn,#menu,#burger{border-radius:3px}
+.saisie{border-radius:2px}
+.barre{border-radius:1px;height:14px}
+.leg li::before{border-radius:1px}
+.chantier .et{border-radius:2px;letter-spacing:.2em;text-transform:uppercase;font-size:.66rem;font-weight:500}
+#menu .mcta{border-radius:2px;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;font-weight:500}
+
+/* les chiffres parlent en Cormorant, en chiffres alignés */
+.res .rs-big{font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,4.6vw,3.6rem);letter-spacing:0;font-variant-numeric:lining-nums tabular-nums}
+.res .rs-big small{font-family:var(--sans);font-weight:400;font-size:.3em;letter-spacing:.02em}
+.formules b{font-family:var(--serif);font-weight:600;font-size:1.6rem;font-variant-numeric:lining-nums}
+.formules span{font-weight:500}
+.leg b,.taux td.v{font-weight:600}
+.etapes b{font-family:var(--serif);font-weight:600;font-size:1.15rem}
+.brand .nm{font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:.01em}
+.brand small{font-family:var(--sans);font-weight:400;letter-spacing:.14em;text-transform:uppercase;font-size:.6rem}
+
+/* un filet fin sous chaque titre de section, comme le fil de la Signature */
+.head h2::after{content:"";display:block;width:64px;height:1px;margin-top:22px;background:linear-gradient(90deg,var(--a1),transparent)}
+.warn{border-left-width:2px}
+</style>
+<style>
+/* ═══ L'EFFET WAOUH — la répartition qui se fait sous les yeux ═══
+   1. l'aiguille tourne et se stabilise
+   2. les 1 000 € se répartissent segment par segment
+   3. « pour vous » arrive en dernier, un reflet traverse la carte
+   Rien de décoratif : chaque mouvement raconte le calcul. */
+.barre i{flex:0 0 0;flex-grow:0;min-width:0;transition:flex-grow .85s var(--e)}
+@keyframes monte{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.entree .hero-g>div:first-child>*{animation:monte 1s var(--e) both}
+.entree .hero-g>div:first-child>*:nth-child(2){animation-delay:.12s}
+.entree .hero-g>div:first-child>*:nth-child(3){animation-delay:.26s}
+.entree .hero-g>div:first-child>*:nth-child(4){animation-delay:.4s}
+.entree .hero-g>div:first-child>*:nth-child(5){animation-delay:.52s}
+.entree .res{animation:monte 1.1s var(--e) .3s both}
+.entree .etapes a{animation:monte .9s var(--e) both}
+.entree .etapes a:nth-child(1){animation-delay:2.2s}.entree .etapes a:nth-child(2){animation-delay:2.28s}
+.entree .etapes a:nth-child(3){animation-delay:2.36s}.entree .etapes a:nth-child(4){animation-delay:2.44s}
+.entree .etapes a:nth-child(5){animation-delay:2.52s}.entree .etapes a:nth-child(6){animation-delay:2.6s}
+.eclat{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none}
+.eclat::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;
+  background:linear-gradient(105deg,transparent,rgba(var(--ink-rgb),.10) 45%,rgba(var(--ink-rgb),.16) 50%,rgba(var(--ink-rgb),.10) 55%,transparent);
+  transform:translateX(-120%) skewX(-8deg)}
+.eclat.balaye::after{transition:transform 1.5s cubic-bezier(.45,.05,.25,1);transform:translateX(260%) skewX(-8deg)}
+@keyframes halo{0%{text-shadow:0 0 0 transparent}40%{text-shadow:0 0 34px color-mix(in srgb,var(--a1) 70%,transparent)}100%{text-shadow:0 0 0 transparent}}
+.rs-big.arrive{animation:halo 1.6s ease-out}
+.leg li.moi b{color:var(--a1)}
+@media (prefers-reduced-motion:reduce){.entree *{animation:none!important}}
+</style>
+<style>
+/* ═══ D — CAP SUR L'ELDORADO : les couleurs pirates ═══
+   Bois sombre de la cabine du capitaine, carte au trésor sur parchemin,
+   océan pour la réserve contre la tempête, rouille pour ce qu'on doit.
+   L'or est réservé à une seule chose : l'Eldorado, ce qui reste au patron. */
+[data-theme="d"]{
+  --bg:#170F0A; --bg-grad:linear-gradient(180deg,#140D08 0%,#21150D 45%,#1C120B 75%,#140C07 100%);
+  --ink:#F0E3C8; --ink-rgb:240,227,200;
+  --line:rgba(226,190,130,.2); --line-2:rgba(226,190,130,.1);
+  --panel:linear-gradient(168deg,rgba(240,227,200,.07),rgba(240,227,200,.02) 60%,rgba(240,227,200,0)),rgba(23,15,10,.6);
+  --panel-2:rgba(240,227,200,.03);
+  --shadow:0 34px 80px -40px rgba(0,0,0,.9);
+  --head:rgba(20,13,8,.86); --menu-bg:rgba(26,17,11,.97);
+  --a1:#E3B355; --a2:#C0612F; --a3:#E3B355;
+  --btn1:#F2CE7C; --btn2:#B8862F; --btn-ink:#1A110B; --btn-shadow:0 20px 50px -18px rgba(227,179,85,.55);
+  --num:#E3B355; --val:#E3B355; --warn:#C0612F;
+  --bur1:#F2CE7C; --bur2:#3E8E96;
+  --s1:#9A8C78; --s2:#A8432A; --s3:#8A6440; --s4:#2F6F78; --s5:#6B7F4E; --s6:#C9962F;
+}
+/* les planches du plancher, à peine visibles */
+[data-theme="d"] body{background:repeating-linear-gradient(180deg,rgba(255,220,170,.022) 0 1px,transparent 1px 64px),var(--bg-grad)}
+
+/* le calculateur devient une carte au trésor sur parchemin */
+[data-theme="d"] .res{
+  --ink:#2A1C10; --ink-rgb:42,28,16; --line:rgba(70,45,20,.28); --line-2:rgba(70,45,20,.14);
+  color:var(--ink);border:1px solid rgba(90,60,25,.45);
+  background:radial-gradient(ellipse at 28% 18%,#F7EDD3 0%,#EEDDB6 55%,#DEC596 100%);
+  box-shadow:inset 0 0 70px rgba(120,75,25,.38),0 40px 90px -40px rgba(0,0,0,.95)}
+[data-theme="d"] .res .saisie{background:rgba(255,250,236,.55)}
+[data-theme="d"] .res .rs-note,[data-theme="d"] .res .champ{font-weight:500}
+[data-theme="d"] .leg li.moi b{color:#9A6A12}
+[data-theme="d"] .rs-alerte{background:rgba(168,67,42,.1);border-color:rgba(168,67,42,.35)}
+
+/* la carte marine derrière le hero : rose des vents, route, croix de l'Eldorado */
+#hero{position:relative;overflow:hidden}
+#hero>.wrap{position:relative;z-index:1}
+.carte{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+[data-theme="d"] .carte{display:block}
+.carte .rose,.carte .x{transform-box:fill-box;transform-origin:center}
+.carte .trace{stroke-dasharray:4 10}
+.carte .masque{stroke-dasharray:1600;stroke-dashoffset:0}
+@keyframes trace-route{from{stroke-dashoffset:1600}to{stroke-dashoffset:0}}
+@keyframes rose-cherche{0%{transform:rotate(-60deg)}60%{transform:rotate(10deg)}100%{transform:rotate(0)}}
+@keyframes croix{0%,72%{opacity:0;transform:scale(.3) rotate(-30deg)}100%{opacity:1;transform:none}}
+.entree .carte .masque{animation:trace-route 2.8s cubic-bezier(.45,.05,.25,1) .4s both}
+.entree .carte .rose{animation:rose-cherche 2.8s cubic-bezier(.3,.7,.2,1) .2s both}
+.entree .carte .x{animation:croix 3.4s ease-out both}
+/* la croix du trésor, accrochée à la ligne « Votre Eldorado » */
+.leg li.moi{position:relative}
+.x-eldo{display:none;position:absolute;left:-66px;top:50%;width:34px;height:34px;margin-top:-17px;fill:none;stroke:#E3B355;stroke-width:4.5;stroke-linecap:round;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+[data-theme="d"] .x-eldo{display:block}
+@media(max-width:900px){[data-theme="d"] .x-eldo{display:none}}
+.entree .x-eldo{animation:croix 3.6s ease-out both}
+</style>
+<style>
+/* ═══ 01 — MA SITUATION ═══ */
+.situ{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(22px,3vw,44px);align-items:start}
+@media(max-width:960px){.situ{grid-template-columns:minmax(0,1fr)}}
+.groupe{border:0;border-top:1px solid var(--line);padding:22px 0 26px;margin:0;min-width:0}
+.groupe:first-child{border-top:0;padding-top:0}
+.groupe legend{font-family:var(--serif);font-weight:600;font-size:1.45rem;letter-spacing:.01em;padding:0 0 4px;float:left;width:100%}
+.groupe legend+*{clear:both}
+.aide{font-size:.9rem;color:rgba(var(--ink-rgb),.72);margin:2px 0 6px;max-width:60ch}
+.champs.trois{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:720px){.champs.trois{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:520px){.situ .champs{grid-template-columns:minmax(0,1fr)}}
+.saisie select:disabled,.saisie option:disabled{color:#8a7f70}
+.saisie.off{opacity:.45}
+
+.situ-res{position:sticky;top:88px;border-radius:3px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);
+  padding:clamp(20px,2.6vw,28px)}
+@media(max-width:960px){.situ-res{position:static}}
+.situ-lab{font-size:.72rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--num)}
+.situ-gros{margin:12px 0 16px}
+.situ-gros b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,3.6vw,3rem);line-height:1;font-variant-numeric:lining-nums tabular-nums}
+.situ-gros small{font-size:.84rem;color:rgba(var(--ink-rgb),.7)}
+.split{display:flex;height:12px;gap:2px;margin-bottom:14px}
+.split i{display:block;height:100%;flex:0 0 0;flex-grow:0;transition:flex-grow .8s var(--e)}
+#s-barC{background:var(--s4)} #s-barE{background:var(--a2)}
+.situ-chiffres{margin:16px 0 0;display:grid;gap:8px;padding-top:14px;border-top:1px solid var(--line-2)}
+.situ-chiffres div{display:flex;justify-content:space-between;gap:12px;font-size:.92rem}
+.situ-chiffres dt{color:rgba(var(--ink-rgb),.74)}
+.situ-chiffres dd{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.situ-info{margin-top:12px;font-size:.84rem;padding:10px 12px;border-radius:2px;background:rgba(var(--ink-rgb),.05);border:1px solid var(--line-2);color:rgba(var(--ink-rgb),.82)}
+.situ-lien{margin-top:14px;font-size:.84rem;color:rgba(var(--ink-rgb),.72)}
+.situ-lien a,.situ-lien button{color:var(--a1);text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.situ-res .rs-alerte{background:rgba(192,97,47,.14);border-color:rgba(192,97,47,.45)}
+</style>
+<style>
+/* ═══ 02 — CE QUE JE DOIS ═══ */
+[data-theme="d"]{--s3b:#B8906A}
+.doit{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(22px,3vw,44px);align-items:start}
+@media(max-width:960px){.doit{grid-template-columns:minmax(0,1fr)}}
+.doit-gros{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.2vw,2.6rem);line-height:1.12;margin:10px 0 12px}
+.doit-gros b{font-weight:700;color:var(--a1);font-variant-numeric:lining-nums tabular-nums;white-space:nowrap}
+.doit-regle .champ{max-width:280px;margin-top:10px}
+.doit-echeance{margin-top:14px;font-size:.95rem;padding:12px 14px;border-left:2px solid var(--a1);background:rgba(var(--ink-rgb),.04)}
+.doit-echeance b{font-variant-numeric:tabular-nums}
+.doit-detail{border-radius:3px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);padding:clamp(18px,2.6vw,28px)}
+.doit-t{width:100%;border-collapse:collapse;font-size:.95rem}
+.doit-t caption{text-align:left;font-size:.72rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--num);padding-bottom:10px}
+.doit-t th,.doit-t td{padding:10px 0;border-bottom:1px solid var(--line-2);text-align:left;font-weight:400}
+.doit-t td{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:12px}
+.doit-t th small{display:block;font-size:.8rem;color:rgba(var(--ink-rgb),.66)}
+.doit-t tfoot th,.doit-t tfoot td{border-bottom:0;padding-top:14px;font-weight:700;font-size:1.05rem}
+.doit-t tfoot td{color:var(--a1)}
+
+/* ═══ 03 — MON ENTREPRISE ═══ */
+.ent .champs{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:520px){.ent .champs{grid-template-columns:minmax(0,1fr)}}
+.ent-res,.ent .situ-res{}
+#e-barre{margin:14px 0 16px}
+.tempete{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-2)}
+.tempete-t{display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
+.tempete-t b{font-variant-numeric:tabular-nums}
+.jauge{height:10px;margin:10px 0 10px;background:rgba(var(--ink-rgb),.08);position:relative;overflow:hidden}
+.jauge i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#2F6F78,#4FA3AC);transition:width .9s var(--e)}
+.jauge i.plein{background:linear-gradient(90deg,#2F6F78,var(--a1))}
+#e-tempete{font-size:.86rem;color:rgba(var(--ink-rgb),.8)}
+</style>
+<style>.situ-gros b.neg{color:#FF7A6B}</style>
+<style>
+/* ═══ 04 — MES CONTRATS UN PAR UN ═══ */
+[data-theme="d"]{--ok:#4FA3AC;--lim:#E0A93F;--ko:#D0643A}
+.k-params{border-radius:3px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);padding:clamp(18px,2.6vw,28px);margin-bottom:26px}
+.k-seuils{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+@media(max-width:560px){.k-seuils{grid-template-columns:minmax(0,1fr)}}
+.k-seuil{padding:14px 16px;border-left:3px solid;background:rgba(var(--ink-rgb),.035)}
+.k-seuil.perte{border-color:var(--ko)} .k-seuil.objectif{border-color:var(--ok)}
+.k-seuil span{display:block;font-size:.72rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(var(--ink-rgb),.72)}
+.k-seuil b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,3vw,2.4rem);line-height:1.1;margin:4px 0;font-variant-numeric:lining-nums tabular-nums}
+.k-seuil small{font-size:.84rem;color:rgba(var(--ink-rgb),.72)}
+.k-explic{margin-top:12px;font-size:.84rem}
+
+.k-liste{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:16px}
+.contrat{position:relative;border-radius:3px;border:1px solid var(--line);background:var(--panel);padding:18px 18px 16px;
+  transition:border-color .5s var(--e),box-shadow .5s var(--e)}
+.contrat[data-v="ok"]{border-color:color-mix(in srgb,var(--ok) 55%,transparent)}
+.contrat[data-v="lim"]{border-color:color-mix(in srgb,var(--lim) 55%,transparent)}
+.contrat[data-v="ko"]{border-color:color-mix(in srgb,var(--ko) 60%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--ko) 25%,transparent)}
+.k-tete{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.k-nom{flex:1;min-width:0;background:transparent;border:0;border-bottom:1px dashed var(--line);font-family:var(--serif);font-weight:600;
+  font-size:1.2rem;color:var(--ink);padding:2px 0;outline:none}
+.k-nom:focus{border-bottom-color:var(--a1)}
+.k-suppr{width:30px;height:30px;flex:0 0 auto;border:1px solid var(--line);border-radius:2px;color:rgba(var(--ink-rgb),.7);font-size:1.1rem;line-height:1}
+.k-suppr:hover{border-color:var(--ko);color:var(--ko)}
+.contrat .champs{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:6px}
+.k-res{margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2)}
+.k-taux{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.k-taux b{font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1;font-variant-numeric:lining-nums tabular-nums}
+.k-taux small{font-size:.8rem;color:rgba(var(--ink-rgb),.7)}
+.k-verdict{margin-left:auto;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:5px 10px;border-radius:2px;color:#170F0A}
+.contrat[data-v="ok"] .k-verdict{background:var(--ok)}
+.contrat[data-v="lim"] .k-verdict{background:var(--lim)}
+.contrat[data-v="ko"] .k-verdict{background:var(--ko)}
+.contrat:not([data-v]) .k-verdict{display:none}
+
+/* la jauge : zones perte / limite / objectif, et le contrat qui glisse dessus */
+.k-jauge{position:relative;height:10px;margin:14px 0 6px;display:flex}
+.k-jauge span{display:block;height:100%;transition:flex-grow .8s var(--e)}
+.k-jauge .z1{background:color-mix(in srgb,var(--ko) 45%,transparent)}
+.k-jauge .z2{background:color-mix(in srgb,var(--lim) 45%,transparent)}
+.k-jauge .z3{background:color-mix(in srgb,var(--ok) 45%,transparent)}
+.k-jauge i{position:absolute;top:50%;left:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--ink);
+  box-shadow:0 0 0 3px rgba(0,0,0,.45);transition:left .9s var(--e)}
+.k-conseil{font-size:.86rem;color:rgba(var(--ink-rgb),.84);margin-top:8px}
+.k-conseil b{font-variant-numeric:tabular-nums}
+.k-bas{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:18px}
+.k-bilan{font-size:.95rem}
+.k-bilan b{font-weight:600}
+@keyframes k-arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.contrat.nouveau{animation:k-arrive .6s var(--e) both}
+</style>
+<style>
+/* ═══ 05 — MON CAP ═══ */
+.cap-carte,.cap-contrats,.cap-action{border-radius:3px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);padding:clamp(18px,2.6vw,28px)}
+.cap-carte{margin-bottom:18px}
+/* la route : une ligne en pointillés, trois balises, et le navire qui avance */
+.route{position:relative;height:110px;margin:18px 6px 6px}
+.route-ligne{position:absolute;left:0;right:0;top:62px;border-top:2px dashed rgba(var(--ink-rgb),.3)}
+.balise{position:absolute;top:50px;width:0;transition:left .9s var(--e)}
+.balise i{position:absolute;left:-7px;top:5px;width:14px;height:14px;transform:rotate(45deg);border:2px solid;background:var(--bg)}
+.balise span{position:absolute;top:28px;left:0;transform:translateX(-50%);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;color:rgba(var(--ink-rgb),.8)}
+.balise.perte i{border-color:var(--ko)} .balise.lim i{border-color:var(--lim)} .balise.ok i{border-color:var(--ok)}
+.balise.atteinte i{background:currentColor}
+.balise.perte.atteinte i{background:var(--ko)} .balise.lim.atteinte i{background:var(--lim)} .balise.ok.atteinte i{background:var(--ok)}
+.navire{position:absolute;top:0;width:0;transition:left 1.1s var(--e)}
+.navire b,.navire span{position:absolute;left:0;transform:translateX(-50%);white-space:nowrap}
+.navire b{top:0;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--a1)}
+.navire span{top:16px;font-family:var(--serif);font-weight:600;font-size:1.15rem;font-variant-numeric:lining-nums tabular-nums}
+.navire::after{content:"";position:absolute;left:-9px;top:53px;width:18px;height:18px;border-radius:50%;background:var(--a1);
+  box-shadow:0 0 0 4px rgba(227,179,85,.25),0 0 18px rgba(227,179,85,.6)}
+.cap-seuils{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+@media(max-width:720px){.cap-seuils{grid-template-columns:minmax(0,1fr)}}
+.cap-seuil{padding:12px 14px;border-left:3px solid;background:rgba(var(--ink-rgb),.035)}
+.cap-seuil.perte{border-color:var(--ko)} .cap-seuil.lim{border-color:var(--lim)} .cap-seuil.ok{border-color:var(--ok)}
+.cap-seuil span{display:block;font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(var(--ink-rgb),.72)}
+.cap-seuil b{display:block;font-family:var(--serif);font-weight:600;font-size:1.9rem;line-height:1.1;margin:3px 0;font-variant-numeric:lining-nums tabular-nums}
+.cap-seuil small{display:block;font-size:.8rem;color:rgba(var(--ink-rgb),.7)}
+.cap-seuil em{display:block;font-style:normal;font-size:.84rem;font-weight:600;margin-top:6px}
+.cap-seuil em.oui{color:var(--ok)} .cap-seuil em.non{color:rgba(var(--ink-rgb),.86)}
+
+.cap-bas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media(max-width:860px){.cap-bas{grid-template-columns:minmax(0,1fr)}}
+.cap-regle{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.25;margin:10px 0 14px}
+.cap-regle b{font-weight:700;color:var(--a1)}
+.cap-barre{position:relative;height:12px;background:rgba(var(--ink-rgb),.08);margin-bottom:26px}
+.cap-barre i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--s4);transition:width .9s var(--e)}
+.cap-barre b{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--ink);transition:left .9s var(--e)}
+.cap-barre b::after{content:"minimum";position:absolute;top:24px;left:50%;transform:translateX(-50%);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(var(--ink-rgb),.7);font-weight:500}
+
+.cap-action{position:relative;border-color:rgba(227,179,85,.5);
+  background:radial-gradient(120% 90% at 100% 0%,rgba(227,179,85,.12),transparent 60%),var(--panel)}
+.cap-rose{position:absolute;right:18px;top:18px;width:46px;height:46px}
+.cap-rose circle{fill:none;stroke:rgba(227,179,85,.5);stroke-width:1.5}
+.cap-rose path{fill:var(--a1)} .cap-rose path.sud{fill:rgba(var(--ink-rgb),.3)}
+.cap-titre{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,2.4vw,1.9rem);line-height:1.2;margin:10px 56px 10px 0}
+.cap-pourquoi{font-size:.94rem;color:rgba(var(--ink-rgb),.84)}
+.cap-ensuite{margin-top:12px;padding-top:10px;border-top:1px solid var(--line-2);font-size:.88rem;color:rgba(var(--ink-rgb),.78)}
+.cap-ensuite b{color:var(--ink)}
+</style>
+<style>@media(max-width:600px){.balise span{display:none}.route{height:92px}}</style>
+<style>
+/* ═══ 06 — MA VIE PERSO ═══ */
+.perso .champs{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:520px){.perso .champs{grid-template-columns:minmax(0,1fr)}}
+.saisie input[readonly]{color:var(--a1);font-weight:700}
+#f-barre{margin:14px 0 16px}
+.echelle{margin-top:18px;padding-top:14px;border-top:1px solid var(--line-2)}
+.m-rang{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:12px 0 12px}
+.m-rang div{padding:10px 8px;text-align:center;border:1px solid var(--line-2);background:rgba(var(--ink-rgb),.03);
+  transition:background .5s var(--e),border-color .5s var(--e),transform .5s var(--e)}
+.m-rang b{display:block;font-family:var(--serif);font-weight:600;font-size:1.25rem;line-height:1}
+.m-rang span{display:block;font-size:.66rem;letter-spacing:.06em;color:rgba(var(--ink-rgb),.7);margin-top:3px}
+.m-rang div.passe{border-color:color-mix(in srgb,var(--ok) 45%,transparent)}
+.m-rang div.passe b{color:var(--ok)}
+.m-rang div.actif{background:linear-gradient(160deg,rgba(227,179,85,.22),rgba(227,179,85,.08));border-color:var(--a1);transform:translateY(-3px)}
+.m-rang div.actif b{color:var(--a1)}
+.m-phrase{font-family:var(--serif);font-weight:500;font-size:1.2rem;line-height:1.3}
+.m-prio{margin-top:8px;font-size:.9rem;color:rgba(var(--ink-rgb),.84)}
+.m-prio b{color:var(--a1)}
+</style>
+<style>.k-mode{max-width:340px;margin-top:16px}</style>
+<style>.contrat .champs .k-large{grid-column:1/-1}</style>
+<style>
+/* les trois vitrines : on montre le travail au lieu de le décrire */
+.vitrines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media(max-width:760px){.vitrines{grid-template-columns:minmax(0,1fr)}}
+.vitrine{display:block;border:1px solid var(--line-2);border-radius:3px;overflow:hidden;background:rgba(var(--ink-rgb),.03);
+  transition:border-color .45s var(--e),transform .45s var(--e),box-shadow .45s var(--e)}
+.vitrine:hover{border-color:var(--a1);transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(0,0,0,.9)}
+.vitrine img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top center;filter:saturate(.88) brightness(.82);transition:filter .45s var(--e)}
+.vitrine:hover img{filter:none}
+.v-nom{display:block;font-family:var(--serif);font-weight:600;font-size:1.25rem;padding:12px 14px 0}
+.v-desc{display:block;font-size:.84rem;color:rgba(var(--ink-rgb),.72);padding:2px 14px 0}
+.vitrine b{display:block;font-family:var(--serif);font-weight:600;font-size:1.5rem;color:var(--a1);padding:6px 14px 14px;font-variant-numeric:lining-nums}
+</style>
+<style>
+/* la carte-pont vers « Vos finances, votre puissance » */
+.pont{display:block;margin-top:18px;border:1px solid var(--line-2);border-radius:3px;overflow:hidden;background:rgba(var(--ink-rgb),.03);
+  transition:border-color .45s var(--e),transform .45s var(--e),box-shadow .45s var(--e)}
+.pont:hover{border-color:var(--a1);transform:translateY(-3px);box-shadow:0 24px 46px -28px rgba(0,0,0,.9)}
+.pont img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top center;filter:saturate(.85) brightness(.8);transition:filter .45s var(--e)}
+.pont:hover img{filter:none}
+.pont-lab{display:block;font-size:.66rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--num);padding:12px 14px 0}
+.pont-t{display:block;font-family:var(--serif);font-weight:600;font-size:1.2rem;line-height:1.2;padding:4px 14px 0}
+.pont-d{display:block;font-size:.84rem;color:rgba(var(--ink-rgb),.74);padding:6px 14px 0}
+.pont-a{display:block;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--a1);padding:10px 14px 14px}
+</style>
+<style>
+/* ── LA ROUTE DE LECTURE ──
+   Un pointillé vertical, un point doré qui suit le regard, la croix au bout.
+   Décorative mais jamais gratuite : elle dit où l'on en est du trajet. */
+#fil{position:fixed;left:26px;top:96px;bottom:54px;width:18px;z-index:40;pointer-events:none;opacity:0;transition:opacity .6s var(--e)}
+#fil.on{opacity:1}
+@media(max-width:1180px){#fil{display:none}}
+.fil-l{position:absolute;left:8px;top:0;bottom:22px;width:0;border-left:1px dashed rgba(226,190,130,.3)}
+.fil-p{position:absolute;left:3px;top:0;width:11px;height:11px;border-radius:50%;background:var(--a1);
+  box-shadow:0 0 0 4px rgba(227,179,85,.18),0 0 16px rgba(227,179,85,.65);transition:top .25s linear}
+.fil-x{position:absolute;left:0;bottom:0;width:18px;height:18px;fill:none;stroke:rgba(226,190,130,.55);stroke-width:2.6;stroke-linecap:round}
+#fil.fini .fil-x{stroke:var(--a1)}
+
+/* ── LES SECTIONS SE LÈVENT EN ARRIVANT ── */
+.anime .bloc .head,.anime .bloc .panneau,.anime .bloc .situ,.anime .bloc .doit,.anime .bloc .cap,.anime .bloc .k-params,.anime .bloc .k-liste,.anime .bloc .k-bas,.anime .bloc .offre,.anime .bloc .warn{
+  opacity:0;transform:translateY(22px);transition:opacity .8s var(--e),transform .8s var(--e)}
+.anime .bloc .vu{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .bloc .head,.bloc .panneau,.bloc .situ,.bloc .doit,.bloc .cap,.bloc .k-params,.bloc .k-liste,.bloc .k-bas,.bloc .offre,.bloc .warn{opacity:1;transform:none}
+  #fil{display:none}
+}
+</style>
+<style>
+/* ── LE POINTEUR DU THÈME ── */
+:root{--cur:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 2.5 L4 20.5 L9 16 L12.4 23 L15.6 21.5 L12.2 15 L19.5 15 Z' fill='%23F2CE7C' stroke='%231A1008' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto;--cur-main:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath d='M4 2.5 L4 20.5 L9 16 L12.4 23 L15.6 21.5 L12.2 15 L19.5 15 Z' fill='%23F7E3AE' stroke='%231A1008' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cg stroke='%23C0612F' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M21 4 L27 10 M27 4 L21 10'/%3E%3C/g%3E%3C/svg%3E") 3 2, pointer}
+body{cursor:var(--cur)}
+a,button,select,.vitrine,.pont,summary,label{cursor:var(--cur-main)}
+input,textarea{cursor:text}
+input[readonly],input:disabled,select:disabled{cursor:var(--cur)}
+@media(hover:none){body,a,button,select,.vitrine,.pont,summary,label{cursor:auto}}
+</style>
+<style>
+</style>
+<style>
+/* ── LA LUMIÈRE DU HERO ──
+   Une lanterne éclaire la table depuis le haut à droite : la carte s'éclaire,
+   le carnet de bord porte son ombre, la poussière d'or flotte dans le faisceau. */
+.lanterne{display:none;position:absolute;top:-16%;right:-6%;width:min(78vw,1000px);height:min(78vw,1000px);
+  border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle at 50% 50%,rgba(255,216,150,.17) 0%,rgba(227,179,85,.09) 28%,rgba(227,179,85,.035) 48%,transparent 68%)}
+[data-theme="d"] .lanterne{display:block}
+@keyframes lanterne-souffle{0%,100%{opacity:.88;transform:scale(1)}50%{opacity:1;transform:scale(1.035)}}
+.lanterne{animation:lanterne-souffle 9s ease-in-out infinite}
+
+.poussiere{display:none;position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+[data-theme="d"] .poussiere{display:block}
+
+/* la feuille de carte respire très lentement, comme un papier qui bouge */
+@keyframes feuille-respire{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-10px,-6px,0)}}
+[data-theme="d"] .carte .feuille{animation:feuille-respire 26s ease-in-out infinite}
+
+/* le carnet de bord : posé sur la carte, pas collé dessus */
+[data-theme="d"] .res{
+  box-shadow:inset 0 0 70px rgba(120,75,25,.38),
+             inset 1px 1px 0 rgba(255,246,222,.45),
+             0 2px 0 rgba(0,0,0,.35),
+             0 26px 40px -26px rgba(0,0,0,.85),
+             0 60px 110px -50px rgba(0,0,0,1)}
+/* la lumière de la lanterne tombe sur le coin haut droit du carnet */
+[data-theme="d"] #calc::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:radial-gradient(120% 80% at 88% -8%,rgba(255,236,190,.5),rgba(255,236,190,.14) 30%,transparent 62%);
+  mix-blend-mode:soft-light}
+
+@media (prefers-reduced-motion:reduce){
+  .lanterne,[data-theme="d"] .carte .feuille{animation:none}
+}
+</style>
+<style>
+/* ── LE FAISCEAU ──
+   La lanterne ne fait pas que briller : sa lumière descend en biais sur la table. */
+.faisceau{display:none;position:absolute;top:-30%;right:-4%;width:min(70vw,900px);height:150%;
+  pointer-events:none;z-index:0;transform:rotate(14deg);transform-origin:top center;
+  background:linear-gradient(183deg,rgba(255,224,164,.1) 0%,rgba(255,216,150,.045) 34%,transparent 72%);
+  filter:blur(14px)}
+[data-theme="d"] .faisceau{display:block}
+
+/* le coin de la page reste dans l'ombre : c'est ce qui donne la profondeur */
+.ombre-coin{display:none;position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(130% 100% at 78% 6%,transparent 34%,rgba(8,4,2,.5) 100%)}
+[data-theme="d"] .ombre-coin{display:block}
+
+/* le grain du parchemin du carnet de bord */
+[data-theme="d"] #calc::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
+  opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E")}
+</style>
+<style>
+/* ── L'EMBLÈME DE LA BOUSSOLE ──
+   Posé derrière le carnet de bord, à moitié sorti du cadre : c'est lui qui
+   donne le relief et la lumière, comme le logo en relief de Signature. */
+.embleme{display:none;position:absolute;z-index:0;pointer-events:none;
+  right:auto;bottom:auto;left:0;top:0;width:520px;height:520px;opacity:.95;
+  filter:drop-shadow(0 40px 70px rgba(0,0,0,.8))}
+[data-theme="d"] .embleme{display:block}
+@media(max-width:900px){.embleme{right:-30vw;top:4vh;width:104vw;height:104vw;opacity:.42}}
+
+/* il tourne très lentement, et sa lumière respire */
+@keyframes em-tourne{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes em-respire{0%,100%{opacity:.9}50%{opacity:1}}
+.em-tour{transform-origin:260px 260px;animation:em-tourne 180s linear infinite}
+.em-rose{transform-origin:260px 260px;animation:em-tourne 420s linear infinite reverse}
+.embleme{animation:em-respire 8s ease-in-out infinite}
+
+/* le carnet de bord passe devant l'emblème */
+#hero>.wrap{position:relative;z-index:1}
+
+@media (prefers-reduced-motion:reduce){
+  .em-tour,.em-rose,.embleme{animation:none}
+}
+</style>
+<style>
+#hero h1 .grad{font-style:italic}
+</style>
+<style>
+/* ── LE DOCUMENT FRAPPÉ ──
+   La rose est pressée dans le parchemin : un creux sombre, une arête claire
+   décalée d'un cheveu : le carnet n'est pas un panneau, c'est un document frappé. */
+.gravure{display:none;position:absolute;left:50%;top:46%;width:min(88%,430px);height:min(88%,430px);
+  transform:translate(-50%,-50%);pointer-events:none;z-index:0;opacity:.38}
+[data-theme="d"] .gravure{display:block}
+.gr-creux{stroke:#4A2E12;fill:#4A2E12;opacity:.3;transform:translate(1.5px,1.5px)}
+.gr-arete{stroke:#FFF7E2;fill:#FFF7E2;opacity:.5;transform:translate(-1.5px,-1.5px);mix-blend-mode:screen}
+
+
+/* le contenu du carnet passe au-dessus de la gravure */
+.res>*:not(.gravure):not(.eclat){position:relative;z-index:1}
+</style>
+<style>
+[data-theme="d"]{
+  --bg:#070504;
+  --bg-grad:linear-gradient(180deg,#050403 0%,#0C0806 38%,#110B07 62%,#050403 100%);
+  --line:rgba(232,200,142,.26); --line-2:rgba(232,200,142,.12);
+  --panel:linear-gradient(168deg,rgba(240,227,200,.075),rgba(240,227,200,.015) 62%,rgba(240,227,200,0)),rgba(14,9,6,.72);
+  --head:rgba(7,5,4,.9); --menu-bg:rgba(10,7,5,.98);
+  --a1:#F0C46A; --a3:#F0C46A; --num:#F0C46A; --val:#F0C46A;
+  --shadow:0 40px 90px -40px #000;
+}
+[data-theme="d"] body{
+  background:
+    radial-gradient(90% 60% at 76% 0%,rgba(255,206,130,.07) 0%,transparent 60%),
+    repeating-linear-gradient(180deg,rgba(255,220,170,.014) 0 1px,transparent 1px 78px),
+    var(--bg-grad)}
+
+/* le parchemin devient franchement lumineux sur le noir : c'est lui, l'objet */
+[data-theme="d"] .res{
+  background:radial-gradient(ellipse at 26% 14%,#FFF8E6 0%,#F6E8C8 42%,#E9D0A4 72%,#DCBE8E 100%);
+  border:1px solid rgba(255,232,180,.5);
+  box-shadow:
+    inset 0 0 60px rgba(120,75,25,.26),
+    inset 1px 1px 0 rgba(255,253,244,.8),
+    0 0 0 1px rgba(0,0,0,.5),
+    0 30px 50px -24px rgba(0,0,0,.95),
+    0 80px 140px -50px #000,
+    0 0 110px rgba(227,179,85,.14)}
+
+/* les panneaux des sections : verre sombre, filet d'or, lumière qui vient du même côté */
+[data-theme="d"] .panneau,[data-theme="d"] .situ-res,[data-theme="d"] .doit-detail,
+[data-theme="d"] .k-params,[data-theme="d"] .contrat,[data-theme="d"] .cap-carte,
+[data-theme="d"] .cap-contrats,[data-theme="d"] .cap-action{
+  background:radial-gradient(120% 90% at 92% -10%,rgba(255,214,150,.09),transparent 55%),
+             linear-gradient(168deg,rgba(240,227,200,.06),rgba(240,227,200,.012) 60%,rgba(240,227,200,0)),
+             rgba(12,8,5,.72);
+  border-color:rgba(232,200,142,.2);
+  box-shadow:0 1px 0 rgba(255,236,190,.07) inset,0 36px 70px -40px #000}
+
+/* les numéros d'étape et les titres prennent la lumière */
+[data-theme="d"] .etapes a{
+  background:linear-gradient(168deg,rgba(240,227,200,.06),rgba(240,227,200,.01)),rgba(10,7,5,.8);
+  border-color:rgba(232,200,142,.16)}
+[data-theme="d"] .etapes a:hover{border-color:rgba(240,196,106,.5);transform:translateY(-3px)}
+
+/* le bouton principal : or brossé, pas aplat */
+[data-theme="d"] .btn.p{
+  background:linear-gradient(168deg,#FFE9B4 0%,#F0C46A 40%,#C9962F 72%,#8A5E1E 100%);
+  box-shadow:0 20px 44px -18px rgba(227,179,85,.5),inset 0 1px 0 rgba(255,252,240,.7)}
+</style>
+<style>
+/* ═══ LES SECTIONS AU MÊME NIVEAU QUE LE HERO ═══
+   Un grand chiffre gravé dans le fond, une lumière qui vient toujours du même
+   côté, des champs en verre éclairé : c'est ce qui sépare un site haut de gamme
+   d'un site correct. */
+[data-theme="d"] .bloc{position:relative;isolation:isolate}
+[data-theme="d"] .bloc>.wrap{position:relative;z-index:1}
+/* la lumière rasante de chaque section */
+[data-theme="d"] .bloc::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(70% 48% at 88% 0%,rgba(255,208,130,.07),transparent 62%)}
+/* le grand chiffre gravé */
+[data-theme="d"] .bloc .head{position:relative}
+[data-theme="d"] .bloc .head::before{content:attr(data-n);position:absolute;right:-1.5vw;top:-.42em;z-index:-1;
+  font-family:var(--serif);font-weight:600;font-size:clamp(150px,19vw,290px);line-height:.8;
+  color:transparent;-webkit-text-stroke:1.5px rgba(240,196,106,.13);pointer-events:none;letter-spacing:-.04em}
+@media(max-width:900px){[data-theme="d"] .bloc .head::before{right:-2vw;font-size:34vw;opacity:.7}}
+
+/* le filet d'or qui ouvre chaque section */
+[data-theme="d"] .bloc .head .num,[data-theme="d"] .bloc .head>span:first-child{position:relative}
+
+/* les champs : du verre éclairé, pas des rectangles */
+[data-theme="d"] .saisie{
+  background:linear-gradient(168deg,rgba(255,240,208,.09),rgba(255,240,208,.02) 70%),rgba(8,5,3,.55);
+  border-color:rgba(232,200,142,.22);
+  box-shadow:inset 0 1px 0 rgba(255,246,222,.14),0 10px 22px -16px #000;
+  transition:border-color .25s,box-shadow .25s}
+[data-theme="d"] .saisie:focus-within{
+  border-color:rgba(240,196,106,.65);
+  box-shadow:inset 0 1px 0 rgba(255,246,222,.2),0 0 0 3px rgba(240,196,106,.12),0 0 26px rgba(240,196,106,.18)}
+[data-theme="d"] .res .saisie{background:rgba(255,252,242,.72);border-color:rgba(90,60,25,.3);
+  box-shadow:inset 0 1px 2px rgba(90,60,25,.16)}
+[data-theme="d"] .res .saisie:focus-within{border-color:rgba(160,105,30,.75);
+  box-shadow:inset 0 1px 2px rgba(90,60,25,.2),0 0 0 3px rgba(200,145,45,.18)}
+
+/* les séparateurs deviennent des filets de lumière */
+[data-theme="d"] .groupe{border-top:0;position:relative}
+[data-theme="d"] .groupe:not(:first-child)::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,rgba(240,196,106,.42),rgba(240,196,106,.08) 38%,transparent 72%)}
+
+/* la carte de résultat de chaque étape : même matière que le carnet, en sombre */
+[data-theme="d"] .situ-res,[data-theme="d"] .cap-carte{
+  border-color:rgba(240,196,106,.28);
+  box-shadow:inset 0 1px 0 rgba(255,236,190,.12),0 30px 60px -34px #000,0 0 60px rgba(227,179,85,.07)}
+[data-theme="d"] .situ-res::after,[data-theme="d"] .cap-carte::after{content:"";position:absolute;inset:0;
+  border-radius:inherit;pointer-events:none;
+  background:radial-gradient(90% 60% at 92% -6%,rgba(255,226,170,.14),transparent 58%)}
+
+/* la barre de répartition : de la matière, pas des aplats */
+[data-theme="d"] #rs-barre>*,[data-theme="d"] .situ-barre>*{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -2px 4px rgba(0,0,0,.35)}
+</style>
+<style>
+/* ── L'OUVERTURE ── */
+#ouverture{position:fixed;inset:0;z-index:999;display:none;place-items:center;
+  background:radial-gradient(42% 42% at 50% 44%,rgba(227,179,85,.12) 0%,rgba(20,13,7,.6) 42%,#050403 70%,#000 100%),#000}
+[data-theme="d"] #ouverture.joue{display:grid}
+#ouverture:not(.joue){display:none!important}
+.ouv-scene{position:relative;display:grid;place-items:center;gap:26px;text-align:center}
+.ouv-rose{width:min(64vw,500px);height:min(64vw,500px);filter:drop-shadow(0 30px 60px rgba(0,0,0,.9))}
+.ouv-mot{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3.4vw,2.5rem);
+  color:#F0C46A;letter-spacing:.02em;margin:0;opacity:0}
+.ouv-passer{position:fixed;right:24px;bottom:22px;background:none;border:0;color:rgba(240,227,200,.5);
+  font-family:var(--sans);font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;padding:10px 4px}
+.ouv-passer:hover{color:#F0C46A}
+
+@keyframes ouv-arrive{0%{opacity:0;transform:scale(.58) rotate(-42deg)}
+  40%{opacity:.9}
+  70%{opacity:1;transform:scale(1.05) rotate(4deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes ouv-mot{0%{opacity:0;letter-spacing:.42em}100%{opacity:1;letter-spacing:.02em}}
+@keyframes ouv-souffle{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+@keyframes ouv-leve{0%{opacity:1}100%{opacity:0;visibility:hidden}}
+.joue .ouv-rose{animation:ouv-arrive 2.6s cubic-bezier(.2,.66,.18,1) both,ouv-souffle 6s ease-in-out 2.6s infinite}
+.joue .ouv-mot{animation:ouv-mot 1.6s cubic-bezier(.2,.7,.2,1) 1.9s both}
+#ouverture.part{animation:ouv-leve 1.1s ease-in .15s both}
+
+/* pendant l'ouverture, la page reste immobile */
+html.ouvre,html.ouvre body{overflow:hidden}
+
+/* l'emblème du hero : les rayons tournent, la traînée passe */
+@keyframes em-rayons{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes em-brille{0%,86%,100%{opacity:.25}92%{opacity:1}}
+@keyframes em-scintille{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.em-rayons{transform-origin:260px 260px;animation:em-rayons 90s linear infinite;mix-blend-mode:screen;filter:blur(9px);opacity:.55}
+.em-eclat{animation:em-brille 11s ease-in-out infinite}
+.em-etoile{transform-origin:330px 182px;animation:em-scintille 3.4s ease-in-out infinite}
+.embleme{filter:drop-shadow(0 40px 70px rgba(0,0,0,.8)) drop-shadow(0 0 40px rgba(227,179,85,.28))}
+
+@media (prefers-reduced-motion:reduce){
+  .em-rayons,.em-eclat,.em-etoile{animation:none}
+}
+</style>
+<style>
+/* le titre qui ouvre les chantiers ponctuels, dans l'étape 04 */
+.o-tete{margin:38px 0 18px}
+.o-tete h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.5rem,2.2vw,2rem);margin:0 0 6px}
+.o-tete .aide{max-width:70ch}
+</style>
+<style>
+.k-lisse{margin:2px 0 12px;font-size:.84rem;color:rgba(var(--ink-rgb),.72)}
+.k-lisse b{color:var(--ink);font-weight:600}
+</style>
+<style>
+/* le lien discret du pied de page */
+#revoir-ouv{background:none;border:0;padding:0;font:inherit;color:var(--a1);
+  text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+#revoir-ouv:hover{color:var(--btn1)}
+
+/* « moins d'animations » : la scène reste, mais elle ne bouge pas */
+#ouverture.doux .ouv-rose,#ouverture.doux .ouv-mot{animation:none!important;opacity:1;transform:none;letter-spacing:.02em}
+#ouverture.doux{animation:ouv-fondu .8s ease-out both}
+@keyframes ouv-fondu{from{opacity:0}to{opacity:1}}
+</style>
+<style>
+/* ── LE HERO ──
+   À gauche la promesse, à droite l'emblème dans son vide : c'est ce vide
+   qui fait qu'on le voit. Le carnet de bord commence juste en dessous. */
+.hero-em{position:relative;display:flex;align-items:center;justify-content:center;min-height:clamp(300px,38vw,520px)}
+.embleme{position:static!important;left:auto!important;top:auto!important;
+  width:min(40vw,500px)!important;height:min(40vw,500px)!important;opacity:1}
+@media(max-width:900px){
+  .hero-em{min-height:0;margin-top:26px}
+  .embleme{width:min(72vw,360px)!important;height:min(72vw,360px)!important;opacity:.9}
+}
+/* l'invitation à descendre, comme sur Signature */
+.hero-bas{margin:clamp(34px,6vh,64px) 0 0;text-align:center}
+.hero-bas span{display:block;font-size:.66rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(var(--ink-rgb),.62)}
+.hero-bas i{display:block;width:1px;height:46px;margin:12px auto 0;
+  background:linear-gradient(180deg,var(--a1),transparent)}
+#carnet{padding-top:clamp(40px,6vh,70px)}
+#carnet .head{margin-bottom:26px}
+</style>
+<style>
+/* ── LA CARTE AU TRÉSOR ──
+   Le carnet de bord est un papier : froissé, déchiré sur les bords, usé aux
+   angles, et posé de travers sur la table. */
+[data-theme="d"] #calc{
+  --decoupe:polygon(
+    0.6% 1.2%, 12% 0.2%, 26% 1.4%, 39% 0.3%, 52% 1.5%, 66% 0.4%, 79% 1.6%, 91% 0.5%, 99.4% 1.4%,
+    99% 12%, 99.7% 24%, 98.8% 37%, 99.6% 50%, 98.9% 63%, 99.7% 76%, 99% 88%, 99.5% 98.8%,
+    88% 99.6%, 75% 98.7%, 61% 99.7%, 47% 98.8%, 33% 99.6%, 20% 98.7%, 8% 99.5%, 0.5% 98.6%,
+    1.1% 87%, 0.3% 75%, 1.2% 62%, 0.4% 49%, 1.3% 36%, 0.3% 23%, 1% 11%);
+  clip-path:var(--decoupe);
+  border:0;border-radius:0;
+  transform:rotate(-.5deg);
+  /* l'ombre suit la découpe : box-shadow serait coupée par le clip */
+  box-shadow:inset 0 0 90px rgba(120,75,25,.34),inset 0 0 16px rgba(90,58,22,.3);
+  filter:drop-shadow(0 26px 40px rgba(0,0,0,.85)) drop-shadow(0 60px 110px rgba(0,0,0,.9))
+         drop-shadow(0 0 70px rgba(227,179,85,.1))}
+@media(max-width:900px){[data-theme="d"] #calc{transform:none}}
+
+/* les plis : le relief du papier, éclairé depuis le haut à droite */
+[data-theme="d"] #calc::after{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='800'%3E%3Cfilter id='p' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.013 0.021' numOctaves='5' seed='11' result='n'/%3E%3CfeDiffuseLighting in='n' surfaceScale='5' diffuseConstant='1' lighting-color='%23fff'%3E%3CfeDistantLight azimuth='228' elevation='58'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='600' height='800' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size:100% 100%;
+  mix-blend-mode:overlay;
+  opacity:.4}
+
+/* l'usure : les angles mangés par la lumière et le temps */
+[data-theme="d"] #calc::before{
+  background:
+    radial-gradient(130% 85% at 88% -10%,rgba(255,236,190,.5),rgba(255,236,190,.12) 30%,transparent 62%),
+    radial-gradient(40% 32% at 0% 0%,rgba(120,80,30,.32),transparent 70%),
+    radial-gradient(38% 30% at 100% 100%,rgba(120,80,30,.3),transparent 70%),
+    radial-gradient(34% 26% at 4% 100%,rgba(120,80,30,.24),transparent 72%);
+  mix-blend-mode:multiply}
+</style>
+<style>
+[data-theme="d"] #calc{
+  /* la tranche des pages : irrégulière à droite, droite au dos */
+  --decoupe:polygon(
+    0% 0%, 14% .4%, 30% 0%, 46% .5%, 62% 0%, 78% .5%, 92% 0%, 99.5% .7%,
+    98.8% 12%, 99.6% 25%, 98.7% 38%, 99.5% 51%, 98.8% 64%, 99.6% 77%, 98.9% 89%, 99.4% 99%,
+    86% 99.4%, 70% 98.9%, 54% 99.5%, 38% 99%, 22% 99.5%, 8% 99%, 0% 99.6%);
+  padding-left:clamp(56px,6.4vw,76px);
+  background:
+    /* la couture du dos */
+    repeating-linear-gradient(180deg,rgba(245,228,192,.5) 0 9px,rgba(245,228,192,0) 9px 20px),
+    /* le cuir du dos */
+    linear-gradient(90deg,#4A2C12 0%,#3A2109 62%,#261506 100%),
+    /* l'ombre de la gouttière, là où la page plonge vers la reliure */
+    linear-gradient(90deg,rgba(58,34,12,.5) 0%,rgba(58,34,12,.18) 55%,transparent 100%),
+    /* les lignes du registre */
+    repeating-linear-gradient(180deg,transparent 0 27px,rgba(92,62,26,.11) 27px 28px),
+    /* le filet de marge */
+    linear-gradient(90deg,rgba(168,67,42,.42) 0 1.5px,transparent 1.5px),
+    /* le parchemin */
+    radial-gradient(ellipse at 26% 14%,#FFF8E6 0%,#F6E8C8 42%,#E9D0A4 72%,#DCBE8E 100%);
+  background-repeat:repeat-y,no-repeat,no-repeat,repeat,no-repeat,no-repeat;
+  background-size:2px 100%,clamp(26px,3vw,34px) 100%,clamp(70px,8vw,90px) 100%,100% 100%,100% 100%,100% 100%;
+  background-position:clamp(12px,1.4vw,16px) 14px,0 0,clamp(26px,3vw,34px) 0,0 18px,clamp(44px,5vw,56px) 0,0 0}
+
+/* le titre du carnet s'écarte du dos */
+[data-theme="d"] #calc .rs-top{padding-top:2px}
+@media(max-width:540px){
+  [data-theme="d"] #calc{padding-left:46px;
+    background-size:2px 100%,20px 100%,54px 100%,100% 100%,100% 100%,100% 100%;
+    background-position:9px 12px,0 0,20px 0,0 16px,34px 0,0 0}
+}
+</style>
+<style>
+.feuillet{position:fixed;inset:0;z-index:900;pointer-events:none;opacity:0;
+  transform-origin:left center;transform:perspective(2200px) rotateY(92deg);
+  transform-style:preserve-3d}
+.fe-face{position:absolute;inset:0;backface-visibility:hidden;overflow:hidden;
+  background:
+    repeating-linear-gradient(180deg,transparent 0 28px,rgba(92,62,26,.09) 28px 29px),
+    linear-gradient(90deg,rgba(58,34,12,.5) 0,rgba(58,34,12,.14) 9%,transparent 22%),
+    radial-gradient(ellipse at 22% 12%,#FBF2DC 0%,#F2E3C0 44%,#E3CA9E 74%,#D4B487 100%);
+  box-shadow:0 0 120px rgba(0,0,0,.75)}
+.fe-verso{transform:rotateY(180deg);
+  background:
+    repeating-linear-gradient(180deg,transparent 0 28px,rgba(92,62,26,.08) 28px 29px),
+    linear-gradient(90deg,transparent 0 78%,rgba(58,34,12,.16) 100%),
+    radial-gradient(ellipse at 78% 12%,#FBF2DC 0%,#F2E3C0 44%,#E3CA9E 74%,#D4B487 100%)}
+.feuillet .fe-ombre{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(60,36,12,.42) 0%,rgba(60,36,12,.06) 26%,transparent 55%,rgba(255,247,226,.3) 100%)}
+.feuillet .fe-grain{position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E")}
+
+/* ce qui est écrit sur la page */
+.fe-texte{position:absolute;top:clamp(70px,12vh,130px);left:clamp(60px,9vw,150px);right:clamp(40px,8vw,140px);
+  color:#3A2410}
+.fe-verso .fe-texte{left:clamp(40px,8vw,140px);right:clamp(60px,9vw,150px)}
+.fe-date{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(58,36,16,.6);margin:0 0 10px}
+.fe-titre{font-family:var(--serif);font-style:italic;font-weight:600;
+  font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;margin:0 0 24px;color:#2E1B08}
+.fe-lignes{display:block;width:min(100%,560px);height:auto;opacity:.5}
+.fe-lignes path{fill:none;stroke:#4A2E14;stroke-width:2.2;stroke-linecap:round}
+
+@keyframes feuillet-tourne{
+  0%{transform:perspective(2200px) rotateY(92deg);opacity:0}
+  14%{opacity:1}
+  50%{transform:perspective(2200px) rotateY(0deg);opacity:1}
+  86%{opacity:1}
+  100%{transform:perspective(2200px) rotateY(-92deg);opacity:0}}
+.feuillet.tourne{animation:feuillet-tourne .92s cubic-bezier(.42,.02,.32,1) both}
+@media (prefers-reduced-motion:reduce){.feuillet{display:none}}
+</style>
+<style>
+/* ── LES QUESTIONS DÉPLIABLES ── */
+.faq-q{border-top:1px solid var(--line-2)}
+.faq-q:first-child{border-top:0}
+.faq-q summary{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:18px 2px;list-style:none;font-family:var(--serif);font-size:clamp(1.15rem,1.7vw,1.4rem);
+  font-weight:600;transition:color .25s}
+.faq-q summary::-webkit-details-marker{display:none}
+.faq-q summary:hover{color:var(--a1)}
+.faq-q summary em{flex:none;font-family:var(--sans);font-style:normal;font-size:.7rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(var(--ink-rgb),.55)}
+.faq-q summary::after{content:"";flex:none;width:11px;height:11px;margin-left:4px;
+  border-right:1.5px solid var(--a1);border-bottom:1.5px solid var(--a1);
+  transform:rotate(45deg) translate(-3px,-3px);transition:transform .3s var(--e)}
+.faq-q[open] summary::after{transform:rotate(-135deg) translate(-3px,-3px)}
+.faq-r{padding:0 2px 24px}
+.faq-r>p{margin:0 0 18px;max-width:78ch;color:rgba(var(--ink-rgb),.86)}
+@media (prefers-reduced-motion:no-preference){
+  .faq-q[open] .faq-r{animation:faq-ouvre .4s var(--e) both}
+  @keyframes faq-ouvre{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+}
+</style>
+<style>
+/* ── LES REPÈRES DE CHAPITRE ── */
+#fil{width:auto}
+.fil-faite{position:absolute;left:8px;top:0;width:0;border-left:1px solid rgba(240,196,106,.75);
+  height:0;transition:height .25s linear}
+.fil-reperes{position:absolute;inset:0}
+.fil-rep{position:absolute;left:0;display:flex;align-items:center;gap:8px;transform:translateY(-50%);
+  pointer-events:auto;background:none;border:0;padding:4px 6px 4px 0;color:inherit;
+  font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.2em}
+.fil-rep i{flex:none;width:17px;height:1.5px;background:rgba(226,190,130,.45);transition:background .3s,width .3s}
+.fil-rep b{font-weight:500;color:rgba(var(--ink-rgb),.4);transition:color .3s}
+.fil-rep em{position:absolute;left:34px;white-space:nowrap;font-style:normal;font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--a1);opacity:0;transform:translateX(-6px);
+  transition:opacity .3s var(--e),transform .3s var(--e);pointer-events:none;
+  background:rgba(8,5,3,.9);padding:5px 10px;border:1px solid var(--line-2)}
+.fil-rep:hover em,.fil-rep:focus-visible em{opacity:1;transform:none}
+.fil-rep:hover i,.fil-rep.vue i{background:var(--a1);width:22px}
+.fil-rep:hover b,.fil-rep.vue b{color:var(--a1)}
+.fil-rep.ici i{width:26px;height:2.5px}
+.fil-rep.ici b{color:var(--btn1)}
+</style>
+</head>
+<body>
+<div id="ouverture" aria-hidden="true">
+  <div class="ouv-scene">
+    <svg class="ouv-rose" viewBox="0 0 520 520">
+      <use href="#em-defs"/>
+    </svg>
+    <p class="ouv-mot">Cap sur votre Eldorado</p>
+  </div>
+  <button class="ouv-passer" type="button">Passer &rsaquo;</button>
+</div>
+
+<header id="top">
+  <a href="#hero" class="brand">
+    <img src="images/logo-impact-nva.png" alt="Logo Impact-NVA" width="32" height="35">
+    <span class="nm">La Boussole<small>Un outil gratuit réalisé par Impact-NVA</small></span>
+  </a>
+  <button id="burger" aria-label="Ouvrir le sommaire" aria-expanded="false" aria-controls="menu">
+    <svg class="ic-carte" viewBox="0 0 40 40" aria-hidden="true">
+      <path class="pli" d="M4 11 L15 7.5 L25 12 L36 8.5 V29 L25 32.5 L15 28 L4 31.5 Z"/>
+      <path class="pli" d="M15 7.5 V28 M25 12 V32.5"/>
+      <path class="croix" d="M17.6 17.6 L22.4 22.4 M22.4 17.6 L17.6 22.4"/>
+    </svg>
+    <svg class="ic-fermer" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M11 11 L29 29 M29 11 L11 29"/>
+    </svg></button>
+</header>
+
+<nav id="menu" aria-label="Sommaire">
+  <span class="mlab">Les étapes</span>
+  <a href="#carnet"><em>00</em>Le carnet de bord</a>
+  <a href="#situation"><em>01</em>Ma situation</a>
+  <a href="#obligations"><em>02</em>Ce que je dois</a>
+  <a href="#entreprise"><em>03</em>Mon entreprise</a>
+  <a href="#contrats"><em>04</em>Mes contrats</a>
+  <a href="#cap"><em>05</em>Mon cap</a>
+  <a href="#perso"><em>06</em>Ma vie perso</a>
+  <a href="#sources"><em>07</em>Taux et sources</a>
+  <a href="#votre-site" class="mcta">Et si on faisait votre site ?</a>
+</nav>
+
+<nav id="fil" aria-label="Les étapes de la Boussole">
+  <span class="fil-l" aria-hidden="true"></span>
+  <span class="fil-faite" aria-hidden="true"></span>
+  <span class="fil-reperes"></span>
+  <span class="fil-p" aria-hidden="true"></span>
+  <svg class="fil-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 L18 18 M18 6 L6 18"/></svg>
+</nav>
+
+<main>
+
+<!-- ═══ HERO : le calcul rapide, utilisable tout de suite ═══ -->
+<section id="hero">
+  <svg class="carte" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><mask id="m-route" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="900">
+      <path class="masque" d="M150 760 C 330 700, 470 880, 620 830 S 380 830, 500 790" stroke="#fff" stroke-width="14" fill="none"/></mask></defs>
+    <defs>
+      <linearGradient id="g-papier" x1="0" y1="0" x2=".7" y2="1">
+        <stop offset="0" stop-color="#E8D2A6" stop-opacity=".19"/>
+        <stop offset=".45" stop-color="#C9A87A" stop-opacity=".12"/>
+        <stop offset="1" stop-color="#6B4B2A" stop-opacity=".07"/>
+      </linearGradient>
+      <radialGradient id="g-lueur" cx=".72" cy=".08" r=".75">
+        <stop offset="0" stop-color="#FFD790" stop-opacity=".3"/>
+        <stop offset=".55" stop-color="#E3B355" stop-opacity=".08"/>
+        <stop offset="1" stop-color="#E3B355" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="f-grain" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="7"/>
+        <feColorMatrix type="saturate" values="0"/>
+        <feComponentTransfer><feFuncA type="linear" slope=".5"/></feComponentTransfer>
+      </filter>
+      <filter id="f-tache" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="26"/>
+      </filter>
+      <clipPath id="c-feuille"><use href="#p-feuille"/></clipPath>
+    </defs>
+
+    <!-- la feuille de carte posée sur la table, bords déchirés -->
+    <g class="feuille">
+      <path class="ombre-feuille" d="M-30 596 C 140 560, 262 600, 402 574 C 536 549, 648 592, 786 564
+        C 918 538, 1042 578, 1168 552 C 1290 527, 1380 562, 1480 544 L 1480 940 L -30 940 Z"
+        fill="#000" opacity=".5" filter="url(#f-tache)"/>
+      <path class="papier" id="p-feuille" d="M-30 590 C 140 554, 262 594, 402 568 C 536 543, 648 586, 786 558
+        C 918 532, 1042 572, 1168 546 C 1290 521, 1380 556, 1480 538 L 1480 940 L -30 940 Z"
+        fill="url(#g-papier)"/>
+      <path d="M-30 590 C 140 554, 262 594, 402 568 C 536 543, 648 586, 786 558
+        C 918 532, 1042 572, 1168 546 C 1290 521, 1380 556, 1480 538"
+        fill="none" stroke="#FFEFC8" stroke-opacity=".28" stroke-width="1.6"/>
+      <path d="M-30 598 C 140 562, 262 602, 402 576 C 536 551, 648 594, 786 566
+        C 918 540, 1042 580, 1168 554 C 1290 529, 1380 564, 1480 546"
+        fill="none" stroke="#2A1608" stroke-opacity=".3" stroke-width="3"/>
+      <g stroke="#F3E2BE" stroke-opacity=".07" stroke-width="1">
+        <path d="M430 570 L430 940"/><path d="M905 562 L905 940"/>
+      </g>
+      <g fill="#7A4A1E" opacity=".1" filter="url(#f-tache)">
+        <ellipse cx="300" cy="740" rx="130" ry="70"/><ellipse cx="1160" cy="790" rx="150" ry="80"/>
+      </g>
+      <rect x="-30" y="540" width="1510" height="400" filter="url(#f-grain)" opacity=".05"/>
+    </g>
+
+    <g class="dessin" clip-path="url(#c-feuille)">
+      <!-- les lignes de rhumb, comme sur les cartes de marins -->
+      <g stroke="#F0E3C8" stroke-opacity=".055" stroke-width="1" fill="none">
+        <path d="M150 760 L1650 760 M150 760 L-1350 760 M150 760 L150 -740 M150 760 L150 2260"/>
+        <path d="M150 760 L1210 1820 M150 760 L1210 -300 M150 760 L-910 1820 M150 760 L-910 -300"/>
+        <path d="M150 760 L1724 1334 M150 760 L1724 186 M150 760 L724 2334 M150 760 L-424 2334"/>
+        <path d="M150 760 L-1424 186 M150 760 L-1424 1334 M150 760 L724 -814 M150 760 L-424 -814"/>
+      </g>
+      <!-- l'île de l'Eldorado, au bout de la route -->
+      <g class="ile" transform="translate(-376,40)" fill="none" stroke="#F0E3C8">
+        <path d="M742 748 C 770 690, 828 676, 880 690 C 932 704, 986 692, 1012 722
+                 C 1040 754, 1022 806, 986 828 C 946 852, 888 866, 838 852
+                 C 790 838, 744 806, 742 748 Z" stroke-opacity=".2" stroke-width="1.6" fill="#E8D2A6" fill-opacity=".045"/>
+        <path d="M772 754 C 794 712, 838 702, 878 712 C 918 722, 962 714, 982 738
+                 C 1002 762, 988 800, 960 816 C 928 834, 884 844, 846 834
+                 C 810 824, 774 798, 772 754 Z" stroke-opacity=".13" stroke-width="1" stroke-dasharray="3 5"/>
+        <path d="M806 760 C 822 732, 852 726, 878 732 C 904 738, 932 734, 944 750
+                 C 956 766, 946 788, 928 798 C 906 810, 878 816, 854 810
+                 C 832 804, 808 788, 806 760 Z" stroke-opacity=".1" stroke-width="1" stroke-dasharray="2 6"/>
+        <!-- les sondes de profondeur -->
+        <g fill="#F0E3C8" fill-opacity=".14" stroke="none">
+          <circle cx="700" cy="700" r="2.4"/><circle cx="676" cy="792" r="2.4"/><circle cx="716" cy="860" r="2.4"/>
+          <circle cx="1052" cy="690" r="2.4"/><circle cx="1076" cy="776" r="2.4"/><circle cx="1036" cy="856" r="2.4"/>
+        </g>
+      </g>
+    </g>
+
+    <g class="rose" opacity=".16" fill="none" stroke="#F0E3C8">
+      <circle cx="150" cy="760" r="150" stroke-width="1.5"/><circle cx="150" cy="760" r="112" stroke-width="1" stroke-dasharray="2 6"/>
+      <path d="M150 600 L166 744 L150 760 L134 744 Z M150 920 L134 776 L150 760 L166 776 Z M-10 760 L134 744 L150 760 L134 776 Z M310 760 L166 776 L150 760 L166 744 Z" fill="#F0E3C8" stroke="none"/>
+      <path d="M263 647 L161 749 L150 760 Z M37 873 L139 771 L150 760 Z M37 647 L139 749 L150 760 Z M263 873 L161 771 L150 760 Z" stroke-width="1.5"/>
+    </g>
+    <path class="trace" d="M150 760 C 330 700, 470 880, 620 830 S 380 830, 500 790" stroke="#E3B355" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round" fill="none" mask="url(#m-route)"/>
+  </svg>
+  <span class="lanterne" aria-hidden="true"></span>
+  <span class="faisceau" aria-hidden="true"></span>
+  <span class="ombre-coin" aria-hidden="true"></span>
+  <canvas class="poussiere" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-g">
+      <div>
+        <span class="tag">Cap sur votre Eldorado</span>
+        <h1>Sur 1 000 € encaissés,<br>combien sont <span class="grad">vraiment à vous&nbsp;?</span></h1>
+        <p class="lead">Un outil gratuit qui répartit ce que vous encaissez : l'État, votre activité, votre réserve, votre investissement — et vous. Vos chiffres restent dans votre navigateur.</p>
+        <div class="cta-row">
+          <button class="btn p" type="button" data-act="mes-chiffres">Mettre mes chiffres →</button>
+          <button class="btn s" type="button" data-act="exemple">Revoir l'exemple du paysagiste</button>
+        </div>
+        <div class="promesses"><span>Sans inscription</span><span>Rien ne quitte votre navigateur</span><span><a href="#sources">Taux datés et sourcés</a></span></div>
+      </div>
+
+      <div class="hero-em">
+      <svg class="embleme" viewBox="0 0 520 520" aria-hidden="true">
+        <defs>
+          <linearGradient id="or-clair" x1=".1" y1="0" x2=".85" y2="1">
+            <stop offset="0" stop-color="#FFF6DC"/><stop offset=".35" stop-color="#F2CE7C"/>
+            <stop offset=".72" stop-color="#C9962F"/><stop offset="1" stop-color="#8A5E1E"/>
+          </linearGradient>
+          <linearGradient id="or-sombre" x1=".2" y1="0" x2=".9" y2="1">
+            <stop offset="0" stop-color="#8A5E1E"/><stop offset=".5" stop-color="#5A3A14"/>
+            <stop offset="1" stop-color="#2E1D0A"/>
+          </linearGradient>
+          <linearGradient id="oc-clair" x1=".1" y1="0" x2=".9" y2="1">
+            <stop offset="0" stop-color="#9FD6DA"/><stop offset=".45" stop-color="#3E8E96"/>
+            <stop offset="1" stop-color="#1B4A50"/>
+          </linearGradient>
+          <linearGradient id="oc-sombre" x1=".2" y1="0" x2=".9" y2="1">
+            <stop offset="0" stop-color="#28666D"/><stop offset="1" stop-color="#0E2C30"/>
+          </linearGradient>
+          <radialGradient id="boss" cx=".36" cy=".3" r=".8">
+            <stop offset="0" stop-color="#FFF8E4"/><stop offset=".45" stop-color="#E3B355"/>
+            <stop offset="1" stop-color="#5A3A14"/>
+          </radialGradient>
+          <linearGradient id="ray" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFE7B4" stop-opacity="0"/>
+            <stop offset=".5" stop-color="#FFE0A0" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#FFE7B4" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="trainee" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/>
+            <stop offset=".45" stop-color="#FFFDF2" stop-opacity=".9"/>
+            <stop offset=".62" stop-color="#FFE7B4" stop-opacity=".5"/>
+            <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="f-bloom" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="9" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <radialGradient id="halo-or" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#FFD98F" stop-opacity=".5"/>
+            <stop offset=".45" stop-color="#E3B355" stop-opacity=".16"/>
+            <stop offset="1" stop-color="#E3B355" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="f-relief" x="-25%" y="-25%" width="150%" height="150%">
+            <feDropShadow dx="6" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".75"/>
+          </filter>
+        </defs>
+
+        <g class="em-rayons" aria-hidden="true"><g transform="translate(260,260) scale(.58) translate(-260,-260)">
+          <g stroke="url(#ray)" stroke-width="18" stroke-linecap="round" opacity=".8">
+            <path d="M260 260 L260 -110 M260 260 L260 630 M260 260 L-110 260 M260 260 L630 260"/>
+            <path d="M260 260 L-2 -2 M260 260 L522 522 M260 260 L522 -2 M260 260 L-2 522"/>
+          </g>
+          <g stroke="url(#ray)" stroke-width="9" stroke-linecap="round" opacity=".5">
+            <path d="M260 260 L400 -80 M260 260 L120 600 M260 260 L600 400 M260 260 L-80 120"/>
+            <path d="M260 260 L120 -80 M260 260 L400 600 M260 260 L600 120 M260 260 L-80 400"/>
+          </g>
+        </g></g>
+        <circle cx="260" cy="260" r="258" fill="url(#halo-or)"/>
+        <circle cx="260" cy="260" r="216" fill="#0A0704" opacity=".55"/>
+
+        <g class="em-tour">
+          <!-- le cercle gravé et ses graduations -->
+          <circle cx="260" cy="260" r="214" fill="none" stroke="url(#or-clair)" stroke-opacity=".5" stroke-width="2.5"/>
+          <circle cx="260" cy="260" r="201" fill="none" stroke="#E3B355" stroke-opacity=".22" stroke-width="1"/>
+          <g stroke="#F2CE7C" stroke-opacity=".5" stroke-width="2">
+            <path d="M260 46 L260 66 M260 454 L260 474 M46 260 L66 260 M454 260 L474 260"/>
+          </g>
+          <g stroke="#E3B355" stroke-opacity=".26" stroke-width="1.4">
+            <path d="M411 109 L397 123 M109 411 L123 397 M411 411 L397 397 M109 109 L123 123"/>
+          </g>
+        </g>
+
+        <g class="em-rose" filter="url(#f-relief)">
+          <!-- les quatre petites pointes, en océan -->
+          <g>
+            <path d="M367 153 L272 248 L260 260 Z" fill="url(#oc-clair)"/>
+            <path d="M367 153 L260 260 L248 248 Z" fill="url(#oc-sombre)"/>
+            <path d="M153 367 L248 272 L260 260 Z" fill="url(#oc-clair)"/>
+            <path d="M153 367 L260 260 L272 272 Z" fill="url(#oc-sombre)"/>
+            <path d="M367 367 L272 272 L260 260 Z" fill="url(#oc-sombre)"/>
+            <path d="M367 367 L260 260 L248 272 Z" fill="url(#oc-clair)"/>
+            <path d="M153 153 L248 248 L260 260 Z" fill="url(#oc-sombre)"/>
+            <path d="M153 153 L260 260 L272 248 Z" fill="url(#oc-clair)"/>
+          </g>
+          <!-- les quatre grandes pointes, en or, avec leur face à l'ombre -->
+          <g>
+            <path d="M260 32 L282 238 L260 260 Z" fill="url(#or-sombre)"/>
+            <path d="M260 32 L238 238 L260 260 Z" fill="url(#or-clair)"/>
+            <path d="M260 488 L238 282 L260 260 Z" fill="url(#or-clair)"/>
+            <path d="M260 488 L282 282 L260 260 Z" fill="url(#or-sombre)"/>
+            <path d="M32 260 L238 238 L260 260 Z" fill="url(#or-clair)"/>
+            <path d="M32 260 L238 282 L260 260 Z" fill="url(#or-sombre)"/>
+            <path d="M488 260 L282 238 L260 260 Z" fill="url(#or-clair)"/>
+            <path d="M488 260 L282 282 L260 260 Z" fill="url(#or-sombre)"/>
+          </g>
+          <!-- les arêtes qui captent la lumière -->
+          <g class="em-aretes" fill="none" stroke-linecap="round">
+            <g stroke="#FFF8E0" stroke-opacity=".75" stroke-width="1.6">
+              <path d="M260 32 L260 260 M260 488 L260 260 M32 260 L260 260 M488 260 L260 260"/>
+            </g>
+            <g stroke="#2A1A08" stroke-opacity=".55" stroke-width="1.2">
+              <path d="M260 32 L282 238 L260 260 L238 238 Z M260 488 L238 282 L260 260 L282 282 Z"/>
+              <path d="M32 260 L238 238 L260 260 L238 282 Z M488 260 L282 238 L260 260 L282 282 Z"/>
+            </g>
+            <g stroke="#CFF0F2" stroke-opacity=".5" stroke-width="1.2">
+              <path d="M367 153 L260 260 M153 367 L260 260 M367 367 L260 260 M153 153 L260 260"/>
+            </g>
+          </g>
+          <!-- le bouton central, poli -->
+          <circle cx="260" cy="260" r="26" fill="url(#boss)"/>
+          <circle cx="260" cy="260" r="26" fill="none" stroke="#3A2610" stroke-opacity=".55" stroke-width="1.5"/>
+          <ellipse cx="251" cy="250" rx="9" ry="6" fill="#FFF8E4" opacity=".55" transform="rotate(-32 251 250)"/>
+        </g>
+
+        <g class="em-eclat" filter="url(#f-bloom)">
+          <path d="M186 186 L334 334" stroke="url(#trainee)" stroke-width="7" stroke-linecap="round" opacity=".85"/>
+          <g class="em-etoile" fill="#FFFDF2">
+            <path d="M330 150 L336 176 L362 182 L336 188 L330 214 L324 188 L298 182 L324 176 Z" opacity=".95"/>
+            <circle cx="330" cy="182" r="3.5"/>
+          </g>
+          <circle cx="214" cy="322" r="2.6" fill="#FFF3D2" opacity=".8"/>
+          <circle cx="368" cy="262" r="2" fill="#FFF3D2" opacity=".6"/>
+        </g>
+      </svg>
+
+      </div>
+
+
+    </div>
+
+
+    <p class="hero-bas" aria-hidden="true"><span>Ouvrir le carnet</span><i></i></p>
+  </div>
+</section>
+
+<section class="bloc" id="carnet">
+  <div class="wrap">
+    <div class="head" data-n="00"><span class="num">00 — Le carnet de bord</span>
+      <h2>Vos chiffres, tout de suite</h2>
+      <p class="lead">Changez les montants : vous voyez aussitôt ce qui revient à l'État, ce que coûte votre activité, ce qu'il faut garder de côté, et ce qui vous reste pour vivre.</p></div>
+    <div class="res" id="calc" aria-live="polite">
+      <span class="eclat" aria-hidden="true"></span>
+      <svg class="gravure" viewBox="0 0 400 400" aria-hidden="true">
+        <g class="gr-creux">
+          <circle cx="200" cy="200" r="168" fill="none" stroke-width="3"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke-width="1.4" stroke-dasharray="2 9"/>
+          <path d="M200 16 L216 184 L200 200 L184 184 Z M200 384 L184 216 L200 200 L216 216 Z
+                   M16 200 L184 184 L200 200 L184 216 Z M384 200 L216 216 L200 200 L216 184 Z"/>
+          <path d="M330 70 L211 189 L200 200 L189 211 Z M70 330 L189 211 L200 200 L211 189 Z
+                   M330 330 L211 211 L200 200 L189 189 Z M70 70 L189 189 L200 200 L211 211 Z" opacity=".55"/>
+          <circle cx="200" cy="200" r="15" fill="none" stroke-width="3"/>
+        </g>
+        <g class="gr-arete">
+          <circle cx="200" cy="200" r="168" fill="none" stroke-width="3"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke-width="1.4" stroke-dasharray="2 9"/>
+          <path d="M200 16 L216 184 L200 200 L184 184 Z M200 384 L184 216 L200 200 L216 216 Z
+                   M16 200 L184 184 L200 200 L184 216 Z M384 200 L216 216 L200 200 L216 184 Z"/>
+          <path d="M330 70 L211 189 L200 200 L189 211 Z M70 330 L189 211 L200 200 L211 189 Z
+                   M330 330 L211 211 L200 200 L189 189 Z M70 70 L189 189 L200 200 L211 211 Z" opacity=".55"/>
+          <circle cx="200" cy="200" r="15" fill="none" stroke-width="3"/>
+        </g>
+      </svg>
+
+
+      
+      <div class="rs-top"><span>Sur 1 000 € encaissés</span></div>
+      <div class="champs">
+        <label class="champ">Vous facturez par mois (HT)
+          <span class="saisie"><input id="c-ca" type="text" inputmode="numeric" value="3500" autocomplete="off"><em>€</em></span></label>
+        <label class="champ">Vos charges du mois
+          <span class="saisie"><input id="c-ch" type="text" inputmode="numeric" value="1100" autocomplete="off"><em>€</em></span></label>
+        <label class="champ">TVA facturée
+          <span class="saisie"><select id="c-tva">
+            <option value="20" selected>Oui, 20 %</option>
+            <option value="10">Oui, 10 %</option>
+            <option value="0">Non (franchise)</option>
+          </select><em>▾</em></span></label>
+        <label class="champ">Mis de côté (réserve + investissement)
+          <span class="saisie"><input id="c-res" type="text" inputmode="numeric" value="7" autocomplete="off"><em>%</em></span></label>
+      </div>
+      <div class="rs-big" id="rs-big"><span id="rs-val">—</span> <small>sur 1 000 € sont pour vous</small></div>
+      <div class="barre" id="rs-barre"></div>
+      <ul class="leg" id="rs-leg">
+        <li data-k="tva" style="--c:var(--s1)"><span>TVA à reverser à l'État</span><b></b></li>
+        <li data-k="cot" style="--c:var(--s2)"><span>Cotisations et taxes</span><b></b></li>
+        <li data-k="ch" style="--c:var(--s3)"><span>Charges de l'activité</span><b></b></li>
+        <li data-k="mat" style="--c:var(--s4)"><span>Réserve pour la tempête</span><b></b></li>
+        <li data-k="inv" style="--c:var(--s5)"><span>Investissement</span><b></b></li>
+        <li data-k="moi" class="moi" style="--c:var(--s6)"><span>Votre Eldorado</span><svg class="x-eldo" viewBox="0 0 40 40" aria-hidden="true"><path d="M9 9 L31 31 M31 9 L9 31"/></svg><b></b></li>
+      </ul>
+      <div class="rs-alerte" id="rs-alerte" hidden></div>
+      <p class="rs-note" id="rs-note"></p>
+    </div>
+    <div class="etapes" aria-label="Les six étapes">
+      <a href="#situation"><em>01</em><b>Ma situation</b></a>
+      <a href="#obligations"><em>02</em><b>Ce que je dois</b></a>
+      <a href="#entreprise"><em>03</em><b>Mon entreprise</b></a>
+      <a href="#contrats"><em>04</em><b>Mes contrats</b></a>
+      <a href="#cap"><em>05</em><b>Mon cap</b></a>
+      <a href="#perso"><em>06</em><b>Ma vie perso</b></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 01 ═══ -->
+<section class="bloc" id="situation">
+  <div class="wrap">
+    <div class="head" data-n="01"><span class="num">01 — Ma situation</span>
+      <h2>Votre statut et ce que vous encaissez</h2>
+      <p class="lead">Deux sortes de chiffre d'affaires : les contrats réguliers, qui paient les charges, et les chantiers ponctuels, qui construisent l'avenir.</p></div>
+    <div class="situ">
+      <div class="situ-form">
+        <fieldset class="groupe">
+          <legend>Votre entreprise</legend>
+          <div class="champs trois">
+            <label class="champ">Statut
+              <span class="saisie"><select id="s-statut">
+                <option value="micro" selected>Micro-entreprise</option>
+                <option disabled>EI au réel (bientôt)</option>
+                <option disabled>EURL / SARL (bientôt)</option>
+                <option disabled>SASU / SAS (bientôt)</option>
+              </select><em>▾</em></span></label>
+            <label class="champ">Activité
+              <span class="saisie"><select id="s-act">
+                <option value="services" selected>Services, artisanat</option>
+                <option value="vente">Vente</option>
+                <option value="liberal">Libéral</option>
+              </select><em>▾</em></span></label>
+            <label class="champ">Versement libératoire de l'impôt
+              <span class="saisie"><select id="s-vl">
+                <option value="0" selected>Non</option>
+                <option value="1">Oui</option>
+              </select><em>▾</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>Vos contrats réguliers</legend>
+          <p class="aide">Les contrats d'entretien payés chaque mois. Ce sont eux qui paient les charges, même les mois calmes. Ici, c'est le prix <b>par mois</b> : le devis annuel divisé par douze (1 200 € sur l'année = 100 € par mois), ou le trimestre divisé par trois.</p>
+          <div class="champs">
+            <label class="champ">Nombre de contrats
+              <span class="saisie"><input id="s-nb" type="text" inputmode="numeric" value="10" autocomplete="off"></span></label>
+            <label class="champ">Prix moyen d'un contrat, par mois
+              <span class="saisie"><input id="s-prix" type="text" inputmode="numeric" value="200" autocomplete="off"><em>€</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>Vos chantiers ponctuels</legend>
+          <p class="aide">Les extras : taille de haie, plantations, créations… <b>Ce sont eux qui portent l'automne et l'hiver</b> : ramassage et soufflage des feuilles à partir d'octobre, puis élagage et haies quand la tonte s'arrête. Ce sont eux qui construisent l'avenir.</p>
+          <div class="champs">
+            <label class="champ">Total sur l'année
+              <span class="saisie"><input id="s-extras" type="text" inputmode="numeric" value="18000" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Part de végétaux fournis (TVA 10 %)
+              <span class="saisie"><input id="s-veg" type="text" inputmode="numeric" value="20" autocomplete="off"><em>%</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>La TVA</legend>
+          <div class="champs trois">
+            <label class="champ">Vous facturez la TVA ?
+              <span class="saisie"><select id="s-tva">
+                <option value="oui" selected>Oui</option>
+                <option value="non">Non, franchise</option>
+              </select><em>▾</em></span></label>
+            <label class="champ">Taux sur l'entretien
+              <span class="saisie"><select id="s-tent">
+                <option value="20" selected>20 %</option>
+                <option value="10">10 % (services à la personne)</option>
+              </select><em>▾</em></span></label>
+            <label class="champ">Vos prix ci-dessus sont
+              <span class="saisie"><select id="s-ht">
+                <option value="ht" selected>Hors taxes (HT)</option>
+                <option value="ttc">TVA comprise (TTC)</option>
+              </select><em>▾</em></span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="situ-res" aria-live="polite">
+        <span class="situ-lab">Votre situation</span>
+        <div class="situ-gros"><b id="s-ca">—</b><small>facturés par mois, hors taxes</small></div>
+        <div class="split" aria-hidden="true"><i id="s-barC"></i><i id="s-barE"></i></div>
+        <ul class="leg situ-leg">
+          <li style="--c:var(--s4)"><span>Contrats réguliers</span><b id="s-c">—</b></li>
+          <li style="--c:var(--a2)"><span>Chantiers ponctuels</span><b id="s-e">—</b></li>
+        </ul>
+        <dl class="situ-chiffres">
+          <div><dt>Sur l'année</dt><dd id="s-an">—</dd></div>
+          <div><dt>TVA collectée par mois</dt><dd id="s-tvam">—</dd></div>
+          <div><dt>Cotisations et taxes</dt><dd id="s-tcot">—</dd></div>
+        </dl>
+        <div class="rs-alerte" id="s-alerte" hidden></div>
+        <p class="situ-info" id="s-info" hidden></p>
+        <p class="situ-lien" id="s-lien"></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 ═══ -->
+<section class="bloc" id="obligations">
+  <div class="wrap">
+    <div class="head" data-n="02"><span class="num">02 — Ce que je dois</span>
+      <h2>L'argent qui n'est pas à vous</h2>
+      <p class="lead">Cotisations, TVA, impôt : ce qu'il faut isoler dès l'encaissement pour qu'une échéance ne devienne jamais une urgence.</p></div>
+    <div class="doit">
+      <div class="doit-regle">
+        <span class="situ-lab">La règle simple</span>
+        <p class="doit-gros">Mettez de côté <b id="d-pct">—</b> de chaque encaissement.</p>
+        <p class="aide">Dès que l'argent arrive, cette part file sur un compte à part. Elle n'a jamais été à vous : l'État vous la confie en attendant l'échéance.</p>
+        <label class="champ">Vous déclarez à l'URSSAF
+          <span class="saisie"><select id="d-rythme">
+            <option value="1">Chaque mois</option>
+            <option value="3" selected>Chaque trimestre</option>
+          </select><em>▾</em></span></label>
+        <p class="doit-echeance" id="d-ech"></p>
+      </div>
+      <div class="doit-detail">
+        <table class="doit-t">
+          <caption>Par mois, d'après votre situation</caption>
+          <tbody id="d-lignes"></tbody>
+          <tfoot><tr><th scope="row">Total à isoler par mois</th><td id="d-total">—</td></tr></tfoot>
+        </table>
+        <p class="note" id="d-note"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 ═══ -->
+<section class="bloc" id="entreprise">
+  <div class="wrap">
+    <div class="head" data-n="03"><span class="num">03 — Mon entreprise</span>
+      <h2>Faire tourner, protéger, investir, se payer</h2>
+      <p class="lead">Vos vraies charges, la réserve qui fait passer les mois creux, ce que vous investissez : et ce qui reste vraiment pour vous.</p></div>
+    <div class="situ ent">
+      <div class="situ-form">
+        <fieldset class="groupe">
+          <legend>Vos charges fixes, par mois</legend>
+          <p class="aide">Ce qui tombe même quand vous ne travaillez pas.</p>
+          <div class="champs">
+            <label class="champ">Véhicule (crédit, location)
+              <span class="saisie"><input id="e-vehicule" type="text" inputmode="numeric" value="350" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Assurances (RC pro, véhicule)
+              <span class="saisie"><input id="e-assur" type="text" inputmode="numeric" value="120" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Téléphone et internet
+              <span class="saisie"><input id="e-tel" type="text" inputmode="numeric" value="40" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Comptable, banque, logiciels
+              <span class="saisie"><input id="e-compta" type="text" inputmode="numeric" value="40" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Local ou stockage
+              <span class="saisie"><input id="e-local" type="text" inputmode="numeric" value="0" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Autres charges fixes
+              <span class="saisie"><input id="e-fautres" type="text" inputmode="numeric" value="0" autocomplete="off"><em>€</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>Vos charges variables, par mois</legend>
+          <p class="aide">Elles suivent le travail : plus de chantiers, plus de dépenses. La décharge se paie au mètre cube (souvent 4 à 12 €) et se refacture au client, parfois plus cher : n'indiquez ici que ce que vous payez, la part facturée est déjà dans votre chiffre d'affaires.</p>
+          <div class="champs">
+            <label class="champ">Carburant (véhicule, mélange 2-temps, machines)
+              <span class="saisie"><input id="e-carbu" type="text" inputmode="numeric" value="300" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Fournitures et petit matériel
+              <span class="saisie"><input id="e-fourn" type="text" inputmode="numeric" value="120" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Entretien du matériel
+              <span class="saisie"><input id="e-entr" type="text" inputmode="numeric" value="80" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Déchetterie (ce que vous payez)
+              <span class="saisie"><input id="e-dechets" type="text" inputmode="numeric" value="50" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Sous-traitance
+              <span class="saisie"><input id="e-sstr" type="text" inputmode="numeric" value="0" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Autres charges variables
+              <span class="saisie"><input id="e-vautres" type="text" inputmode="numeric" value="0" autocomplete="off"><em>€</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>La réserve pour la tempête</legend>
+          <p class="aide">De quoi tenir quand le téléphone ne sonne plus : vos charges fixes et le minimum pour vivre, pendant quelques mois.</p>
+          <div class="champs">
+            <label class="champ">Minimum pour vivre, par mois
+              <span class="saisie"><input id="e-vital" type="text" inputmode="numeric" value="1200" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Mois à pouvoir tenir
+              <span class="saisie"><input id="e-mois" type="text" inputmode="numeric" value="3" autocomplete="off"><em>mois</em></span></label>
+            <label class="champ">Déjà de côté aujourd'hui
+              <span class="saisie"><input id="e-deja" type="text" inputmode="numeric" value="2000" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">À constituer en
+              <span class="saisie"><input id="e-delai" type="text" inputmode="numeric" value="12" autocomplete="off"><em>mois</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>Investir dans l'avenir</legend>
+          <p class="aide">Matériel, publicité, site internet, formation : ce qui fera grandir l'activité.</p>
+          <div class="champs">
+            <label class="champ">Budget investissement, par mois
+              <span class="saisie"><input id="e-inv" type="text" inputmode="numeric" value="100" autocomplete="off"><em>€</em></span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="situ-res" aria-live="polite">
+        <span class="situ-lab">Votre mois type</span>
+        <div class="situ-gros"><b id="e-moi">—</b><small>pour votre Eldorado, chaque mois</small></div>
+        <div class="barre" id="e-barre"></div>
+        <ul class="leg" id="e-leg">
+          <li data-k="tva" style="--c:var(--s1)"><span>TVA à reverser</span><b></b></li>
+          <li data-k="cot" style="--c:var(--s2)"><span>Cotisations et taxes</span><b></b></li>
+          <li data-k="fix" style="--c:var(--s3)"><span>Charges fixes</span><b></b></li>
+          <li data-k="var" style="--c:var(--s3b)"><span>Charges variables</span><b></b></li>
+          <li data-k="res" style="--c:var(--s4)"><span>Réserve pour la tempête</span><b></b></li>
+          <li data-k="inv" style="--c:var(--s5)"><span>Investissement</span><b></b></li>
+          <li data-k="moi" class="moi" style="--c:var(--s6)"><span>Votre Eldorado</span><b></b></li>
+        </ul>
+        <div class="tempete">
+          <div class="tempete-t"><span>Réserve pour la tempête</span><b id="e-tenue">—</b></div>
+          <div class="jauge" aria-hidden="true"><i id="e-jauge"></i></div>
+          <p id="e-tempete"></p>
+        </div>
+        <div class="rs-alerte" id="e-alerte" hidden></div>
+        <p class="situ-lien" id="e-lien"></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 ═══ -->
+<section class="bloc" id="contrats">
+  <div class="wrap">
+    <div class="head" data-n="04"><span class="num">04 — Mes contrats un par un</span>
+      <h2>Quels contrats vous font vraiment gagner de l'argent&nbsp;?</h2>
+      <p class="lead">Trajet aller compris, chaque contrat est comparé à votre plancher horaire. Rentable, limite ou à perte : vous le voyez noir sur blanc.</p></div>
+    <div class="k-params">
+      <div class="champs trois">
+        <label class="champ">Heures travaillées par semaine, trajets compris
+          <span class="saisie"><input id="k-hsem" type="text" inputmode="decimal" value="35" autocomplete="off"><em>h</em></span></label>
+        <label class="champ">Semaines travaillées par an
+          <span class="saisie"><input id="k-sem" type="text" inputmode="numeric" value="45" autocomplete="off"><em>sem.</em></span></label>
+        <label class="champ">La paie que vous visez, par mois
+          <span class="saisie"><input id="k-paie" type="text" inputmode="numeric" value="2000" autocomplete="off"><em>€</em></span></label>
+      </div>
+      <div class="k-seuils">
+        <div class="k-seuil perte"><span>Plancher de survie</span><b id="k-survie">—</b><small>En dessous, chaque heure vous coûte de l'argent.</small></div>
+        <div class="k-seuil objectif"><span>Taux pour votre objectif</span><b id="k-objectif">—</b><small>Au-dessus, le contrat paie aussi la paie que vous visez.</small></div>
+      </div>
+      <label class="champ k-mode">Comment vous comptez le trajet
+        <span class="saisie"><select id="k-trajmode">
+          <option value="reel" selected>Le trajet réel de chaque contrat</option>
+          <option value="15">Un forfait de 15 min par passage</option>
+          <option value="30">Un forfait de 30 min par passage</option>
+        </select><em>▾</em></span></label>
+      <p class="aide k-explic" id="k-explic"></p>
+      <p class="aide">Un contrat d'entretien, c'est <b>un prix global pour l'année</b> — 12 à 13 passages, un tous les quinze jours pendant la saison — <b>lissé sur 12 mois</b> : le devis fait 1 200 €, le client reçoit une facture de 100 € chaque mois (certaines résidences paient au trimestre). Indiquez le prix global ou la mensualité, l'outil ramène tout à l'année. À partir d'octobre la tonte s'arrête, mais pas le travail : les feuilles, la haie, l'élagage. Chez un client sous contrat, <b>ces passages-là font partie des 12 à 13</b> et sont déjà payés par son prix global. Chez quelqu'un qui n'a pas de contrat, c'est un chantier ponctuel, à compter plus bas en journées.</p>
+      <p class="aide">La haie une fois par an et les arbustes deux fois sont des passages de ce contrat, pas des chantiers à part.</p>
+      <p class="aide">Ce qui est refacturé au client (la décharge au mètre cube, le désherbant au litre…) ne paie pas votre heure de travail : indiquez-le à part pour que le calcul reste juste. Le temps de pulvérisation, lui, va dans « Temps sur place ».</p>
+      <p class="aide">Vous arrondissez plutôt le temps sur place (40 minutes comptées 1 heure) pour couvrir l'essence ? Alors indiquez dans « Temps sur place » le temps réellement passé, et laissez le trajet de côté : l'outil compare ce que vous facturez à ce que vous vivez vraiment.</p>
+    </div>
+
+    <div class="k-liste" id="k-liste"></div>
+    <div class="k-bas">
+      <button class="btn s" type="button" id="k-ajout">+ Ajouter un contrat</button>
+      <p class="k-bilan" id="k-bilan" aria-live="polite"></p>
+    </div>
+    <div class="o-tete">
+      <h3>Et vos chantiers ponctuels&nbsp;?</h3>
+      <p class="aide">Un chantier ponctuel, c'est ce qui <b>n'est pas compris dans un contrat</b> : une création, un débroussaillage, un élagage, une haie chez quelqu'un qui n'a pas de contrat. Les feuilles et la haie d'un client sous contrat, elles, sont déjà payées par son contrat. Un chantier ne se compte pas en passages mais en <b>journées</b> : une haie à 1 200 € faite en une journée n'a rien à voir avec la même faite en trois. Comptez des journées de travail <b>à une personne</b> — à deux, une journée sur place en fait deux.</p>
+      <p class="aide" id="o-repere"></p>
+    </div>
+    <div class="k-liste" id="o-liste"></div>
+    <div class="k-bas">
+      <button class="btn s" type="button" id="o-ajout">+ Ajouter un chantier</button>
+      <p class="k-bilan" id="o-bilan" aria-live="polite"></p>
+    </div>
+    <p class="note">Ces fiches servent à comparer vos contrats et vos chantiers entre eux. Elles ne modifient pas les chiffres de votre situation (étape 01).</p>
+  </div>
+</section>
+
+<!-- ═══ 05 ═══ -->
+<section class="bloc" id="cap">
+  <div class="wrap">
+    <div class="head" data-n="05"><span class="num">05 — Mon cap</span>
+      <h2>Combien encaisser pour être serein</h2>
+      <p class="lead">Seuil de survie, de stabilité, de rentabilité : où vous en êtes, et une seule prochaine action.</p></div>
+    <div class="cap">
+      <div class="cap-carte">
+        <span class="situ-lab">Votre route, en chiffre d'affaires par mois (HT)</span>
+        <div class="route" aria-hidden="true">
+          <div class="route-ligne"></div>
+          <div class="balise perte" id="p-b1"><i></i><span>Survie</span></div>
+          <div class="balise lim" id="p-b2"><i></i><span>Stabilité</span></div>
+          <div class="balise ok" id="p-b3"><i></i><span>Rentabilité</span></div>
+          <div class="navire" id="p-vous"><b>Vous</b><span id="p-vous-ca">—</span></div>
+        </div>
+        <div class="cap-seuils">
+          <div class="cap-seuil perte" id="p-s1"><span>Survie</span><b>—</b><small>Charges et minimum pour vivre.</small><em></em></div>
+          <div class="cap-seuil lim" id="p-s2"><span>Stabilité</span><b>—</b><small>Charges et la paie que vous visez.</small><em></em></div>
+          <div class="cap-seuil ok" id="p-s3"><span>Rentabilité</span><b>—</b><small>En plus : la réserve se remplit et vous investissez.</small><em></em></div>
+        </div>
+        <p class="note" id="p-note"></p>
+      </div>
+
+      <div class="cap-bas">
+        <div class="cap-contrats">
+          <span class="situ-lab">Les contrats paient les charges</span>
+          <p class="cap-regle" id="p-regle"></p>
+          <div class="cap-barre" aria-hidden="true"><i id="p-cbar"></i><b id="p-cmin"></b></div>
+          <p class="aide" id="p-cdet"></p>
+        </div>
+        <div class="cap-action">
+          <svg class="cap-rose" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"/><path d="M20 4 L24 20 L20 18 L16 20 Z"/><path d="M20 36 L16 20 L20 22 L24 20 Z" class="sud"/></svg>
+          <span class="situ-lab">Votre prochaine action</span>
+          <p class="cap-titre" id="p-action">—</p>
+          <p class="cap-pourquoi" id="p-pourquoi"></p>
+          <p class="cap-ensuite" id="p-ensuite" hidden></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 ═══ -->
+<section class="bloc" id="perso">
+  <div class="wrap">
+    <div class="head" data-n="06"><span class="num">06 — Ma vie perso</span>
+      <h2>Votre paie, votre foyer, votre avenir</h2>
+      <p class="lead">L'argent de l'entreprise et celui du foyer ne se mélangent pas. Une fois votre paie connue, on la répartit comme dans « Vos finances, votre puissance ».</p></div>
+    <div class="situ perso">
+      <div class="situ-form">
+        <fieldset class="groupe">
+          <legend>Ce qui entre dans le foyer</legend>
+          <p class="aide">Votre Eldorado vient de l'étape 03. Ajoutez les autres revenus du foyer s'il y en a.</p>
+          <div class="champs">
+            <label class="champ">Votre Eldorado (calculé)
+              <span class="saisie off"><input id="f-eldo" type="text" value="—" readonly><em>€</em></span></label>
+            <label class="champ">Autres revenus du foyer
+              <span class="saisie"><input id="f-autres" type="text" inputmode="numeric" value="1200" autocomplete="off"><em>€</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>Les dépenses du foyer, par mois</legend>
+          <p class="aide">Ce qu'il faut payer pour vivre, avant tout projet.</p>
+          <div class="champs">
+            <label class="champ">Logement (loyer ou crédit)
+              <span class="saisie"><input id="f-logement" type="text" inputmode="numeric" value="700" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Courses et alimentation
+              <span class="saisie"><input id="f-courses" type="text" inputmode="numeric" value="400" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Énergie, eau
+              <span class="saisie"><input id="f-energie" type="text" inputmode="numeric" value="120" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Transport personnel
+              <span class="saisie"><input id="f-transport" type="text" inputmode="numeric" value="100" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Assurances et santé
+              <span class="saisie"><input id="f-assur" type="text" inputmode="numeric" value="80" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Téléphone, internet, abonnements
+              <span class="saisie"><input id="f-abo" type="text" inputmode="numeric" value="50" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Crédits en cours (hors logement)
+              <span class="saisie"><input id="f-credits" type="text" inputmode="numeric" value="0" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Autres dépenses du foyer
+              <span class="saisie"><input id="f-divers" type="text" inputmode="numeric" value="60" autocomplete="off"><em>€</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>Votre matelas personnel</legend>
+          <p class="aide">Distinct de la réserve de l'entreprise : celui-ci protège le foyer.</p>
+          <div class="champs">
+            <label class="champ">Mois de dépenses à couvrir
+              <span class="saisie"><input id="f-mois" type="text" inputmode="numeric" value="3" autocomplete="off"><em>mois</em></span></label>
+            <label class="champ">Déjà de côté
+              <span class="saisie"><input id="f-deja" type="text" inputmode="numeric" value="3000" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">À constituer en
+              <span class="saisie"><input id="f-delai" type="text" inputmode="numeric" value="18" autocomplete="off"><em>mois</em></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="groupe">
+          <legend>Épargne, loisirs et projets</legend>
+          <p class="aide">Une fois le foyer en sécurité : ce que vous construisez, et ce dont vous profitez.</p>
+          <div class="champs">
+            <label class="champ">Épargne et investissement, par mois
+              <span class="saisie"><input id="f-epargne" type="text" inputmode="numeric" value="200" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Loisirs, vacances, projets
+              <span class="saisie"><input id="f-loisirs" type="text" inputmode="numeric" value="250" autocomplete="off"><em>€</em></span></label>
+            <label class="champ">Déjà investi (placements, immobilier locatif)
+              <span class="saisie"><input id="f-investi" type="text" inputmode="numeric" value="5000" autocomplete="off"><em>€</em></span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="situ-res" aria-live="polite">
+        <span class="situ-lab">Votre foyer, chaque mois</span>
+        <div class="situ-gros"><b id="f-reste">—</b><small id="f-reste-lib">de marge après tout</small></div>
+        <div class="barre" id="f-barre"></div>
+        <ul class="leg" id="f-leg">
+          <li data-k="dep" style="--c:var(--s3)"><span>Dépenses du foyer</span><b></b></li>
+          <li data-k="mat" style="--c:var(--s4)"><span>Matelas personnel</span><b></b></li>
+          <li data-k="epa" style="--c:var(--s5)"><span>Épargne et investissement</span><b></b></li>
+          <li data-k="loi" style="--c:var(--s3b)"><span>Loisirs et projets</span><b></b></li>
+          <li data-k="res" class="moi" style="--c:var(--s6)"><span>Ce qui reste libre</span><b></b></li>
+        </ul>
+        <div class="echelle">
+          <span class="situ-lab">Où vous en êtes</span>
+          <div class="m-rang" id="f-rangs">
+            <div data-m="1"><b>M1</b><span>Se protéger</span></div>
+            <div data-m="2"><b>M2</b><span>Se stabiliser</span></div>
+            <div data-m="3"><b>M3</b><span>Faire travailler</span></div>
+            <div data-m="4"><b>M4</b><span>Être libre</span></div>
+          </div>
+          <p class="m-phrase" id="f-phrase"></p>
+          <p class="m-prio" id="f-prio"></p>
+        </div>
+        <div class="rs-alerte" id="f-alerte" hidden></div>
+        <a class="pont" href="https://vos-finances.impact-nva.fr/" target="_blank" rel="noopener">
+          <img src="images/vos-finances.png" alt="Aperçu du site Vos finances, votre puissance" loading="lazy" width="1024" height="640">
+          <span class="pont-lab">L'autre outil gratuit d'Impact-NVA</span>
+          <span class="pont-t">Vos finances, votre puissance</span>
+          <span class="pont-d">Pour l'argent du foyer : budget, réserve, placements, et le même genre de parcours, du premier mois d'avance à l'indépendance.</span>
+          <span class="pont-a">Le découvrir →</span>
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 — TAUX ET SOURCES (rempli dès maintenant : c'est l'étape 0) ═══ -->
+<section class="bloc" id="sources">
+  <div class="wrap">
+    <div class="head" data-n="07"><span class="num">07 — Taux et sources</span>
+      <h2>Aucun taux caché</h2>
+      <p class="lead">Chaque pourcentage utilisé par la Boussole est écrit ici, avec sa source officielle et la date à laquelle il a été vérifié.</p></div>
+    <div class="panneau">
+      <div class="faq" id="taux-faq"></div>
+      <p class="note">Micro-entreprise, taux en vigueur en 2026. <span style="color:var(--or)">*</span> Taux relevé sur plusieurs sources concordantes, la page officielle de l'Urssaf n'a pas pu être consultée : à confirmer. Vérifié le <b id="taux-date"></b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ L'APPEL FINAL ═══ -->
+<section class="bloc" id="votre-site">
+  <div class="wrap">
+    <div class="offre">
+      <div>
+        <span class="tag">Cet outil a été conçu par Impact-NVA</span>
+        <h2>Et si on faisait <span class="grad">votre site</span>&nbsp;?</h2>
+        <p class="lead">Le même soin, la même clarté, au service de votre métier. Un site qui vous appartient, sans abonnement.</p>
+        <div class="cta-row">
+          <a class="btn p" href="https://impact-nva.fr/" target="_blank" rel="noopener">Voir des exemples →</a>
+          <a class="btn s" href="https://impact-nva.fr/" target="_blank" rel="noopener">Parler de mon projet</a>
+        </div>
+      </div>
+      <div class="vitrines">
+        <a class="vitrine" href="https://essentiel.impact-nva.fr/" target="_blank" rel="noopener">
+          <img src="images/site-essentiel.jpg" alt="Aperçu du site Essentiel réalisé par Impact-NVA" loading="lazy" width="3000" height="1876">
+          <span class="v-nom">Essentiel</span><span class="v-desc">Un site clair pour être trouvé</span><b>390 €</b></a>
+        <a class="vitrine" href="https://prestige.impact-nva.fr/" target="_blank" rel="noopener">
+          <img src="images/site-prestige.jpg" alt="Aperçu du site Prestige réalisé par Impact-NVA" loading="lazy" width="3000" height="1875">
+          <span class="v-nom">Prestige</span><span class="v-desc">Vos réalisations mises en valeur</span><b>690 €</b></a>
+        <a class="vitrine" href="https://impact-nva.fr/" target="_blank" rel="noopener">
+          <img src="images/site-signature.png" alt="Aperçu du site Signature réalisé par Impact-NVA" loading="lazy" width="1024" height="640">
+          <span class="v-nom">Signature</span><span class="v-desc">Le sur-mesure complet</span><b>1 290 €</b></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloc" style="padding-top:0">
+  <div class="wrap">
+    <p class="warn"><b>Un outil pédagogique, pas un conseil.</b> La Boussole donne une lecture simplifiée de votre situation à partir des chiffres que vous saisissez. Elle ne remplace ni votre expert-comptable ni un conseiller. Votre comptable vous dit ce qui s'est passé ; la Boussole vous aide à voir où vous allez.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Impact-NVA · La Boussole · <button type="button" id="revoir-ouv">Revoir l'ouverture</button></span>
+    <span>Vous aimez les chiffres clairs ? <a href="https://vos-finances.impact-nva.fr/" target="_blank" rel="noopener">Vos finances, votre puissance</a></span>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   LES TAUX — source unique. Tout calcul de la Boussole lira ici.
+   Règle du projet : aucun taux sans date ni source.
+   ═══════════════════════════════════════════════════════════ */
+const SP = "https://entreprendre.service-public.gouv.fr/vosdroits/";
+const TAUX = {
+  verifie: "22 septembre 2026",
+  lignes: [
+    {q:"Cotisations sociales — vente de marchandises", v:"12,3 %", n:12.3, src:"F37353", maj:"vérifié le 21/02/2026"},
+    {q:"Cotisations sociales — prestations de services artisanales ou commerciales (BIC)", v:"21,2 %", n:21.2, src:"F37353", maj:"vérifié le 21/02/2026"},
+    {q:"Cotisations sociales — profession libérale (régime général)", v:"25,6 %", n:25.6, src:"F37353", maj:"vérifié le 21/02/2026"},
+    {q:"Cotisations sociales — profession libérale relevant de la Cipav", v:"23,2 %", n:23.2, src:"F37353", maj:"vérifié le 21/02/2026"},
+    {q:"Versement libératoire de l'impôt — vente", v:"1 %", n:1, src:"F23267", maj:"vérifié le 13/05/2026"},
+    {q:"Versement libératoire de l'impôt — services (BIC)", v:"1,7 %", n:1.7, src:"F23267", maj:"vérifié le 13/05/2026"},
+    {q:"Versement libératoire de l'impôt — libéral (BNC)", v:"2,2 %", n:2.2, src:"F23267", maj:"vérifié le 13/05/2026"},
+    {q:"Formation professionnelle — artisan", v:"0,3 %", n:0.3, src:null, maj:"sources secondaires concordantes", confirmer:true},
+    {q:"Formation professionnelle — commerçant", v:"0,1 %", n:0.1, src:null, maj:"sources secondaires concordantes", confirmer:true},
+    {q:"Chambre des métiers — services (hors Alsace-Moselle), dû si CA de l'année précédente > 5 000 €", v:"0,48 %", n:0.48, src:"F37483", maj:"vérifié le 24/12/2025"},
+    {q:"Chambre des métiers — vente (hors Alsace-Moselle)", v:"0,22 %", n:0.22, src:"F37483", maj:"vérifié le 24/12/2025"},
+    {q:"Chambre de commerce — vente (commerçant)", v:"0,015 %", n:0.015, src:"F37483", maj:"vérifié le 24/12/2025"},
+    {q:"Formation professionnelle — libéral (profession non réglementée)", v:"0,1 %", n:0.1, src:null, maj:"sources secondaires concordantes", confirmer:true},
+    {q:"Plafond de CA micro-entreprise — services et libéral", v:"83 600 €", n:83600, src:"F32353", maj:"vérifié le 21/02/2026"},
+    {q:"Plafond de CA micro-entreprise — vente", v:"203 100 €", n:203100, src:"F32353", maj:"vérifié le 21/02/2026"},
+    {q:"Franchise de TVA — services (seuil / seuil majoré)", v:"37 500 € / 41 250 €", n:37500, src:"F21746", maj:"vérifié le 01/01/2026"},
+    {q:"Franchise de TVA — vente (seuil / seuil majoré)", v:"85 000 € / 93 500 €", n:85000, src:"F21746", maj:"vérifié le 01/01/2026"},
+    {q:"TVA — entretien de jardin (tonte, taille, traitement)", v:"20 %", n:20, src:null, maj:"pratique du métier, à confirmer avec votre comptable (10 % possible avec agrément services à la personne)", confirmer:true},
+    {q:"TVA — fourniture de végétaux (plantes, arbustes, arbres)", v:"10 %", n:10, src:null, maj:"pratique du métier, à confirmer avec votre comptable", confirmer:true},
+    {q:"TVA — main-d'œuvre de plantation", v:"20 %", n:20, src:null, maj:"pratique du métier, à confirmer avec votre comptable", confirmer:true}
+  ]
+};
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+$("#taux-date").textContent = TAUX.verifie;
+/* quatre questions, chacune avec sa réponse puis ses chiffres */
+const TAUX_FAQ = [
+  {q: "Combien part en cotisations sur ce que j'encaisse ?",
+   r: "Les cotisations se calculent sur le chiffre d'affaires encaissé, pas sur le bénéfice : en services artisanaux, 212 € sur 1 000 € encaissés. Si vous avez choisi le versement libératoire, l'impôt sur le revenu s'ajoute au même moment.",
+   f: /^Cotisations sociales|^Versement libératoire/},
+  {q: "Et les petites taxes en plus : formation, chambre des métiers ?",
+   r: "Deux contributions s'ajoutent aux cotisations, calculées elles aussi sur le chiffre d'affaires. Elles sont faibles, mais l'outil les compte : une addition juste vaut mieux qu'une bonne surprise en moins.",
+   f: /^Formation professionnelle|^Chambre/},
+  {q: "Jusqu'où je peux facturer sans changer de régime ?",
+   r: "Deux limites à surveiller, et elles ne sont pas au même endroit : le plafond du régime micro-entreprise, et le seuil au-delà duquel vous devez facturer la TVA. On peut devoir facturer la TVA bien avant d'atteindre le plafond micro.",
+   f: /^Plafond|^Franchise/},
+  {q: "Quelle TVA sur mes prestations de paysagiste ?",
+   r: "Le taux dépend de ce que vous vendez : l'entretien n'est pas la fourniture de végétaux. C'est la pratique du métier, à confirmer avec votre comptable — d'où l'astérisque.",
+   f: /^TVA/}
+];
+$("#taux-faq").innerHTML = TAUX_FAQ.map((g, i) => {
+  const lignes = TAUX.lignes.filter(l => g.f.test(l.q));
+  const corps = lignes.map(l => {
+    const s = l.src ? "<a href=\"" + SP + l.src + "\" target=\"_blank\" rel=\"noopener\">Service-public.fr</a>, " + l.maj : l.maj;
+    return "<tr" + (l.confirmer ? " class=\"a-confirmer\"" : "") + "><td>" + l.q + "</td><td class=\"v\">" + l.v + "</td><td class=\"s\">" + s + "</td></tr>";
+  }).join("");
+  return "<details class=\"faq-q\"" + "" + ">"
+    + "<summary><span>" + g.q + "</span><em>" + lignes.length + " chiffres</em></summary>"
+    + "<div class=\"faq-r\"><p>" + g.r + "</p>"
+    + "<div class=\"tbl\"><table class=\"taux\">"
+    + "<thead><tr><th>Ce qui est calculé</th><th>Taux ou montant</th><th>Source</th></tr></thead>"
+    + "<tbody>" + corps + "</tbody></table></div></div></details>";
+}).join("");
+$("#yr").textContent = new Date().getFullYear();
+
+/* ═══ LE CALCUL RAPIDE ═══
+   Micro-entreprise, prestations de services artisanales (le cas du paysagiste).
+   Les taux viennent de TAUX : cotisations + formation + chambre des métiers. */
+const taux = q => TAUX.lignes.find(l => l.q.indexOf(q) === 0).n;
+const ACTIVITES = {
+  services: {lib:"Micro-entreprise, services artisanaux", libSeuil:"des services", vl:"Versement libératoire de l'impôt — services",
+    cot:["Cotisations sociales — prestations de services", "Formation professionnelle — artisan", "Chambre des métiers — services"],
+    libs:["Cotisations sociales", "Formation professionnelle", "Chambre des métiers"],
+    seuil:"Franchise de TVA — services", plafond:"Plafond de CA micro-entreprise — services"},
+  vente: {lib:"Micro-entreprise, vente de marchandises", libSeuil:"de la vente", vl:"Versement libératoire de l'impôt — vente",
+    cot:["Cotisations sociales — vente", "Formation professionnelle — commerçant", "Chambre de commerce — vente"],
+    libs:["Cotisations sociales", "Formation professionnelle", "Chambre de commerce"],
+    seuil:"Franchise de TVA — vente", plafond:"Plafond de CA micro-entreprise — vente"},
+  liberal: {lib:"Micro-entreprise, profession libérale", libSeuil:"des services", vl:"Versement libératoire de l'impôt — libéral",
+    cot:["Cotisations sociales — profession libérale (régime général)", "Formation professionnelle — libéral"],
+    libs:["Cotisations sociales", "Formation professionnelle"],
+    seuil:"Franchise de TVA — services", plafond:"Plafond de CA micro-entreprise — services"}
+};
+/* rempli par situation() : taux de cotisations, seuils et libellés de l'activité choisie */
+let PROFIL = null;
+const EXEMPLE = {ca: 3500, ch: 1100, tva: "20", res: 7};
+const RM = matchMedia("(prefers-reduced-motion:reduce)").matches;
+const eur = n => (n < -0.5 ? "−" : "") + Math.abs(Math.round(n)).toLocaleString("fr-FR") + " €";
+const lit = id => { const v = parseFloat(String($(id).value).replace(/\s/g, "").replace(",", ".")); return isFinite(v) && v > 0 ? v : 0; };
+
+/* la barre garde toujours ses six segments : seule leur largeur change, pour que ça glisse */
+const ORDRE = ["tva","cot","ch","mat","inv","moi"];
+const COUL = {tva:"--s1", cot:"--s2", ch:"--s3", mat:"--s4", inv:"--s5", moi:"--s6"};
+$("#rs-barre").innerHTML = ORDRE.map(c => "<i data-k=\"" + c + "\" style=\"background:var(" + COUL[c] + ")\"></i>").join("");
+const seg = c => $("#rs-barre [data-k=" + c + "]");
+const affiche = {tva:0, cot:0, ch:0, mat:0, inv:0, moi:0};
+let generation = 0, premiere = !RM;
+
+/* un nombre qui défile de sa valeur affichée vers la nouvelle */
+function defile(de, vers, duree, ecrit, gen){
+  if (RM || duree === 0) { ecrit(vers); return; }
+  /* filet de sécurité : si l'onglet est caché, les images d'animation s'arrêtent —
+     la valeur finale doit s'écrire quand même */
+  setTimeout(() => { if (gen === generation) ecrit(vers); }, duree + 80);
+  const t0 = performance.now();
+  (function pas(t){
+    if (gen !== generation) return;
+    const k = Math.min(1, (t - t0) / duree), e = 1 - Math.pow(1 - k, 3);
+    ecrit(de + (vers - de) * e);
+    if (k < 1) requestAnimationFrame(pas);
+  })(t0);
+}
+
+
+function calcule(){
+  const gen = ++generation;
+  const ht = lit("#c-ca"), ch = lit("#c-ch"), tvaT = $("#c-tva").value === "det" ? TVA_DET : +$("#c-tva").value, res = Math.min(lit("#c-res"), 100);
+  const tva = ht * tvaT / 100, enc = ht + tva;
+  const cot = ht * PROFIL.tCot / 100, mis = ENT_ACTIF ? ENT.res + ENT.inv : ht * res / 100;
+  const m = {tva: tva, cot: cot, ch: ch, mat: ENT_ACTIF ? ENT.res : mis * .6, inv: ENT_ACTIF ? ENT.inv : mis * .4};
+  m.moi = ht - cot - ch - mis;
+
+  const big = $("#rs-big"), val = $("#rs-val"), alerte = $("#rs-alerte");
+  if (enc <= 0) {
+    big.classList.remove("neg"); val.textContent = "—";
+    ORDRE.forEach(c => { seg(c).style.flexGrow = 0; affiche[c] = 0; });
+    $$("#rs-leg b").forEach(b => b.textContent = "—");
+    $("#rs-note").textContent = "Indiquez ce que vous facturez par mois.";
+    alerte.hidden = true; return;
+  }
+  /* ramené à 1 000 € encaissés ; « pour vous » prend le reste pour que le total tombe juste */
+  const k = 1000 / enc, p = {};
+  ["tva","cot","ch","mat","inv"].forEach(c => p[c] = Math.round(m[c] * k));
+  p.moi = 1000 - p.tva - p.cot - p.ch - p.mat - p.inv;
+
+  /* à l'ouverture : chaque enveloppe se remplit à son tour ; ensuite, tout glisse ensemble */
+  const depart = premiere ? 900 : 0, ecart = premiere ? 210 : 0, duree = premiere ? 900 : 650;
+  ORDRE.forEach((c, i) => {
+    const li = $("#rs-leg [data-k=" + c + "]"), b = li.querySelector("b");
+    li.hidden = (c === "tva" && tvaT === 0) || (c !== "moi" && c !== "ch" && p[c] === 0);
+    const lance = () => {
+      if (gen !== generation) return;
+      seg(c).style.flexGrow = Math.max(p[c], 0);
+      const de = affiche[c]; affiche[c] = p[c];
+      defile(de, p[c], duree, v => b.textContent = eur(v), gen);
+      if (c === "moi") {
+        big.classList.toggle("neg", p.moi < 0);
+        const deBig = parseFloat(val.dataset.v || 0); val.dataset.v = p.moi;
+        defile(deBig, p.moi, premiere ? 1100 : duree, v => val.textContent = eur(v), gen);
+        if (premiere) setTimeout(() => {
+          big.classList.add("arrive"); $(".eclat").classList.add("balaye"); premiere = false;
+        }, 700);
+      }
+    };
+    if (depart + ecart * i) setTimeout(lance, depart + ecart * i); else lance();
+  });
+
+  $("#rs-note").textContent = "Soit " + eur(m.moi) + " par mois pour votre Eldorado, sur " + eur(enc) + " encaissés. "
+    + PROFIL.lib + " : cotisations et taxes " + pct(PROFIL.tCot) + (PROFIL.vl ? ", impôt compris" : "") + " (taux 2026). "
+    + (ENT_ACTIF ? "Réserve et investissement : ceux de votre mois type (étape 03). " : "Ce qui est mis de côté va pour 60 % à la réserve pour la tempête et 40 % à l'investissement. ") + "Estimation pédagogique.";
+
+  let msg = "";
+  if (m.moi < 0) msg = "Vos obligations et vos charges dépassent ce que vous facturez : il manque " + eur(-m.moi) + " par mois.";
+  else if (tvaT === 0 && ht * 12 > PROFIL.seuil) msg = "Attention : à " + eur(ht * 12) + " par an, vous dépassez le seuil de franchise de TVA " + PROFIL.libSeuil + " (" + eur(PROFIL.seuil) + "). Vous devez facturer la TVA.";
+  alerte.textContent = msg; alerte.hidden = !msg;
+}
+["#c-ca","#c-ch","#c-res"].forEach(id => $(id).addEventListener("input", calcule));
+$("#c-tva").addEventListener("change", calcule);
+
+function versCarte(){ $("#calc").scrollIntoView({behavior: RM ? "auto" : "smooth", block: "center"}); }
+$$("[data-act]").forEach(b => b.addEventListener("click", () => {
+  if (b.dataset.act === "exemple") {
+    Object.keys(SITU_EXEMPLE).forEach(id => $(id).value = SITU_EXEMPLE[id]);
+    remplitContrats();
+    $("#c-ch").value = EXEMPLE.ch; $("#c-res").value = EXEMPLE.res;
+    situation(); PAGE.ecrit($("#carnet")); PAGE.tourne(versCarte);
+  } else {
+    PAGE.ecrit($("#carnet"));
+    PAGE.tourne(() => {
+      versCarte();
+      setTimeout(() => { const i = $("#c-ca"); i.focus({preventScroll: true}); i.select(); }, 300);
+    });
+  }
+}));
+/* ═══ 01 — MA SITUATION ═══
+   Le détail de ce que l'entrepreneur facture. Chaque changement met à jour
+   le résumé à côté ET la carte du haut : jamais deux chiffres différents. */
+let TVA_DET = 0;
+const optDet = document.createElement("option");
+optDet.value = "det"; $("#c-tva").appendChild(optDet);
+const pct = n => (Math.round(n * 100) / 100).toLocaleString("fr-FR") + " %";
+
+/* un nombre du résumé qui défile, avec son propre jeton pour ne pas se marcher dessus */
+function anime(el, vers, fmt){
+  const jeton = el._jeton = (el._jeton || 0) + 1, de = el._v || 0; el._v = vers;
+  if (RM) { el.textContent = fmt(vers); return; }
+  setTimeout(() => { if (el._jeton === jeton) el.textContent = fmt(vers); }, 700);
+  const t0 = performance.now();
+  (function pas(t){
+    if (el._jeton !== jeton) return;
+    const k = Math.min(1, (t - t0) / 620), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = fmt(de + (vers - de) * e);
+    if (k < 1) requestAnimationFrame(pas);
+  })(t0);
+}
+
+function situation(){
+  const A = ACTIVITES[$("#s-act").value], vl = $("#s-vl").value === "1";
+  PROFIL = {
+    lib: A.lib, libSeuil: A.libSeuil, vl: vl,
+    tCot: Math.round((A.cot.reduce((s, q) => s + taux(q), 0) + (vl ? taux(A.vl) : 0)) * 1000) / 1000,
+    seuil: taux(A.seuil), plafond: taux(A.plafond)
+  };
+  PROFIL.lignes = A.cot.map((q, i) => ({lib: A.libs[i], t: taux(q)}));
+  if (vl) PROFIL.lignes.push({lib: "Impôt (versement libératoire)", t: taux(A.vl)});
+
+  const fact = $("#s-tva").value === "oui", ttc = fact && $("#s-ht").value === "ttc";
+  ["#s-tent", "#s-ht"].forEach(id => { $(id).disabled = !fact; $(id).closest(".saisie").classList.toggle("off", !fact); });
+  const tEnt = fact ? +$("#s-tent").value : 0;
+  const veg = Math.min(lit("#s-veg"), 100) / 100;
+  const tExt = fact ? veg * taux("TVA — fourniture de végétaux") + (1 - veg) * taux("TVA — main-d'œuvre de plantation") : 0;
+
+  let caC = lit("#s-nb") * lit("#s-prix"), caE = lit("#s-extras") / 12;
+  if (ttc) { caC /= 1 + tEnt / 100; caE /= 1 + tExt / 100; }
+  const ca = caC + caE, tvaM = caC * tEnt / 100 + caE * tExt / 100, an = ca * 12;
+  TVA_DET = ca > 0 ? tvaM / ca * 100 : 0;
+
+  /* la carte du haut suit */
+  $("#c-ca").value = Math.round(ca);
+  optDet.textContent = pct(TVA_DET) + " moyen";
+  optDet.hidden = !fact;
+  $("#c-tva").value = fact ? "det" : "0";
+
+  /* le résumé */
+  anime($("#s-ca"), ca, eur);
+  $("#s-barC").style.flexGrow = Math.round(caC); $("#s-barE").style.flexGrow = Math.round(caE);
+  const partC = ca > 0 ? caC / ca * 100 : 0;
+  anime($("#s-c"), caC, v => eur(v) + " · " + Math.round(partC) + " %");
+  anime($("#s-e"), caE, v => eur(v) + " · " + (ca > 0 ? 100 - Math.round(partC) : 0) + " %");
+  anime($("#s-an"), an, eur);
+  if (fact && ca > 0) anime($("#s-tvam"), tvaM, v => eur(v) + " (" + pct(TVA_DET) + " en moyenne)");
+  else { $("#s-tvam")._jeton = ($("#s-tvam")._jeton || 0) + 1; $("#s-tvam")._v = 0; $("#s-tvam").textContent = fact ? "—" : "Aucune (franchise)"; }
+  $("#s-tcot").textContent = pct(PROFIL.tCot) + " du CA" + (vl ? ", impôt compris" : "");
+
+  let alerte = "", info = "";
+  if (an > PROFIL.plafond) alerte = "À " + eur(an) + " par an, vous dépassez le plafond de la micro-entreprise (" + eur(PROFIL.plafond) + "). Deux années de suite au-dessus, et vous passez au régime réel.";
+  else if (!fact && an > PROFIL.seuil) alerte = "À " + eur(an) + " par an, vous dépassez le seuil de franchise de TVA " + PROFIL.libSeuil + " (" + eur(PROFIL.seuil) + ") : vous devez facturer la TVA.";
+  else if (fact && an > 0 && an <= PROFIL.seuil) info = "Sous " + eur(PROFIL.seuil) + " par an, vous pourriez rester en franchise de TVA. Souvent intéressant quand les clients sont des particuliers : parlez-en à votre comptable.";
+  $("#s-alerte").textContent = alerte; $("#s-alerte").hidden = !alerte;
+  $("#s-info").textContent = info; $("#s-info").hidden = !info;
+
+  const S = {ca: ca, tvaM: tvaM, fact: fact, tEnt: tEnt, ttc: ttc, caC: caC, nbC: lit("#s-nb")};
+  DERNIER_S = S;
+  doit(S); entreprise(S); contrats(S);
+  lienCarte(false);
+  calcule();
+}
+
+/* si le visiteur retouche la carte du haut à la main, on le lui dit, avec le moyen de revenir */
+function lienCarte(ecart){
+  const html = ecart
+    ? "La carte du haut utilise les chiffres que vous y avez saisis à la main, pas votre situation détaillée. <button type=\"button\" class=\"reprendre\">Reprendre ma situation</button>"
+    : "La carte du haut suit ces chiffres. <a href=\"#calc\">Voir ce qui est vraiment à vous ↑</a>";
+  ["#s-lien", "#e-lien"].forEach(id => $(id).innerHTML = html);
+  if (ecart) $$(".reprendre").forEach(b => b.addEventListener("click", situation));
+}
+function saisieManuelle(){ ENT_ACTIF = false; lienCarte(true); calcule(); }
+["#c-ca", "#c-ch", "#c-res"].forEach(id => $(id).addEventListener("input", saisieManuelle));
+$("#c-tva").addEventListener("change", saisieManuelle);
+$$(".situ input").forEach(i => i.addEventListener("input", situation));
+$$(".situ select").forEach(s => s.addEventListener("change", situation));
+
+const SITU_EXEMPLE = {"#s-act":"services", "#s-vl":"0", "#s-nb":"10", "#s-prix":"200", "#s-extras":"18000", "#s-veg":"20", "#s-tva":"oui", "#s-tent":"20", "#s-ht":"ht",
+  "#e-vehicule":"350", "#e-assur":"120", "#e-tel":"40", "#e-compta":"40", "#e-local":"0", "#e-fautres":"0",
+  "#e-carbu":"300", "#e-fourn":"120", "#e-entr":"80", "#e-dechets":"50", "#e-sstr":"0", "#e-vautres":"0",
+  "#e-vital":"1200", "#e-mois":"3", "#e-deja":"2000", "#e-delai":"12", "#e-inv":"100", "#d-rythme":"3",
+  "#k-hsem":"35", "#k-sem":"45", "#k-paie":"2000", "#k-trajmode":"reel"};
+
+/* ═══ 02 — CE QUE JE DOIS ═══
+   Rien à saisir : tout découle de la situation. */
+function doit(S){
+  const lignes = [];
+  if (S.fact) lignes.push(["TVA à reverser", "taux moyen " + pct(TVA_DET), S.tvaM]);
+  PROFIL.lignes.forEach(l => lignes.push([l.lib, pct(l.t) + " du chiffre d'affaires", S.ca * l.t / 100]));
+  const total = lignes.reduce((s, l) => s + l[2], 0), enc = S.ca + S.tvaM;
+  $("#d-lignes").innerHTML = lignes.map(l => "<tr><th scope=\"row\">" + l[0] + "<small>" + l[1] + "</small></th><td>" + eur(l[2]) + "</td></tr>").join("");
+  $("#d-total").textContent = eur(total);
+  anime($("#d-pct"), enc > 0 ? total / enc * 100 : 0, v => Math.round(v) + " %");
+  const r = +$("#d-rythme").value, urssaf = S.ca * PROFIL.tCot / 100 * r;
+  $("#d-ech").innerHTML = enc > 0
+    ? "À chaque déclaration URSSAF (" + (r === 1 ? "chaque mois" : "chaque trimestre") + ") : environ <b>" + eur(urssaf) + "</b>."
+      + (S.fact ? " La TVA se reverse à part, selon votre régime : gardez-la sur le même compte de côté." : "")
+    : "";
+  $("#d-note").textContent = (PROFIL.vl ? "" : "Pas compté ici : l'impôt sur le revenu. Sans versement libératoire, il dépend de tout votre foyer. ")
+    + "À prévoir aussi une fois par an : la CFE (cotisation foncière des entreprises), dont le montant dépend de votre commune et dont on est exonéré la première année.";
+}
+
+/* ═══ 03 — MON ENTREPRISE ═══
+   Le mois type en euros. Il nourrit aussi la carte du haut (charges, réserve, investissement). */
+let ENT = {res: 0, inv: 0}, ENT_ACTIF = true;
+const E_FIX = ["#e-vehicule", "#e-assur", "#e-tel", "#e-compta", "#e-local", "#e-fautres"];
+const E_VAR = ["#e-carbu", "#e-fourn", "#e-entr", "#e-dechets", "#e-sstr", "#e-vautres"];
+const E_ORDRE = ["tva", "cot", "fix", "var", "res", "inv", "moi"];
+const E_COUL = {tva:"--s1", cot:"--s2", fix:"--s3", var:"--s3b", res:"--s4", inv:"--s5", moi:"--s6"};
+$("#e-barre").innerHTML = E_ORDRE.map(c => "<i data-k=\"" + c + "\" style=\"background:var(" + E_COUL[c] + ")\"></i>").join("");
+const mois1 = n => (n >= 10 ? Math.round(n) : Math.round(n * 10) / 10).toLocaleString("fr-FR");
+
+function entreprise(S){
+  const fix = E_FIX.reduce((s, id) => s + lit(id), 0), vr = E_VAR.reduce((s, id) => s + lit(id), 0);
+  const vital = lit("#e-vital"), mois = lit("#e-mois"), deja = lit("#e-deja"), delai = Math.max(1, Math.round(lit("#e-delai"))), inv = lit("#e-inv");
+  const besoin = fix + vital, objectif = mois * besoin, manque = Math.max(0, objectif - deja), res = manque / delai;
+  const cot = S.ca * PROFIL.tCot / 100;
+  const v = {tva: S.fact ? S.tvaM : 0, cot: cot, fix: fix, var: vr, res: res, inv: inv};
+  v.moi = S.ca - cot - fix - vr - res - inv;
+
+  /* la carte du haut suit : charges, et ce qui est mis de côté (réserve + investissement) */
+  ENT = {res: res, inv: inv}; ENT_ACTIF = true;
+  ENT_DET = {fix: fix, vr: vr, res: res, inv: inv, vital: vital, moi: v.moi, manque: manque, delai: delai};
+  $("#c-ch").value = Math.round(fix + vr);
+  $("#c-res").value = S.ca > 0 ? (Math.round((res + inv) / S.ca * 1000) / 10).toLocaleString("fr-FR") : "0";
+
+  E_ORDRE.forEach(c => {
+    $("#e-barre [data-k=" + c + "]").style.flexGrow = Math.max(0, Math.round(v[c]));
+    const li = $("#e-leg [data-k=" + c + "]");
+    li.hidden = (c === "tva" && !S.fact) || (["var", "res", "inv"].includes(c) && v[c] < 0.5);
+    anime(li.querySelector("b"), v[c], eur);
+  });
+  anime($("#e-moi"), v.moi, eur);
+  $("#e-moi").classList.toggle("neg", v.moi < 0);
+
+  /* la jauge de la tempête */
+  const tenue = besoin > 0 ? deja / besoin : 0;
+  $("#e-tenue").textContent = mois1(tenue) + " mois tenus sur " + mois1(mois);
+  const j = $("#e-jauge");
+  j.style.width = (objectif > 0 ? Math.min(100, deja / objectif * 100) : 100) + "%";
+  j.classList.toggle("plein", manque === 0);
+  $("#e-tempete").textContent = manque > 0
+    ? "Objectif : " + eur(objectif) + " (" + mois1(mois) + " mois × " + eur(besoin) + "). Il manque " + eur(manque) + ", soit " + eur(res) + " à mettre de côté chaque mois pendant " + delai + " mois."
+    : "Réserve pleine : vos " + eur(deja) + " couvrent " + mois1(mois) + " mois de tempête. Plus besoin d'y ajouter chaque mois.";
+
+  let a = "";
+  if (v.moi < 0) a = "Ce mois type ne tient pas : il manque " + eur(-v.moi) + ". Allégez la réserve ou l'investissement, ou augmentez vos prix ou vos contrats.";
+  else if (vital > 0 && v.moi < vital) a = "Votre Eldorado (" + eur(v.moi) + ") reste sous le minimum pour vivre que vous avez indiqué (" + eur(vital) + ").";
+  $("#e-alerte").textContent = a; $("#e-alerte").hidden = !a;
+}
+$("#d-rythme").addEventListener("change", situation);
+
+/* ═══ 04 — MES CONTRATS UN PAR UN ═══
+   Chaque contrat ramené à ce qu'il rapporte par heure réelle, trajet aller compris,
+   comparé à deux repères tirés du mois type : le plancher de survie et le taux
+   pour l'objectif. Un plancher, jamais un prix de devis. */
+let ENT_DET = {fix: 0, vr: 0, res: 0, inv: 0, vital: 0}, DERNIER_S = null;
+const eurH = n => n.toLocaleString("fr-FR", {minimumFractionDigits: 1, maximumFractionDigits: 1}) + " €/h";
+const litE = el => { const v = parseFloat(String(el.value).replace(/\s/g, "").replace(",", ".")); return isFinite(v) && v > 0 ? v : 0; };
+/* « 2h30 », « 2 h », « 2,5 », « 45 min » : on comprend tout */
+function heures(s){
+  s = String(s).trim().toLowerCase().replace(",", ".");
+  if (/min/.test(s) && !/h/.test(s)) { const m = parseFloat(s); return isFinite(m) && m > 0 ? m / 60 : 0; }
+  const m = s.match(/^(\d+(?:\.\d+)?)\s*h\s*(\d+)?/);
+  if (m) return +m[1] + (m[2] ? +m[2] / 60 : 0);
+  const v = parseFloat(s); return isFinite(v) && v > 0 ? v : 0;
+}
+/* écrire un texte fixe à la place d'un nombre qui défile : on annule d'abord le défilement en cours */
+function fige(el, txt){ el._jeton = (el._jeton || 0) + 1; el._v = 0; el.textContent = txt; }
+function fmtHM(h){ const t = Math.round(h * 60); return t < 60 ? t + " min" : Math.floor(t / 60) + " h " + String(t % 60).padStart(2, "0"); }
+
+const K_EXEMPLE = [
+  {nom: "Contrat A — grand jardin", prix: "2160", rythme: "1", pass: "13", place: "5h", trajet: "20"},
+  {nom: "Contrat B — résidence", prix: "1050", rythme: "4", pass: "13", place: "6h30", trajet: "15"},
+  {nom: "Contrat C — petit jardin éloigné", prix: "840", rythme: "1", pass: "12", place: "2h30", trajet: "35"}
+];
+function ajouteContrat(d, nouveau){
+  const a = document.createElement("article");
+  a.className = "contrat" + (nouveau ? " nouveau" : "");
+  a.innerHTML =
+    "<div class=\"k-tete\"><input class=\"k-nom\" type=\"text\" aria-label=\"Nom du contrat\" autocomplete=\"off\">"
+    + "<button class=\"k-suppr\" type=\"button\" aria-label=\"Retirer ce contrat\">×</button></div>"
+    + "<div class=\"champs\">"
+    + "<label class=\"champ\">Prix facturé<span class=\"saisie\"><input class=\"k-prix\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\"><em class=\"k-unite\">€ HT</em></span></label>"
+    + "<label class=\"champ\">Le prix indiqué, c'est<span class=\"saisie\"><select class=\"k-rythme\">"
+    + "<option value=\"1\">Le prix global de l'année</option><option value=\"12\">La mensualité lissée</option><option value=\"4\">Le montant du trimestre</option>"
+    + "</select><em>▾</em></span></label>"
+    + "<label class=\"champ\">Passages par an<span class=\"saisie\"><input class=\"k-pass\" type=\"text\" inputmode=\"numeric\" placeholder=\"ex. 13\" autocomplete=\"off\"></span></label>"
+    + "<label class=\"champ\">Temps sur place<span class=\"saisie\"><input class=\"k-place\" type=\"text\" placeholder=\"par passage, ex. 2h30\" autocomplete=\"off\"></span></label>"
+    + "<label class=\"champ\">Trajet aller<span class=\"saisie\"><input class=\"k-trajet\" type=\"text\" inputmode=\"numeric\" autocomplete=\"off\"><em>min</em></span></label>"
+    + "<label class=\"champ k-large\">Dont refacturé au client (déchets, produits)<span class=\"saisie\"><input class=\"k-refac\" type=\"text\" inputmode=\"numeric\" autocomplete=\"off\"><em class=\"k-refac-u\">€ / mois</em></span></label>"
+    + "</div>"
+    + "<p class=\"k-lisse\"></p>"
+    + "<div class=\"k-res\"><div class=\"k-taux\"><b class=\"k-h\">—</b><small>par heure réelle, trajet aller compris</small><span class=\"k-verdict\"></span></div>"
+    + "<div class=\"k-jauge\" aria-hidden=\"true\"><span class=\"z1\"></span><span class=\"z2\"></span><span class=\"z3\"></span><i></i></div>"
+    + "<p class=\"k-conseil\"></p></div>";
+  a.querySelector(".k-nom").value = d.nom;
+  a.querySelector(".k-prix").value = d.prix; a.querySelector(".k-pass").value = d.pass;
+  a.querySelector(".k-place").value = d.place; a.querySelector(".k-trajet").value = d.trajet;
+  a.querySelector(".k-refac").value = d.refac || "0";
+  a.querySelector(".k-rythme").value = d.rythme || "12";
+  $("#k-liste").appendChild(a);
+  return a;
+}
+function remplitContrats(){ $("#k-liste").innerHTML = ""; K_EXEMPLE.forEach(d => ajouteContrat(d, false)); }
+remplitContrats();
+
+function contrats(S){
+  if (!S) return;
+  const E = ENT_DET, k = 1 - PROFIL.tCot / 100;
+  const hMois = lit("#k-hsem") * lit("#k-sem") / 12, paie = lit("#k-paie");
+  const survie = hMois > 0 ? (E.fix + E.vr + E.res + E.inv + E.vital) / k / hMois : 0;
+  const objectif = hMois > 0 ? (E.fix + E.vr + E.res + E.inv + paie) / k / hMois : 0;
+  if (hMois > 0) { anime($("#k-survie"), survie, eurH); anime($("#k-objectif"), objectif, eurH); }
+  else { fige($("#k-survie"), "—"); fige($("#k-objectif"), "—"); }
+  $("#k-explic").textContent = hMois > 0
+    ? "Comment c'est calculé : vos charges, votre réserve et votre investissement (étape 03), plus votre minimum pour vivre (" + eur(E.vital) + ") ou votre paie visée (" + eur(paie) + "), cotisations comprises, divisés par vos " + Math.round(hMois) + " heures travaillées par mois."
+    : "Indiquez vos heures et vos semaines travaillées pour obtenir vos repères.";
+
+  const conv = S.fact && S.ttc ? 1 + S.tEnt / 100 : 1;
+  const nb = {ok: 0, lim: 0, ko: 0};
+  let revT = 0, hT = 0;
+  K_RES = [];
+  $$("#k-liste .contrat").forEach(c => {
+    const q = s => c.querySelector(s);
+    q(".k-unite").textContent = conv > 1 ? "€ TTC" : "€ HT";
+    const prix = litE(q(".k-prix")), refac = litE(q(".k-refac"));
+    const parAn = +q(".k-rythme").value || 12, mot = {12: "mois", 4: "trimestre", 1: "an"}[parAn];
+    q(".k-refac-u").textContent = "€ / " + mot;
+    const prixHT = Math.max(0, prix - refac) / conv, pass = litE(q(".k-pass"));
+    const place = heures(q(".k-place").value);
+    const forfait = $("#k-trajmode").value, tEl = q(".k-trajet");
+    const trajet = forfait === "reel" ? litE(tEl) : +forfait;
+    if (forfait !== "reel") { if (!tEl.dataset.reel) tEl.dataset.reel = tEl.value; tEl.value = forfait; }
+    else if (tEl.dataset.reel) { tEl.value = tEl.dataset.reel; delete tEl.dataset.reel; }
+    tEl.disabled = forfait !== "reel";
+    tEl.closest(".saisie").classList.toggle("off", forfait !== "reel");
+    const hAn = pass * (place + trajet / 60), revAn = prixHT * parAn;
+    const uP = conv > 1 ? " TTC" : " HT";
+    q(".k-lisse").innerHTML = prix > 0
+      ? "Sur l'année : <b>" + eur(prix * parAn) + uP + "</b> — soit <b>" + eur(prix * parAn / 12) + "</b> facturés chaque mois."
+      : "";
+    const [z1, z2, z3] = c.querySelectorAll(".k-jauge span"), pt = q(".k-jauge i");
+    if (hAn <= 0 || revAn <= 0 || objectif <= 0) {
+      c.removeAttribute("data-v"); fige(q(".k-h"), "—");
+      q(".k-conseil").textContent = "Complétez le prix, les passages et le temps passé.";
+      z1.style.flexGrow = 1; z2.style.flexGrow = 1; z3.style.flexGrow = 1; pt.style.left = "0%";
+      return;
+    }
+    const eh = revAn / hAn; revT += revAn; hT += hAn;
+    const v = eh < survie ? "ko" : eh < objectif ? "lim" : "ok"; nb[v]++;
+    c.dataset.v = v;
+    K_RES.push({nom: q(".k-nom").value.trim() || "ce contrat", v: v});
+    q(".k-verdict").textContent = {ok: "Rentable", lim: "Limite", ko: "À perte"}[v];
+    anime(q(".k-h"), eh, eurH);
+
+    const max = Math.max(objectif * 1.5, eh * 1.12);
+    z1.style.flexGrow = survie; z2.style.flexGrow = objectif - survie; z3.style.flexGrow = max - objectif;
+    pt.style.left = Math.min(100, eh / max * 100) + "%";
+
+    const u = conv > 1 ? " TTC" : " HT";
+    if (v === "ok") {
+      q(".k-conseil").innerHTML = "Au-dessus de votre objectif : il vous laisse <b>" + eur((eh - objectif) * hAn) + " de marge sur l'année</b>. Vous pouvez vous permettre un geste si le client demande un petit extra.";
+    } else {
+      const prixObj = objectif * hAn / parAn * conv + refac, tMax = revAn / objectif / pass - trajet / 60;
+      q(".k-conseil").innerHTML = "Pour atteindre votre objectif : <b>" + eur(prixObj) + u + " par " + mot + "</b> (" + eur(prixObj - prix) + " de plus)"
+        + (tMax > 0.1 ? ", ou au plus <b>" + fmtHM(tMax) + "</b> sur place par passage." : ". Le trajet pèse trop : regroupez-le avec d'autres clients du même secteur.")
+        + (v === "ko" ? " En l'état, chaque passage vous coûte de l'argent." : "");
+    }
+  });
+
+  const n = nb.ok + nb.lim + nb.ko, pl = (x, mot) => x + " " + mot + (x > 1 ? "s" : "");
+  $("#k-bilan").innerHTML = n
+    ? "<b>" + pl(nb.ok, "rentable") + "</b>, <b>" + pl(nb.lim, "limite") + "</b>, <b>" + nb.ko + " à perte</b>. En moyenne, ces contrats rapportent " + eurH(revT / hT) + ", trajets compris."
+    : "";
+  chantiers(survie, objectif, conv);
+  cap(S);
+  perso();
+}
+
+/* ═══ 04 bis — LES CHANTIERS PONCTUELS ═══
+   Ils se comptent en journées : le prix est comparé à ce qu'une journée doit
+   rapporter pour tenir le cap, et non à un taux horaire de passage. */
+const CHANTIERS = [
+  {nom: "Taille de haie — grande propriété", prix: "1200", jours: "3", refac: "0"},
+  {nom: "Débroussaillage d'un terrain", prix: "450", jours: "2", refac: "80"},
+  {nom: "Élagage — hiver", prix: "300", jours: "2", refac: "0"}
+];
+const eurJ = n => eur(n) + " / jour";
+
+function ajouteChantier(d, nouveau){
+  const a = document.createElement("article");
+  a.className = "contrat" + (nouveau ? " nouveau" : "");
+  a.innerHTML =
+    "<div class=\"k-tete\"><input class=\"k-nom\" type=\"text\" aria-label=\"Nom du chantier\" autocomplete=\"off\">"
+    + "<button class=\"k-suppr\" type=\"button\" aria-label=\"Retirer ce chantier\">×</button></div>"
+    + "<div class=\"champs\">"
+    + "<label class=\"champ\">Prix du chantier<span class=\"saisie\"><input class=\"o-prix\" type=\"text\" inputmode=\"decimal\" autocomplete=\"off\"><em class=\"k-unite\">€ HT</em></span></label>"
+    + "<label class=\"champ\">Journées de travail<span class=\"saisie\"><input class=\"o-jours\" type=\"text\" inputmode=\"decimal\" placeholder=\"ex. 2 ou 0,5\" autocomplete=\"off\"></span></label>"
+    + "<label class=\"champ k-large\">Dont refacturé au client (déchets, végétaux, produits)<span class=\"saisie\"><input class=\"o-refac\" type=\"text\" inputmode=\"numeric\" autocomplete=\"off\"><em>€</em></span></label>"
+    + "</div>"
+    + "<div class=\"k-res\"><div class=\"k-taux\"><b class=\"k-h\">—</b><small>par journée de travail, trajet compris</small><span class=\"k-verdict\"></span></div>"
+    + "<div class=\"k-jauge\" aria-hidden=\"true\"><span class=\"z1\"></span><span class=\"z2\"></span><span class=\"z3\"></span><i></i></div>"
+    + "<p class=\"k-conseil\"></p></div>";
+  a.querySelector(".k-nom").value = d.nom;
+  a.querySelector(".o-prix").value = d.prix;
+  a.querySelector(".o-jours").value = d.jours;
+  a.querySelector(".o-refac").value = d.refac || "0";
+  $("#o-liste").appendChild(a);
+  return a;
+}
+
+/* appelé par contrats(), une fois les seuils horaires connus */
+function chantiers(survie, objectif, conv){
+  const hJour = Math.max(1, lit("#k-hsem") / 5);
+  const jSurvie = survie * hJour, jObj = objectif * hJour;
+  $("#o-repere").innerHTML = objectif > 0
+    ? "Sur la base de <b>" + fmtHM(hJour) + " par journée</b>, une journée doit vous rapporter au moins <b>" + eur(jSurvie) + "</b> pour ne rien perdre, et <b>" + eur(jObj) + "</b> pour tenir votre cap."
+    : "Indiquez vos heures et vos semaines travaillées pour obtenir vos repères.";
+
+  const nb = {ok: 0, lim: 0, ko: 0};
+  let revT = 0, jT = 0;
+  $$("#o-liste .contrat").forEach(c => {
+    const q = s => c.querySelector(s);
+    q(".k-unite").textContent = conv > 1 ? "€ TTC" : "€ HT";
+    const prix = litE(q(".o-prix")), refac = litE(q(".o-refac"));
+    const prixHT = Math.max(0, prix - refac) / conv, jours = litE(q(".o-jours"));
+    const [z1, z2, z3] = c.querySelectorAll(".k-jauge span"), pt = q(".k-jauge i");
+    if (jours <= 0 || prixHT <= 0 || jObj <= 0) {
+      c.removeAttribute("data-v"); fige(q(".k-h"), "—");
+      q(".k-conseil").textContent = "Complétez le prix et le nombre de journées.";
+      z1.style.flexGrow = 1; z2.style.flexGrow = 1; z3.style.flexGrow = 1; pt.style.left = "0%";
+      return;
+    }
+    const ej = prixHT / jours; revT += prixHT; jT += jours;
+    const v = ej < jSurvie ? "ko" : ej < jObj ? "lim" : "ok"; nb[v]++;
+    c.dataset.v = v;
+    q(".k-verdict").textContent = {ok: "Rentable", lim: "Limite", ko: "À perte"}[v];
+    anime(q(".k-h"), ej, eurJ);
+
+    const max = Math.max(jObj * 1.5, ej * 1.12);
+    z1.style.flexGrow = jSurvie; z2.style.flexGrow = jObj - jSurvie; z3.style.flexGrow = max - jObj;
+    pt.style.left = Math.min(100, ej / max * 100) + "%";
+
+    const u = conv > 1 ? " TTC" : " HT";
+    if (v === "ok") {
+      q(".k-conseil").innerHTML = "Au-dessus de votre cap : ce chantier vous laisse <b>" + eur((ej - jObj) * jours) + " de marge</b>. De quoi accepter un imprévu sans y perdre.";
+    } else {
+      const prixObj = jObj * jours * conv + refac, jMax = Math.floor(prixHT / jObj * 2) / 2;
+      q(".k-conseil").innerHTML = "Pour tenir votre cap : <b>" + eur(prixObj) + u + "</b> (" + eur(prixObj - prix) + " de plus)"
+        + (jMax >= .5 ? ", ou le faire en <b>" + jMax.toLocaleString("fr-FR") + (jMax > 1 ? " journées" : " journée") + "</b>." : ".")
+        + (v === "ko" ? " En l'état, ce chantier vous coûte de l'argent." : "");
+    }
+  });
+
+  const n = nb.ok + nb.lim + nb.ko, pl = (x, mot) => x + " " + mot + (x > 1 ? "s" : "");
+  $("#o-bilan").innerHTML = n
+    ? "<b>" + pl(nb.ok, "rentable") + "</b>, <b>" + pl(nb.lim, "limite") + "</b>, <b>" + nb.ko + " à perte</b>. En moyenne, ces chantiers rapportent " + eurJ(revT / jT) + "."
+    : "";
+}
+
+$("#o-liste").addEventListener("input", () => contrats(DERNIER_S));
+$("#o-liste").addEventListener("click", e => {
+  const b = e.target.closest(".k-suppr"); if (!b) return;
+  b.closest(".contrat").remove(); contrats(DERNIER_S);
+});
+$("#o-ajout").addEventListener("click", () => {
+  const a = ajouteChantier({nom: "Nouveau chantier", prix: "", jours: "", refac: "0"}, true);
+  contrats(DERNIER_S);
+  const i = a.querySelector(".k-nom"); i.focus(); i.select();
+});
+
+function remplitChantiers(){ $("#o-liste").innerHTML = ""; CHANTIERS.forEach(d => ajouteChantier(d, false)); }
+remplitChantiers();
+
+$("#k-liste").addEventListener("input", () => contrats(DERNIER_S));
+$("#k-liste").addEventListener("click", e => {
+  const b = e.target.closest(".k-suppr"); if (!b) return;
+  b.closest(".contrat").remove(); contrats(DERNIER_S);
+});
+$("#k-ajout").addEventListener("click", () => {
+  const a = ajouteContrat({nom: "Nouveau contrat", prix: "", pass: "", place: "", trajet: ""}, true);
+  contrats(DERNIER_S);
+  const i = a.querySelector(".k-nom"); i.focus(); i.select();
+});
+["#k-hsem", "#k-sem", "#k-paie"].forEach(id => $(id).addEventListener("input", () => contrats(DERNIER_S)));
+$("#k-trajmode").addEventListener("change", () => contrats(DERNIER_S));
+
+/* ═══ 05 — MON CAP ═══
+   Trois seuils de chiffre d'affaires mensuel HT. Les charges variables suivent
+   le chiffre d'affaires (leur part actuelle est gardée), les cotisations aussi :
+   seuil = (charges fixes + ce qu'il faut couvrir) / (1 − cotisations − part variable).
+   La TVA n'entre pas dans le calcul : elle n'est jamais au patron. */
+let K_RES = [];
+function cap(S){
+  const E = ENT_DET, t = PROFIL.tCot / 100;
+  /* les charges variables suivent le chiffre d'affaires : on garde leur part actuelle,
+     mais plafonnée — sinon un chiffre d'affaires saisi très bas fait exploser les seuils */
+  const vBrut = S.ca > 0 ? E.vr / S.ca : 0, v = Math.min(vBrut, .5), d = 1 - t - v, paie = lit("#k-paie");
+  const cartes = ["#p-s1", "#p-s2", "#p-s3"];
+  if (S.ca <= 0 || d <= 0.05) {
+    cartes.forEach(id => { fige($(id + " b"), "—"); $(id + " em").textContent = ""; });
+    $("#p-note").textContent = S.ca <= 0 ? "Indiquez ce que vous facturez à l'étape 01." : "Vos charges variables et vos cotisations prennent presque tout : revoyez vos prix d'abord.";
+    $("#p-regle").textContent = ""; $("#p-cdet").textContent = "";
+    $("#p-action").textContent = S.ca <= 0 ? "Commencez par votre situation" : "Revoir vos prix avant tout le reste";
+    $("#p-pourquoi").textContent = S.ca <= 0 ? "Remplissez l'étape 01 : la route se dessine à partir de ce que vous facturez." : "Aucun chiffre d'affaires ne peut suffire tant que chaque euro encaissé repart presque aussitôt.";
+    $("#p-ensuite").hidden = true;
+    return;
+  }
+  const s = [(E.fix + E.vital) / d, (E.fix + paie) / d, (E.fix + paie + E.res + E.inv) / d];
+
+  /* la route */
+  const max = Math.max(s[2] * 1.15, S.ca * 1.1), pos = x => Math.min(96, Math.max(4, x / max * 100)) + "%";
+  ["#p-b1", "#p-b2", "#p-b3"].forEach((id, i) => { $(id).style.left = pos(s[i]); $(id).classList.toggle("atteinte", S.ca >= s[i]); });
+  $("#p-vous").style.left = pos(S.ca);
+  anime($("#p-vous-ca"), S.ca, eur);
+  cartes.forEach((id, i) => {
+    anime($(id + " b"), s[i], eur);
+    const em = $(id + " em"), ok = S.ca >= s[i];
+    em.className = ok ? "oui" : "non";
+    em.textContent = ok ? "Atteint ✓" : "Il manque " + eur(s[i] - S.ca) + " par mois";
+  });
+  $("#p-note").textContent = (vBrut > .45 ? "Attention : vos charges variables pèsent " + pct(vBrut * 100) + " de ce que vous facturez. Si ce n'est pas un mois normal, corrigez l'étape 01 ou l'étape 03 — les seuils en dépendent. " : "")
+    + "Calcul : vos charges fixes, plus vos charges variables qui suivent le chiffre d'affaires (" + pct(v * 100) + " retenus) et vos cotisations (" + pct(PROFIL.tCot) + "). La TVA n'est pas comptée : elle n'est jamais à vous.";
+
+  /* la règle des contrats : ils doivent couvrir la survie à eux seuls */
+  const cMin = s[0], caC = S.caC, prixMoy = S.nbC > 0 ? S.caC / S.nbC : 0;
+  const manqueC = Math.max(0, cMin - caC), nC = prixMoy > 0 ? Math.ceil(manqueC / prixMoy) : 0;
+  $("#p-regle").innerHTML = caC >= cMin
+    ? "Vos contrats (<b>" + eur(caC) + "</b> par mois) couvrent la survie à eux seuls. Un mois sans extra ne vous met pas en danger."
+    : "Vos contrats rapportent <b>" + eur(caC) + "</b> par mois. Pour tenir sans aucun extra, il en faudrait <b>" + eur(cMin) + "</b>.";
+  const echelle = Math.max(cMin, caC) * 1.15;
+  $("#p-cbar").style.width = (caC / echelle * 100) + "%";
+  $("#p-cmin").style.left = (cMin / echelle * 100) + "%";
+  $("#p-cdet").textContent = "Aujourd'hui, les contrats font " + Math.round(caC / S.ca * 100) + " % de ce que vous facturez. "
+    + (manqueC > 0 && nC > 0 ? "Il manque environ " + nC + " contrat" + (nC > 1 ? "s" : "") + " à " + eur(prixMoy) + " par mois." : "Le reste, ce sont vos extras : ils construisent l'avenir.");
+
+  /* une seule prochaine action, par ordre de priorité ; la suivante en « ensuite » */
+  const perte = K_RES.find(k => k.v === "ko"), limite = K_RES.find(k => k.v === "lim");
+  const A = [];
+  if (S.ca < s[0]) A.push(["Trouver " + eur(s[0] - S.ca) + " de chiffre d'affaires en plus par mois",
+    "Vous êtes sous le seuil de survie : l'activité ne couvre pas encore vos charges et votre minimum pour vivre." + (prixMoy > 0 ? " Cela représente environ " + Math.ceil((s[0] - S.ca) / prixMoy) + " contrats d'entretien." : "")]);
+  /* sous la survie, le problème est le volume ; au-dessus, un mois type négatif vient des prix */
+  if (E.moi < 0 && S.ca >= s[0]) A.push(["Revoir vos prix avant tout le reste",
+    "Votre mois type ne tient pas : il manque " + eur(-E.moi) + ". " + (perte ? "Commencez par « " + perte.nom + " » : il vous coûte de l'argent à chaque passage." : "Chaque heure est vendue trop bas pour tout couvrir.")]);
+  if (manqueC > 0 && nC > 0) A.push(["Signer " + nC + " contrat" + (nC > 1 ? "s" : "") + " d'entretien de plus",
+    "Ils rapportent chaque mois, même quand les extras s'arrêtent. Avec " + eur(cMin) + " de contrats, un mois sans aucun extra ne vous met plus en danger."]);
+  if (perte) A.push(["Renégocier « " + perte.nom + " »",
+    "Il rapporte moins que votre plancher de survie : chaque passage vous coûte de l'argent. Proposez le prix conseillé à l'étape 04, ou réduisez le temps passé."]);
+  if (S.ca < s[1]) A.push(["Viser " + eur(s[1] - S.ca) + " de plus par mois",
+    "C'est ce qui vous sépare de la stabilité : couvrir vos charges et vous verser " + eur(paie) + " par mois."]);
+  if (E.manque > 0) A.push(["Continuer à mettre " + eur(E.res) + " de côté chaque mois",
+    "Votre réserve pour la tempête sera pleine dans " + E.delai + " mois : c'est votre filet quand le téléphone ne sonne plus."]);
+  if (S.ca < s[2]) A.push(["Aller chercher " + eur(s[2] - S.ca) + " de plus par mois",
+    "Pour remplir la réserve et investir sans toucher à votre paie."]);
+  if (limite) A.push(["Réajuster « " + limite.nom + " »",
+    "Il paie vos charges, mais pas encore la paie que vous visez. Un petit ajustement de prix suffit souvent."]);
+  A.push(["Cap tenu : investissez dans ce qui vous fait grandir",
+    "Vous dépassez le seuil de rentabilité. Votre budget d'investissement (" + eur(E.inv) + " par mois) peut aller au matériel, à la formation ou à votre visibilité."]);
+
+  $("#p-action").textContent = A[0][0];
+  $("#p-pourquoi").textContent = A[0][1];
+  const ens = A.length > 1 && A[1][0].indexOf("Cap tenu") !== 0 ? A[1] : null;
+  $("#p-ensuite").hidden = !ens;
+  if (ens) { const b = document.createElement("b"); b.textContent = ens[0]; $("#p-ensuite").replaceChildren("Ensuite : ", b, "."); }
+}
+
+/* ═══ 06 — MA VIE PERSO ═══
+   La paie de l'entreprise devient le revenu du foyer. Même logique que
+   « Vos finances, votre puissance » : dépenses, matelas, épargne, plaisirs,
+   et l'échelle M1 → M4 pour savoir où l'on en est. */
+const F_DEP = ["#f-logement", "#f-courses", "#f-energie", "#f-transport", "#f-assur", "#f-abo", "#f-credits", "#f-divers"];
+const F_ORDRE = ["dep", "mat", "epa", "loi", "res"];
+const F_COUL = {dep: "--s3", mat: "--s4", epa: "--s5", loi: "--s3b", res: "--s6"};
+$("#f-barre").innerHTML = F_ORDRE.map(c => "<i data-k=\"" + c + "\" style=\"background:var(" + F_COUL[c] + ")\"></i>").join("");
+
+function perso(){
+  const eldo = Math.max(0, ENT_DET.moi || 0);
+  $("#f-eldo").value = Math.round(eldo).toLocaleString("fr-FR");
+  const revenus = eldo + lit("#f-autres");
+  const dep = F_DEP.reduce((s, id) => s + lit(id), 0);
+  const credits = lit("#f-credits");
+  const mois = lit("#f-mois"), deja = lit("#f-deja"), delai = Math.max(1, Math.round(lit("#f-delai")));
+  const objectif = mois * dep, manque = Math.max(0, objectif - deja), mat = manque / delai;
+  const epa = lit("#f-epargne"), loi = lit("#f-loisirs"), investi = lit("#f-investi");
+  const v = {dep: dep, mat: mat, epa: epa, loi: loi};
+  v.res = revenus - dep - mat - epa - loi;
+
+  F_ORDRE.forEach(c => {
+    $("#f-barre [data-k=" + c + "]").style.flexGrow = Math.max(0, Math.round(v[c]));
+    const li = $("#f-leg [data-k=" + c + "]");
+    li.hidden = c !== "res" && c !== "dep" && v[c] < 0.5;
+    anime(li.querySelector("b"), v[c], eur);
+  });
+  anime($("#f-reste"), v.res, eur);
+  $("#f-reste").classList.toggle("neg", v.res < 0);
+  $("#f-reste-lib").textContent = v.res < 0 ? "qu'il manque chaque mois" : "de marge, une fois tout prévu";
+
+  /* l'échelle M1 → M4, comme dans « Vos finances, votre puissance ».
+     Le niveau se lit sur les nombres affichés, pas sur les nombres bruts. */
+  const moisMatelas = dep > 0 ? Math.round(deja / dep * 10) / 10 : 0;
+  const moisInvestis = dep > 0 ? Math.round(investi / dep) : 0;
+  let m = 1;
+  if (moisMatelas >= 1 && credits === 0) m = 2;
+  if (moisMatelas >= 3 && credits === 0) m = 3;
+  if (m === 3 && moisInvestis >= 60) m = 4;
+  $$("#f-rangs div").forEach(d => {
+    const n = +d.dataset.m;
+    d.classList.toggle("actif", n === m);
+    d.classList.toggle("passe", n < m);
+  });
+  const phrases = {
+    1: "Votre foyer n'a pas encore un mois de dépenses d'avance.",
+    2: "Vous tenez " + moisMatelas.toLocaleString("fr-FR") + " mois sans rien encaisser. Le plus dur est passé.",
+    3: "Votre matelas couvre " + moisMatelas.toLocaleString("fr-FR") + " mois : votre argent peut commencer à travailler.",
+    4: "Vos placements couvrent " + moisInvestis + " mois de dépenses : votre travail n'est plus votre seule source."
+  };
+  const prio = {
+    1: credits > 0
+      ? "Priorité : solder les crédits en cours (" + eur(credits) + " par mois), puis mettre un mois de dépenses de côté (" + eur(dep) + ")."
+      : "Priorité : mettre un mois de dépenses de côté, soit " + eur(dep) + ". C'est ce qui empêche un imprévu de devenir une dette.",
+    2: "Priorité : compléter votre matelas à " + mois.toLocaleString("fr-FR") + " mois, soit " + eur(objectif) + " (il manque " + eur(manque) + ").",
+    3: "Priorité : placer régulièrement ce que vous mettez de côté, plutôt que de le laisser dormir.",
+    4: "Priorité : protéger ce que vous avez construit, et choisir ce que vous voulez vraiment faire de votre temps."
+  };
+  $("#f-phrase").textContent = phrases[m];
+  $("#f-prio").textContent = prio[m];
+
+  let a = "";
+  if (v.res < 0) a = "Votre foyer dépense " + eur(-v.res) + " de plus qu'il ne reçoit. Commencez par baisser l'épargne ou les loisirs prévus, ou revoyez votre cap à l'étape 05.";
+  else if (eldo === 0) a = "Votre entreprise ne vous verse rien ce mois-ci : le foyer vit sur les autres revenus.";
+  $("#f-alerte").textContent = a; $("#f-alerte").hidden = !a;
+}
+$$(".perso input").forEach(i => i.addEventListener("input", perso));
+
+if (!RM) document.documentElement.classList.add("entree");
+situation();
+
+/* ── LA PAGE QUI SE TOURNE ──
+   Chaque saut d'étape fait tourner une page du carnet ; on change de section
+   quand la page est à plat, personne ne voit le déplacement. */
+const PAGE = (function(){
+  const fe = document.createElement("div");
+  fe.className = "feuillet";
+  fe.setAttribute("aria-hidden", "true");
+  const ecriture = (cote, lignes) =>
+    '<div class="fe-face ' + cote + '">'
+    + '<span class="fe-grain"></span>'
+    + '<div class="fe-texte"><p class="fe-date"></p><p class="fe-titre"></p>'
+    + '<svg class="fe-lignes" viewBox="0 0 560 ' + (lignes * 34) + '" aria-hidden="true">' + lignes + '</svg></div>'
+    + '<span class="fe-ombre"></span></div>';
+  /* des lignes d'écriture : des traits ondulés, longueur variable */
+  const traits = n => {
+    let d = "";
+    for (let i = 0; i < n; i++) {
+      const y = 16 + i * 34, l = 200 + Math.round(Math.random() * 320);
+      let p = "M18 " + y;
+      for (let x = 60; x < l; x += 42) p += " q 12 -7 21 0 t 21 0";
+      d += '<path d="' + p + '"/>';
+    }
+    return d;
+  };
+  fe.innerHTML =
+    '<div class="fe-face fe-recto"><span class="fe-grain"></span>'
+    + '<div class="fe-texte"><p class="fe-date"></p><p class="fe-titre"></p>'
+    + '<svg class="fe-lignes" viewBox="0 0 560 240" aria-hidden="true">' + traits(7) + '</svg></div>'
+    + '<span class="fe-ombre"></span></div>'
+    + '<div class="fe-face fe-verso"><span class="fe-grain"></span>'
+    + '<div class="fe-texte"><p class="fe-date"></p><p class="fe-titre"></p>'
+    + '<svg class="fe-lignes" viewBox="0 0 560 110" aria-hidden="true">' + traits(3) + '</svg></div>'
+    + '<span class="fe-ombre"></span></div>';
+  document.body.appendChild(fe);
+  let occupe = false;
+  const html = document.documentElement;
+  const titre = el => {
+    const t = el && (el.querySelector(".head .num") || el.querySelector(".rs-top span"));
+    return t ? t.textContent.replace(/^\d\d\s*—\s*/, "") : "Votre carnet de bord";
+  };
+  const numero = el => {
+    const n = el && el.querySelector(".head");
+    return n && n.dataset.n ? "Page " + n.dataset.n : "Page de garde";
+  };
+  /* la section qu'on a sous les yeux */
+  const ici = () => {
+    const blocs = $$("section[id]");
+    let vu = blocs[0];
+    blocs.forEach(b => { if (b.getBoundingClientRect().top <= 120) vu = b; });
+    return vu;
+  };
+  const ecrit = cible => {
+    const d = ici();
+    fe.querySelector(".fe-recto .fe-date").textContent = numero(d);
+    fe.querySelector(".fe-recto .fe-titre").textContent = titre(d);
+    fe.querySelector(".fe-verso .fe-date").textContent = numero(cible);
+    fe.querySelector(".fe-verso .fe-titre").textContent = titre(cible);
+  };
+  const tourne = aller => {
+    if (RM || occupe) { aller(); return; }
+    occupe = true;
+    fe.classList.add("tourne");
+    const avant = html.style.scrollBehavior;
+    html.style.scrollBehavior = "auto";
+    setTimeout(aller, 440);
+    setTimeout(() => {
+      fe.classList.remove("tourne"); occupe = false;
+      html.style.scrollBehavior = avant;
+    }, 960);
+  };
+  /* tous les liens internes passent par la page qui se tourne */
+  $$('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+    const h = a.getAttribute("href");
+    if (h === "#" || h.length < 2) return;
+    const cible = document.querySelector(h);
+    if (!cible) return;
+    e.preventDefault();
+    ecrit(cible);
+    tourne(() => {
+      history.replaceState(null, "", h);
+      const bandeau = $("header") ? $("header").offsetHeight : 0;
+      scrollTo(0, cible.getBoundingClientRect().top + scrollY - bandeau - 8);
+    });
+  }));
+  return {tourne: tourne, ecrit: ecrit};
+})();
+
+/* ── la route de lecture et l'apparition des sections ── */
+if (!RM) {
+  document.documentElement.classList.add("anime");
+  const fil = $("#fil"), pt = $(".fil-p");
+  /* une marque par étape, placée à sa hauteur dans la page */
+  const etapes = $$("section.bloc[id]").map(s => ({
+    el: s,
+    n: (s.querySelector(".head") || {}).dataset ? s.querySelector(".head").dataset.n : "",
+    nom: (s.querySelector(".head h2") || s.querySelector(".head .num") || {}).textContent || s.id
+  })).filter(e => e.n);
+  const boite = $(".fil-reperes"), faite = $(".fil-faite");
+  const marques = etapes.map(e => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "fil-rep";
+    b.innerHTML = "<i></i><b>" + e.n + "</b><em>" + e.nom + "</em>";
+    b.addEventListener("click", () => {
+      PAGE.ecrit(e.el);
+      PAGE.tourne(() => {
+        const bandeau = $("header") ? $("header").offsetHeight : 0;
+        scrollTo(0, e.el.getBoundingClientRect().top + scrollY - bandeau - 8);
+      });
+    });
+    boite.appendChild(b);
+    return {b: b, el: e.el};
+  });
+  const place = () => {
+    const haut = document.documentElement.scrollHeight - innerHeight;
+    const utile = fil.clientHeight - 30;
+    marques.forEach(m => {
+      const k = haut > 0 ? Math.min(1, Math.max(0, (m.el.getBoundingClientRect().top + scrollY - 90) / haut)) : 0;
+      m.b.style.top = (k * utile + 5) + "px";
+    });
+  };
+  const avance = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    const k = h > 0 ? Math.min(1, Math.max(0, scrollY / h)) : 0;
+    fil.classList.toggle("on", scrollY > innerHeight * .4);
+    fil.classList.toggle("fini", k > .985);
+    const y = k * (fil.clientHeight - 30);
+    pt.style.top = y + "px";
+    faite.style.height = (y + 5) + "px";
+    /* l'étape qu'on a sous les yeux, et celles déjà passées */
+    let courante = -1;
+    marques.forEach((m, i) => {
+      const t = m.el.getBoundingClientRect().top;
+      m.b.classList.toggle("vue", t <= 140);
+      if (t <= 140) courante = i;
+    });
+    marques.forEach((m, i) => m.b.classList.toggle("ici", i === courante));
+  };
+  addEventListener("scroll", avance, {passive: true});
+  addEventListener("resize", () => { place(); avance(); });
+  addEventListener("load", () => { place(); avance(); });
+  place(); avance();
+  setTimeout(() => { place(); avance(); }, 600);
+
+  const oeil = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("vu"); oeil.unobserve(e.target); }
+  }), {rootMargin: "0px 0px -12% 0px"});
+  $$(".bloc .head, .bloc .panneau, .bloc .situ, .bloc .doit, .bloc .cap, .bloc .k-params, .bloc .k-liste, .bloc .k-bas, .bloc .offre, .bloc .warn").forEach(e => oeil.observe(e));
+}
+
+/* ── l'ouverture ──
+   Une seule fois par visite : l'emblème arrive, la promesse s'écrit, le rideau se lève. */
+const OUV = (function(){
+  const ouv = $("#ouverture"), em = $(".embleme");
+  if (!ouv || !em) return {joue: () => {}};
+  /* la rose de la scène est une copie de l'emblème du hero */
+  const copie = em.cloneNode(true);
+  copie.setAttribute("class", "ouv-rose");
+  copie.innerHTML = copie.innerHTML
+    .replace(/id="([^"]+)"/g, 'id="$1-ouv"')
+    .replace(/url(#([^)]+))/g, 'url(#$1-ouv)');
+  $(".ouv-rose").replaceWith(copie);
+
+  let minuteur = null;
+  const ferme = () => {
+    if (!ouv.classList.contains("joue") || ouv.classList.contains("part")) return;
+    clearTimeout(minuteur);
+    ouv.classList.add("part");
+    document.documentElement.classList.remove("ouvre");
+    try { sessionStorage.setItem("bv-ouverture", "1"); } catch (e) {}
+    setTimeout(() => ouv.classList.remove("joue", "part"), 1400);
+  };
+  const joue = () => {
+    if (ouv.classList.contains("joue")) return;
+    ouv.classList.remove("part");
+    ouv.classList.toggle("doux", RM);
+    document.documentElement.classList.add("ouvre");
+    ouv.classList.add("joue");
+    minuteur = setTimeout(ferme, RM ? 2600 : 5200);
+  };
+  $(".ouv-passer").addEventListener("click", ferme);
+  addEventListener("keydown", e => { if (e.key === "Escape") ferme(); });
+
+  let dejaVu = false;
+  try { dejaVu = sessionStorage.getItem("bv-ouverture") === "1"; } catch (e) {}
+  /* ?ouverture dans l'adresse : on la rejoue même si on l'a déjà vue */
+  if (!dejaVu || /[?&]ouverture/.test(location.search)) joue();
+  return {joue: joue};
+})();
+$("#revoir-ouv").addEventListener("click", OUV.joue);
+
+/* ── la poussière d'or du hero ──
+   Quelques grains qui montent lentement dans le faisceau de la lanterne.
+   Au repos (mouvement réduit) : ils restent immobiles. */
+(function poussiere(){
+  const cv = $(".poussiere"), hero = $("#hero");
+  if (!cv || !hero) return;
+  const ctx = cv.getContext("2d");
+  let grains = [], l = 0, ht = 0, dpr = 1;
+  const pose = () => {
+    const r = hero.getBoundingClientRect();
+    l = r.width; ht = r.height; dpr = Math.min(2, devicePixelRatio || 1);
+    cv.width = l * dpr; cv.height = ht * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const nb = Math.round(Math.min(70, l / 22));
+    grains = Array.from({length: nb}, () => ({
+      x: Math.random() * l, y: Math.random() * ht,
+      r: .6 + Math.random() * 1.7, v: .08 + Math.random() * .22,
+      d: (Math.random() - .5) * .12, o: .12 + Math.random() * .45, p: Math.random() * 6.28
+    }));
+  };
+  const image = t => {
+    ctx.clearRect(0, 0, l, ht);
+    for (const g of grains) {
+      if (!RM) { g.y -= g.v; g.x += g.d + Math.sin((t / 2600) + g.p) * .12; if (g.y < -6) { g.y = ht + 6; g.x = Math.random() * l; } }
+      const a = g.o * (.55 + .45 * Math.sin((t / 1400) + g.p)) * (.35 + .65 * (g.x / l));
+      ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, 6.2832);
+      ctx.fillStyle = "rgba(240,206,140," + a.toFixed(3) + ")"; ctx.fill();
+    }
+    if (!RM) requestAnimationFrame(image);
+  };
+  pose(); requestAnimationFrame(image);
+  addEventListener("resize", () => { pose(); if (RM) requestAnimationFrame(image); });
+})();
+
+/* ── bandeau qui se fixe ── */
+const hd = $("header");
+addEventListener("scroll", () => hd.classList.toggle("stuck", scrollY > 20), {passive:true});
+
+/* ── menu ── */
+const bgr = $("#burger"), pan = $("#menu");
+function ferme(){ document.body.classList.remove("menu"); bgr.setAttribute("aria-expanded","false"); }
+bgr.addEventListener("click", e => {
+  e.stopPropagation();
+  const o = document.body.classList.toggle("menu");
+  bgr.setAttribute("aria-expanded", o ? "true" : "false");
+});
+pan.querySelectorAll("a").forEach(a => a.addEventListener("click", ferme));
+document.addEventListener("click", e => {
+  if (document.body.classList.contains("menu") && !pan.contains(e.target) && !bgr.contains(e.target)) ferme();
+});
+addEventListener("keydown", e => { if (e.key === "Escape") ferme(); });
+</script>
+</body>
+</html>
