@@ -1048,6 +1048,25 @@ html.ouvre,html.ouvre body{overflow:hidden}
 .fil-rep.ici i{width:26px;height:2.5px}
 .fil-rep.ici b{color:var(--btn1)}
 </style>
+<style>
+@media (max-width:900px), (pointer:coarse){
+  .feuillet{transform-style:flat;transform:translate3d(-101%,0,0);perspective:none}
+  .fe-face{backface-visibility:visible}
+  /* une seule face suffit : on ne voit jamais le dos d'une page qui glisse */
+  .fe-verso{display:none}
+  /* les mélanges de calques sont l'autre source d'écrans noirs sur mobile */
+  .feuillet .fe-grain{mix-blend-mode:normal;opacity:.18}
+  @keyframes feuillet-glisse{
+    0%{transform:translate3d(-101%,0,0)}
+    46%{transform:translate3d(0,0,0)}
+    54%{transform:translate3d(0,0,0)}
+    100%{transform:translate3d(101%,0,0)}}
+  .feuillet.tourne{animation:feuillet-glisse .92s cubic-bezier(.42,.02,.32,1) both;opacity:1}
+  /* l'écriture reste lisible sur un petit écran */
+  .fe-texte{top:22vh;left:32px;right:32px}
+  .fe-titre{font-size:clamp(1.6rem,7vw,2.2rem)}
+}
+</style>
 </head>
 <body>
 <div id="ouverture" aria-hidden="true">
@@ -2665,8 +2684,10 @@ const PAGE = (function(){
     blocs.forEach(b => { if (b.getBoundingClientRect().top <= 120) vu = b; });
     return vu;
   };
+  /* sur mobile une seule face est visible : elle annonce la destination */
+  const plat = matchMedia("(max-width:900px), (pointer:coarse)").matches;
   const ecrit = cible => {
-    const d = ici();
+    const d = plat ? cible : ici();
     fe.querySelector(".fe-recto .fe-date").textContent = numero(d);
     fe.querySelector(".fe-recto .fe-titre").textContent = titre(d);
     fe.querySelector(".fe-verso .fe-date").textContent = numero(cible);
