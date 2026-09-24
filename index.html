@@ -1067,6 +1067,30 @@ html.ouvre,html.ouvre body{overflow:hidden}
   .fe-titre{font-size:clamp(1.6rem,7vw,2.2rem)}
 }
 </style>
+<style>
+/* ── LE SOMMAIRE EN BAS DE L'ÉCRAN, SUR TÉLÉPHONE ── */
+.fil-rep u{display:none}
+@media(max-width:1180px){
+  #fil{display:block;left:0;right:0;top:auto;bottom:0;width:auto;height:auto;
+    background:linear-gradient(180deg,rgba(8,5,3,.82),rgba(8,5,3,.97));
+    border-top:1px solid rgba(240,196,106,.22);padding:7px 0 max(7px,env(safe-area-inset-bottom))}
+  .fil-l,.fil-x,.fil-p,.fil-faite{display:none}
+  .fil-reperes{position:relative;inset:auto;display:flex;align-items:center;gap:2px;
+    padding:0 8px;overflow-x:auto;scrollbar-width:none}
+  .fil-reperes::-webkit-scrollbar{display:none}
+  .fil-rep{position:static!important;top:auto!important;transform:none;flex:1 0 auto;
+    flex-direction:column;gap:3px;padding:5px 9px;min-width:40px;border-radius:3px}
+  .fil-rep i{width:16px;height:2px}
+  .fil-rep b{font-size:.68rem;letter-spacing:.12em}
+  .fil-rep em{display:none}
+  /* l'étape où l'on se trouve dit son nom */
+  .fil-rep.ici{flex:0 0 auto;background:rgba(240,196,106,.1)}
+  .fil-rep.ici u{display:block;text-decoration:none;font-size:.6rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--a1);white-space:nowrap;max-width:42vw;overflow:hidden;text-overflow:ellipsis}
+  /* on garde de la place sous le contenu pour ne rien masquer */
+  body{padding-bottom:64px}
+}
+</style>
 </head>
 <body>
 <div id="ouverture" aria-hidden="true">
@@ -2727,17 +2751,23 @@ if (!RM) {
   document.documentElement.classList.add("anime");
   const fil = $("#fil"), pt = $(".fil-p");
   /* une marque par étape, placée à sa hauteur dans la page */
-  const etapes = $$("section.bloc[id]").map(s => ({
-    el: s,
-    n: (s.querySelector(".head") || {}).dataset ? s.querySelector(".head").dataset.n : "",
-    nom: (s.querySelector(".head h2") || s.querySelector(".head .num") || {}).textContent || s.id
-  })).filter(e => e.n);
+  const etapes = $$("section.bloc[id]").map(s => {
+    const tete = s.querySelector(".head");
+    const court = tete && tete.querySelector(".num")
+      ? tete.querySelector(".num").textContent.replace(/^\d\d\s*—\s*/, "").trim() : "";
+    return {
+      el: s,
+      n: tete && tete.dataset ? tete.dataset.n : "",
+      nom: (s.querySelector(".head h2") || tete || {}).textContent || s.id,
+      court: court
+    };
+  }).filter(e => e.n);
   const boite = $(".fil-reperes"), faite = $(".fil-faite");
   const marques = etapes.map(e => {
     const b = document.createElement("button");
     b.type = "button";
     b.className = "fil-rep";
-    b.innerHTML = "<i></i><b>" + e.n + "</b><em>" + e.nom + "</em>";
+    b.innerHTML = "<i></i><b>" + e.n + "</b><em>" + e.nom + "</em><u>" + e.court + "</u>";
     b.addEventListener("click", () => {
       PAGE.ecrit(e.el);
       PAGE.tourne(() => {
@@ -2748,6 +2778,7 @@ if (!RM) {
     boite.appendChild(b);
     return {b: b, el: e.el};
   });
+  let dernierVu = -1;
   const place = () => {
     const haut = document.documentElement.scrollHeight - innerHeight;
     const utile = fil.clientHeight - 30;
@@ -2772,6 +2803,11 @@ if (!RM) {
       if (t <= 140) courante = i;
     });
     marques.forEach((m, i) => m.b.classList.toggle("ici", i === courante));
+    if (courante >= 0 && courante !== dernierVu && innerWidth <= 1180) {
+      dernierVu = courante;
+      const b = marques[courante].b;
+      boite.scrollTo({left: b.offsetLeft - boite.clientWidth / 2 + b.offsetWidth / 2, behavior: "smooth"});
+    }
   };
   addEventListener("scroll", avance, {passive: true});
   addEventListener("resize", () => { place(); avance(); });
