@@ -847,7 +847,7 @@ html.ouvre,html.ouvre body{overflow:hidden}
 @keyframes em-rayons{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 @keyframes em-brille{0%,86%,100%{opacity:.25}92%{opacity:1}}
 @keyframes em-scintille{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
-.em-rayons{transform-origin:260px 260px;animation:em-rayons 90s linear infinite;mix-blend-mode:screen;filter:blur(9px);opacity:.55}
+.em-rayons{transform-origin:260px 260px;animation:em-rayons 90s linear infinite;mix-blend-mode:screen;filter:blur(9px);opacity:.4}
 .em-eclat{animation:em-brille 11s ease-in-out infinite}
 .em-etoile{transform-origin:330px 182px;animation:em-scintille 3.4s ease-in-out infinite}
 .embleme{filter:drop-shadow(0 40px 70px rgba(0,0,0,.8)) drop-shadow(0 0 40px rgba(227,179,85,.28))}
@@ -1091,6 +1091,21 @@ html.ouvre,html.ouvre body{overflow:hidden}
   body{padding-bottom:64px}
 }
 </style>
+<style>
+/* ── L'EMBLÈME PHOTOGRAPHIQUE ── */
+.embleme-vecteur{display:none}
+.embleme{position:relative;display:block}
+/* la lueur chaude reste derrière l'objet, mais serrée autour de lui */
+.embleme::before{content:"";position:absolute;inset:8%;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,rgba(240,196,106,.16),rgba(240,196,106,.05) 52%,transparent 72%);
+  filter:blur(22px)}
+.embleme img{position:relative;display:block;width:100%;height:100%;object-fit:contain;
+  filter:drop-shadow(0 30px 52px rgba(0,0,0,.8))}
+/* vue de face, elle peut tourner : sept minutes pour un tour, on la sent plus
+   qu'on ne la voit bouger */
+.embleme.tourne img{animation:em-tourne 420s linear infinite}
+@media (prefers-reduced-motion:reduce){.embleme.tourne img{animation:none}}
+</style>
 </head>
 <body>
 <div id="ouverture" aria-hidden="true">
@@ -1244,7 +1259,14 @@ html.ouvre,html.ouvre body{overflow:hidden}
       </div>
 
       <div class="hero-em">
-      <svg class="embleme" viewBox="0 0 520 520" aria-hidden="true">
+      <div class="embleme tourne" aria-hidden="true">
+        <img id="em-photo" alt=""
+             src="images/rose-jade-900.webp"
+             srcset="images/rose-jade-520.webp 520w, images/rose-jade-900.webp 900w"
+             sizes="(max-width:900px) 72vw, 40vw">
+      </div>
+
+      <svg class="embleme-vecteur" viewBox="0 0 520 520" aria-hidden="true">
         <defs>
           <linearGradient id="or-clair" x1=".1" y1="0" x2=".85" y2="1">
             <stop offset="0" stop-color="#FFF6DC"/><stop offset=".35" stop-color="#F2CE7C"/>
@@ -1281,8 +1303,9 @@ html.ouvre,html.ouvre body{overflow:hidden}
             <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
           <radialGradient id="halo-or" cx=".5" cy=".5" r=".5">
-            <stop offset="0" stop-color="#FFD98F" stop-opacity=".5"/>
-            <stop offset=".45" stop-color="#E3B355" stop-opacity=".16"/>
+            <stop offset="0" stop-color="#FFD98F" stop-opacity=".2"/>
+            <stop offset=".32" stop-color="#E3B355" stop-opacity=".08"/>
+            <stop offset=".66" stop-color="#E3B355" stop-opacity="0"/>
             <stop offset="1" stop-color="#E3B355" stop-opacity="0"/>
           </radialGradient>
           <filter id="f-relief" x="-25%" y="-25%" width="150%" height="150%">
@@ -1301,7 +1324,7 @@ html.ouvre,html.ouvre body{overflow:hidden}
           </g>
         </g></g>
         <circle cx="260" cy="260" r="258" fill="url(#halo-or)"/>
-        <circle cx="260" cy="260" r="216" fill="#0A0704" opacity=".55"/>
+        <circle cx="260" cy="260" r="232" fill="#070504" opacity=".7"/>
 
         <g class="em-tour">
           <!-- le cercle gravé et ses graduations -->
@@ -2861,6 +2884,20 @@ const OUV = (function(){
   return {joue: joue};
 })();
 $("#revoir-ouv").addEventListener("click", OUV.joue);
+
+/* essai : ?b=jade, ?b=objet ou ?b=carte changent l'emblème du hero et de
+   l'ouverture. Sans rien, c'est la rose de face qui s'affiche. */
+(() => {
+  const m = /[?&]b=(acier|objet|carte)/.exec(location.search);
+  if (!m) return;
+  const nom = {acier: "rose", objet: "boussole", carte: "boussole-carte"}[m[1]];
+  $$("#em-photo, .ouv-rose img").forEach(i => {
+    i.src = "images/" + nom + "-900.webp";
+    i.srcset = "images/" + nom + "-520.webp 520w, images/" + nom + "-900.webp 900w";
+    /* une boussole vue de trois quarts ne peut pas tourner sans paraître fausse */
+    if (m[1] !== "acier") i.parentNode.classList.remove("tourne");
+  });
+})();
 
 /* ── la poussière d'or du hero ──
    Quelques grains qui montent lentement dans le faisceau de la lanterne.

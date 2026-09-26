@@ -2,3 +2,6 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# les images d origine, gardees en local, jamais publiees
+images/_src-*
