@@ -1050,12 +1050,24 @@ html.ouvre,html.ouvre body{overflow:hidden}
 </style>
 <style>
 @media (max-width:900px), (pointer:coarse){
-  .feuillet{transform-style:flat;transform:translate3d(-101%,0,0);perspective:none}
-  .fe-face{backface-visibility:visible}
+  /* le papier est porté par le feuillet lui-même : si une couche fille
+     échoue à se peindre sur un téléphone, on voit du parchemin, jamais du
+     noir. C'est le défaut qu'on traînait depuis le début. */
+  .feuillet{transform-style:flat;transform:translate3d(-101%,0,0);perspective:none;
+    background:linear-gradient(170deg,#FBF2DC 0%,#F2E3C0 46%,#E0C696 100%)}
+  /* on retire tout ce qui oblige le téléphone à composer des calques :
+     une face simple, sans ombre portée géante ni découpe. */
+  .fe-face{backface-visibility:visible;box-shadow:none;overflow:visible;
+    background:
+      repeating-linear-gradient(180deg,transparent 0 28px,rgba(92,62,26,.09) 28px 29px),
+      linear-gradient(90deg,rgba(58,34,12,.42) 0,rgba(58,34,12,.12) 10%,transparent 24%),
+      linear-gradient(170deg,#FBF2DC 0%,#F2E3C0 46%,#E0C696 100%)}
   /* une seule face suffit : on ne voit jamais le dos d'une page qui glisse */
   .fe-verso{display:none}
-  /* les mélanges de calques sont l'autre source d'écrans noirs sur mobile */
-  .feuillet .fe-grain{mix-blend-mode:normal;opacity:.18}
+  /* le grain est un filtre SVG répété plein écran : beaucoup trop lourd pour
+     un téléphone, et suspect n° 1 des couches qui restent noires. */
+  .feuillet .fe-grain{display:none}
+  .feuillet .fe-ombre{display:none}
   @keyframes feuillet-glisse{
     0%{transform:translate3d(-101%,0,0)}
     46%{transform:translate3d(0,0,0)}
@@ -2734,6 +2746,9 @@ const PAGE = (function(){
   /* sur mobile une seule face est visible : elle annonce la destination */
   const plat = matchMedia("(max-width:900px), (pointer:coarse)").matches;
   const ecrit = cible => {
+    /* la section d'arrivée se montre tout de suite : sans ça, si l'observateur
+       tarde, on découvre une page noire derrière le feuillet. */
+    if (cible && cible.querySelectorAll) cible.querySelectorAll(".bloc .head, .bloc .panneau, .bloc .situ, .bloc .doit, .bloc .cap, .bloc .k-params, .bloc .k-liste, .bloc .k-bas, .bloc .offre, .bloc .warn".replace(/.bloc /g, "")).forEach(e => e.classList.add("vu"));
     const d = plat ? cible : ici();
     fe.querySelector(".fe-recto .fe-date").textContent = numero(d);
     fe.querySelector(".fe-recto .fe-titre").textContent = titre(d);
@@ -2771,7 +2786,49 @@ const PAGE = (function(){
 
 /* ── la route de lecture et l'apparition des sections ── */
 if (!RM) {
+  /* ── L'APPARITION DES SECTIONS ──
+     Le contenu est masqué par le CSS dès que « anime » est posé, et c'est le
+     JavaScript qui le montre. Si quoi que ce soit échoue ensuite, la page
+     resterait noire : on installe donc la révélation en premier, et on lui
+     donne deux filets de sécurité. */
+  const aSurgir = $$(".bloc .head, .bloc .panneau, .bloc .situ, .bloc .doit, .bloc .cap, .bloc .k-params, .bloc .k-liste, .bloc .k-bas, .bloc .offre, .bloc .warn");
   document.documentElement.classList.add("anime");
+  const oeil = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("vu"); oeil.unobserve(e.target); }
+  }), {rootMargin: "0px 0px -12% 0px"});
+  aSurgir.forEach(e => oeil.observe(e));
+
+  /* premier filet : tout ce qui est entré dans l'écran se montre, même si
+     l'observateur ne s'est pas déclenché — c'est le cas sur certains
+     téléphones, et la page reste alors entièrement noire. */
+  const montre = () => aSurgir.forEach(e => {
+    if (!e.classList.contains("vu") && e.getBoundingClientRect().top < innerHeight * .92)
+      e.classList.add("vu");
+  });
+  addEventListener("scroll", montre, {passive: true});
+  addEventListener("load", montre);
+  montre();
+
+  /* second filet : une veille de trente secondes repasse régulièrement, au cas
+     où le téléphone n'enverrait même pas les événements de défilement. Elle
+     s'arrête dès que la première section s'est montrée sans son aide. */
+  let passages = 0;
+  const veille = setInterval(() => {
+    montre();
+    if (++passages > 60) clearInterval(veille);
+  }, 500);
+
+  /* dernier recours : si le visiteur a descendu et que rien n'est visible,
+     on abandonne l'effet plutôt que de lui laisser une page noire. */
+  setTimeout(() => {
+    if (scrollY > innerHeight * .8 && !$(".bloc .head.vu"))
+      document.documentElement.classList.remove("anime");
+  }, 8000);
+
+  /* ── la route de lecture ──
+     Elle n'est qu'un confort : elle est isolée pour qu'une panne de sa part
+     ne puisse plus emporter l'affichage du contenu. */
+  try {
   const fil = $("#fil"), pt = $(".fil-p");
   /* une marque par étape, placée à sa hauteur dans la page */
   const etapes = $$("section.bloc[id]").map(s => {
@@ -2838,10 +2895,10 @@ if (!RM) {
   place(); avance();
   setTimeout(() => { place(); avance(); }, 600);
 
-  const oeil = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add("vu"); oeil.unobserve(e.target); }
-  }), {rootMargin: "0px 0px -12% 0px"});
-  $$(".bloc .head, .bloc .panneau, .bloc .situ, .bloc .doit, .bloc .cap, .bloc .k-params, .bloc .k-liste, .bloc .k-bas, .bloc .offre, .bloc .warn").forEach(e => oeil.observe(e));
+  } catch (souci) {
+    const barre = document.getElementById("fil");
+    if (barre) barre.style.display = "none";
+  }
 }
 
 /* ── l'ouverture ──
